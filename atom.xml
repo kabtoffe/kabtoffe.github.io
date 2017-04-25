@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kabtoffe.net/"/>
-  <updated>2017-04-25T17:15:15.017Z</updated>
+  <updated>2017-04-25T17:38:40.855Z</updated>
   <id>http://kabtoffe.net/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://kabtoffe.net/2017/04/25/How-this-blog-was-made/"/>
     <id>http://kabtoffe.net/2017/04/25/How-this-blog-was-made/</id>
     <published>2017-04-25T16:52:13.000Z</published>
-    <updated>2017-04-25T17:15:15.017Z</updated>
+    <updated>2017-04-25T17:38:40.855Z</updated>
     
     <content type="html"><![CDATA[<h2 id="Markdown"><a href="#Markdown" class="headerlink" title="Markdown"></a>Markdown</h2><p>I remember hearing about Markdown previously but hadn’t paid it much attention. Then I heard it mentioned on a podcast I listen to  I also noticed that the Readme file on Visual Studio Team Services was done in markdown.</p>
 <div class="video-container"><iframe src="//www.youtube.com/embed/_gknWWa2OF0" frameborder="0" allowfullscreen></iframe></div>
@@ -30,6 +30,7 @@
 <p>I installed NodeJS using <a href="https://chocolatey.org" target="_blank" rel="external">Chocolatey</a> and followed <a href="https://hexo.io/docs/" target="_blank" rel="external">the instructions</a> to get up and running. Simple enough. The original plan was to host it on an Azure Web App, so I followed <a href="http://the-coderok.azurewebsites.net/2015/09/16/Running-Hexo-blog-on-Azure/" target="_blank" rel="external">another set of instructions</a> in order to do that.</p>
 <p>Note that in the Azure portal you should use the deployment options instead of continuous integration. That’s where you find the Local Git repo option you need. I first tried the Free plan, but apparently custom domains are not supported on that, so I switched to the Shared plan. See more details <a href="https://azure.microsoft.com/en-us/pricing/details/app-service/" target="_blank" rel="external">here</a>. I’ll probably move the blog to Github pages though since that’s free. Or I could host it on my router…</p>
 <p>Once everything was setup all I need to do to update the blog, <em>besides writing the posts</em>, is <code>hexo deploy --generate</code>. I placed the blog source files in Dropbox so I can get to them wherever I am. This post was started on my phone and finished on an iPad. I can’t generate and deploy on the go though. I’m sure PowerShell can help, but that is another blog post I think. I’m thinking some kind of change monitoring and automated deployment.</p>
+<p>Please note that I’m using this blog as another learning opportunity, so except changes, downtime etc. I’m also not sure how I active I’m actually going to be.</p>
 ]]></content>
     
     <summary type="html">
