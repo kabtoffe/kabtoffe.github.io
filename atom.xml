@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>kabtoffe&#39;s blog</title>
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://kabtoffe.net/"/>
+  <updated>2017-04-25T17:15:15.017Z</updated>
+  <id>http://kabtoffe.net/</id>
+  
+  <author>
+    <name>Kristoffer &quot;Toffe&quot; Bergström</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>My new shiny Markdown compatible blog</title>
+    <link href="http://kabtoffe.net/2017/04/25/How-this-blog-was-made/"/>
+    <id>http://kabtoffe.net/2017/04/25/How-this-blog-was-made/</id>
+    <published>2017-04-25T16:52:13.000Z</published>
+    <updated>2017-04-25T17:15:15.017Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Markdown"><a href="#Markdown" class="headerlink" title="Markdown"></a>Markdown</h2><p>I remember hearing about Markdown previously but hadn’t paid it much attention. Then I heard it mentioned on a podcast I listen to  I also noticed that the Readme file on Visual Studio Team Services was done in markdown.</p>
+<div class="video-container"><iframe src="//www.youtube.com/embed/_gknWWa2OF0" frameborder="0" allowfullscreen></iframe></div>
+<p>Naturally I was intrigued. As a <em>wannabe</em> programmer and <em>configuration nazi</em> the idea of using a simple markup syntax to write formatted documents sounded great. I had a brief stint using LaTeX while at school (<em>no one else did though</em>) and while I did do my final year project documentation with it, I quickly lost interest.</p>
+<h2 id="The-blog"><a href="#The-blog" class="headerlink" title="The blog"></a>The blog</h2><p>Anyway… I had thought about starting a blog for a while. I use <a href="https://feedly.com" target="_blank" rel="external">Feedly</a> every day and follow lots of blogs. Since I’ve benefited greatly from the community I thought it was time to give something back.</p>
+<p>Getting back to the main topic of how this blog came about. I searched for blogging engines that supported Markdown and the first result on Google was <a href="https://hexo.io" target="_blank" rel="external">Hexo</a>. Hexo is a static site generator built using NodeJS. Seemed like a great fit for a backend guy like me.</p>
+<p>I installed NodeJS using <a href="https://chocolatey.org" target="_blank" rel="external">Chocolatey</a> and followed <a href="https://hexo.io/docs/" target="_blank" rel="external">the instructions</a> to get up and running. Simple enough. The original plan was to host it on an Azure Web App, so I followed <a href="http://the-coderok.azurewebsites.net/2015/09/16/Running-Hexo-blog-on-Azure/" target="_blank" rel="external">another set of instructions</a> in order to do that.</p>
+<p>Note that in the Azure portal you should use the deployment options instead of continuous integration. That’s where you find the Local Git repo option you need. I first tried the Free plan, but apparently custom domains are not supported on that, so I switched to the Shared plan. See more details <a href="https://azure.microsoft.com/en-us/pricing/details/app-service/" target="_blank" rel="external">here</a>. I’ll probably move the blog to Github pages though since that’s free. Or I could host it on my router…</p>
+<p>Once everything was setup all I need to do to update the blog, <em>besides writing the posts</em>, is <code>hexo deploy --generate</code>. I placed the blog source files in Dropbox so I can get to them wherever I am. This post was started on my phone and finished on an iPad. I can’t generate and deploy on the go though. I’m sure PowerShell can help, but that is another blog post I think. I’m thinking some kind of change monitoring and automated deployment.</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Markdown&quot;&gt;&lt;a href=&quot;#Markdown&quot; class=&quot;headerlink&quot; title=&quot;Markdown&quot;&gt;&lt;/a&gt;Markdown&lt;/h2&gt;&lt;p&gt;I remember hearing about Markdown previously b
+    
+    </summary>
+    
+    
+      <category term="Markdown" scheme="http://kabtoffe.net/tags/Markdown/"/>
+    
+      <category term="Hexo" scheme="http://kabtoffe.net/tags/Hexo/"/>
+    
+      <category term="NodeJS" scheme="http://kabtoffe.net/tags/NodeJS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Dynamics 365 Document Template from Existing Word Document</title>
+    <link href="http://kabtoffe.net/2017/04/23/Dynamics-365-Document-Template-from-existing-Word-Document/"/>
+    <id>http://kabtoffe.net/2017/04/23/Dynamics-365-Document-Template-from-existing-Word-Document/</id>
+    <published>2017-04-23T13:16:31.000Z</published>
+    <updated>2017-04-24T19:13:11.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>For the impatient this is how you do it:</p>
+<blockquote>
+<p>Extract the Dynamics 365 generated template from zip and add the CustomXML-part to your existing template.</p>
+</blockquote>
+<p>I couldn’t find a post on how to create a new Dynamics 365 Document Template using an existing document or template. I’m sure many organisations have an existing template with all the right formatting, headers and footers they would like to use.</p>
+<p>Knowing how .docx-files are structured and how Dynamics 365 stores the metadata it was easy enough to figure out. I thought I would share how with you.</p>
+<h3 id="Step-by-step"><a href="#Step-by-step" class="headerlink" title="Step by step"></a>Step by step</h3><ol>
+<li>Create a new blank template from Dynamics 365 <a href="https://www.microsoft.com/en-us/dynamics/crm-customer-center/using-word-templates-in-dynamics-365.aspx" target="_blank" rel="external">the way you would normally do it</a> and save the file to your computer</li>
+<li>Change the extension of the file to .zip and extract it</li>
+<li>Open the existing document you would like to use with Dynamics 365</li>
+<li>In your Word template click Developer &gt; XML Mapping Pane<br><img src="https://www.microsoft.com/en-us/dynamics/crm-customer-center/crm_ITPro_WordTemplateSelectXMLMapping.png" alt="XML mapping pane"></li>
+<li>In the drop down menu select (Add new part…)<br><img src="https://www.microsoft.com/en-us/dynamics/crm-customer-center/crm_ITPro_WordTemplateXMLMappingDefault.png" alt="Dropdown menu"></li>
+<li>Navigate to your extracted template and select the xml-file (item.xml) under the CustomXML-directory</li>
+<li>Proceed as you normally would with a blank template</li>
+</ol>
+<p>Note that this is <em>might not be supported</em>, but seems to work just fine.</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;For the impatient this is how you do it:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Extract the Dynamics 365 generated template from zip and add the CustomXML-p
+    
+    </summary>
+    
+    
+      <category term="Dynamics 365" scheme="http://kabtoffe.net/tags/Dynamics-365/"/>
+    
+  </entry>
+  
+</feed>
