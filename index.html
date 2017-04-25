@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>kabtoffe&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="The personal blog of Toffe Bergström also known online as kabtoffe.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="kabtoffe's blog">
+<meta property="og:url" content="http://kabtoffe.net/index.html">
+<meta property="og:site_name" content="kabtoffe's blog">
+<meta property="og:description" content="The personal blog of Toffe Bergström also known online as kabtoffe.">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="kabtoffe's blog">
+<meta name="twitter:description" content="The personal blog of Toffe Bergström also known online as kabtoffe.">
+  
+    <link rel="alternate" href="/atom.xml" title="kabtoffe&#39;s blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  
+
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">kabtoffe&#39;s blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://kabtoffe.net"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main">
+  
+    <article id="post-Dynamics-365-Document-Template-from-existing-Word-Document" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/04/23/Dynamics-365-Document-Template-from-existing-Word-Document/" class="article-date">
+  <time datetime="2017-04-23T13:16:31.000Z" itemprop="datePublished">2017-04-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/04/23/Dynamics-365-Document-Template-from-existing-Word-Document/">Dynamics 365 Document Template from Existing Word Document</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>For the impatient this is how you do it:</p>
+<blockquote>
+<p>Extract the Dynamics 365 generated template from zip and add the CustomXML-part to your existing template.</p>
+</blockquote>
+<p>I couldn’t find a post on how to create a new Dynamics 365 Document Template using an existing document or template. I’m sure many organisations have an existing template with all the right formatting, headers and footers they would like to use.</p>
+<p>Knowing how .docx-files are structured and how Dynamics 365 stores the metadata it was easy enough to figure out. I thought I would share how with you.</p>
+<h3 id="Step-by-step"><a href="#Step-by-step" class="headerlink" title="Step by step"></a>Step by step</h3><ol>
+<li>Create a new blank template from Dynamics 365 <a href="https://www.microsoft.com/en-us/dynamics/crm-customer-center/using-word-templates-in-dynamics-365.aspx" target="_blank" rel="external">the way you would normally do it</a> and save the file to your computer</li>
+<li>Change the extension of the file to .zip and extract it</li>
+<li>Open the existing document you would like to use with Dynamics 365</li>
+<li>In your Word template click Developer &gt; XML Mapping Pane<br><img src="https://www.microsoft.com/en-us/dynamics/crm-customer-center/crm_ITPro_WordTemplateSelectXMLMapping.png" alt="XML mapping pane"></li>
+<li>In the drop down menu select (Add new part…)<br><img src="https://www.microsoft.com/en-us/dynamics/crm-customer-center/crm_ITPro_WordTemplateXMLMappingDefault.png" alt="Dropdown menu"></li>
+<li>Navigate to your extracted template and select the xml-file (item.xml) under the CustomXML-directory</li>
+<li>Proceed as you normally would with a blank template</li>
+</ol>
+<p>Note that this is <em>might not be supported</em>, but seems to work just fine.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://kabtoffe.net/2017/04/23/Dynamics-365-Document-Template-from-existing-Word-Document/" data-id="cj1xddyep00011wicgor53dwy" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Dynamics-365/">Dynamics 365</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dynamics-365/">Dynamics 365</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Dynamics-365/" style="font-size: 10px;">Dynamics 365</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/04/23/Dynamics-365-Document-Template-from-existing-Word-Document/">Dynamics 365 Document Template from Existing Word Document</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Kristoffer &quot;Toffe&quot; Bergström<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
