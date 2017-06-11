@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kabtoffe.net/"/>
-  <updated>2017-04-25T17:38:40.855Z</updated>
+  <updated>2017-04-25T17:38:40.000Z</updated>
   <id>http://kabtoffe.net/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://kabtoffe.net/2017/04/25/How-this-blog-was-made/"/>
     <id>http://kabtoffe.net/2017/04/25/How-this-blog-was-made/</id>
     <published>2017-04-25T16:52:13.000Z</published>
-    <updated>2017-04-25T17:38:40.855Z</updated>
+    <updated>2017-04-25T17:38:40.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="Markdown"><a href="#Markdown" class="headerlink" title="Markdown"></a>Markdown</h2><p>I remember hearing about Markdown previously but hadn’t paid it much attention. Then I heard it mentioned on a podcast I listen to  I also noticed that the Readme file on Visual Studio Team Services was done in markdown.</p>
 <div class="video-container"><iframe src="//www.youtube.com/embed/_gknWWa2OF0" frameborder="0" allowfullscreen></iframe></div>
