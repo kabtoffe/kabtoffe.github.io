@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kabtoffe.net/"/>
-  <updated>2017-04-25T17:38:40.000Z</updated>
+  <updated>2017-06-11T17:03:35.892Z</updated>
   <id>http://kabtoffe.net/</id>
   
   <author>
@@ -14,6 +14,25 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Blog moved to Github Pages</title>
+    <link href="http://kabtoffe.net/2017/06/11/Blog-moved-to-Github-Pages/"/>
+    <id>http://kabtoffe.net/2017/06/11/Blog-moved-to-Github-Pages/</id>
+    <published>2017-06-11T17:00:28.000Z</published>
+    <updated>2017-06-11T17:03:35.892Z</updated>
+    
+    <content type="html"><![CDATA[<p>Just a quick post to see that the blog publishing still works. I moved the blog from Azure to <a href="https://pages.github.com/" target="_blank" rel="external">Github pages</a>. All in all really simple. You just create a repository and publish via git. In my case as I was already using git for publishing all I needed to do was change the git endpoint, add a custom domain and point my DNS to github.</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Just a quick post to see that the blog publishing still works. I moved the blog from Azure to &lt;a href=&quot;https://pages.github.com/&quot; target=
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>My new shiny Markdown compatible blog</title>

@@ -3,19 +3,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>My new shiny Markdown compatible blog | kabtoffe&#39;s blog</title>
+  <title>Blog moved to Github Pages | kabtoffe&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="MarkdownI remember hearing about Markdown previously but hadn’t paid it much attention. Then I heard it mentioned on a podcast I listen to  I also noticed that the Readme file on Visual Studio Team Se">
-<meta name="keywords" content="Markdown,Hexo,NodeJS">
+  <meta name="description" content="Just a quick post to see that the blog publishing still works. I moved the blog from Azure to Github pages. All in all really simple. You just create a repository and publish via git. In my case as I">
+<meta name="keywords">
 <meta property="og:type" content="article">
-<meta property="og:title" content="My new shiny Markdown compatible blog">
-<meta property="og:url" content="http://kabtoffe.net/2017/04/25/How-this-blog-was-made/index.html">
+<meta property="og:title" content="Blog moved to Github Pages">
+<meta property="og:url" content="http://kabtoffe.net/2017/06/11/Blog-moved-to-Github-Pages/index.html">
 <meta property="og:site_name" content="kabtoffe's blog">
-<meta property="og:description" content="MarkdownI remember hearing about Markdown previously but hadn’t paid it much attention. Then I heard it mentioned on a podcast I listen to  I also noticed that the Readme file on Visual Studio Team Se">
-<meta property="og:updated_time" content="2017-04-25T17:38:40.000Z">
+<meta property="og:description" content="Just a quick post to see that the blog publishing still works. I moved the blog from Azure to Github pages. All in all really simple. You just create a repository and publish via git. In my case as I">
+<meta property="og:updated_time" content="2017-06-11T17:03:35.892Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="My new shiny Markdown compatible blog">
-<meta name="twitter:description" content="MarkdownI remember hearing about Markdown previously but hadn’t paid it much attention. Then I heard it mentioned on a podcast I listen to  I also noticed that the Readme file on Visual Studio Team Se">
+<meta name="twitter:title" content="Blog moved to Github Pages">
+<meta name="twitter:description" content="Just a quick post to see that the blog publishing still works. I moved the blog from Azure to Github pages. All in all really simple. You just create a repository and publish via git. In my case as I">
 <meta name="twitter:creator" content="@kabtoffe">
   
     <link rel="alternate" href="/atom.xml" title="kabtoffe&#39;s blog" type="application/atom+xml">
@@ -80,10 +80,10 @@ ga('send', 'pageview');
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-How-this-blog-was-made" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-Blog-moved-to-Github-Pages" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/04/25/How-this-blog-was-made/" class="article-date">
-  <time datetime="2017-04-25T16:52:13.000Z" itemprop="datePublished">2017-04-25</time>
+    <a href="/2017/06/11/Blog-moved-to-Github-Pages/" class="article-date">
+  <time datetime="2017-06-11T17:00:28.000Z" itemprop="datePublished">2017-06-11</time>
 </a>
     
   </div>
@@ -94,7 +94,7 @@ ga('send', 'pageview');
         
   
     <h1 class="article-title" itemprop="name">
-      My new shiny Markdown compatible blog
+      Blog moved to Github Pages
     </h1>
   
 
@@ -102,44 +102,29 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="Markdown"><a href="#Markdown" class="headerlink" title="Markdown"></a>Markdown</h2><p>I remember hearing about Markdown previously but hadn’t paid it much attention. Then I heard it mentioned on a podcast I listen to  I also noticed that the Readme file on Visual Studio Team Services was done in markdown.</p>
-<div class="video-container"><iframe src="//www.youtube.com/embed/_gknWWa2OF0" frameborder="0" allowfullscreen></iframe></div>
-<p>Naturally I was intrigued. As a <em>wannabe</em> programmer and <em>configuration nazi</em> the idea of using a simple markup syntax to write formatted documents sounded great. I had a brief stint using LaTeX while at school (<em>no one else did though</em>) and while I did do my final year project documentation with it, I quickly lost interest.</p>
-<h2 id="The-blog"><a href="#The-blog" class="headerlink" title="The blog"></a>The blog</h2><p>Anyway… I had thought about starting a blog for a while. I use <a href="https://feedly.com" target="_blank" rel="external">Feedly</a> every day and follow lots of blogs. Since I’ve benefited greatly from the community I thought it was time to give something back.</p>
-<p>Getting back to the main topic of how this blog came about. I searched for blogging engines that supported Markdown and the first result on Google was <a href="https://hexo.io" target="_blank" rel="external">Hexo</a>. Hexo is a static site generator built using NodeJS. Seemed like a great fit for a backend guy like me.</p>
-<p>I installed NodeJS using <a href="https://chocolatey.org" target="_blank" rel="external">Chocolatey</a> and followed <a href="https://hexo.io/docs/" target="_blank" rel="external">the instructions</a> to get up and running. Simple enough. The original plan was to host it on an Azure Web App, so I followed <a href="http://the-coderok.azurewebsites.net/2015/09/16/Running-Hexo-blog-on-Azure/" target="_blank" rel="external">another set of instructions</a> in order to do that.</p>
-<p>Note that in the Azure portal you should use the deployment options instead of continuous integration. That’s where you find the Local Git repo option you need. I first tried the Free plan, but apparently custom domains are not supported on that, so I switched to the Shared plan. See more details <a href="https://azure.microsoft.com/en-us/pricing/details/app-service/" target="_blank" rel="external">here</a>. I’ll probably move the blog to Github pages though since that’s free. Or I could host it on my router…</p>
-<p>Once everything was setup all I need to do to update the blog, <em>besides writing the posts</em>, is <code>hexo deploy --generate</code>. I placed the blog source files in Dropbox so I can get to them wherever I am. This post was started on my phone and finished on an iPad. I can’t generate and deploy on the go though. I’m sure PowerShell can help, but that is another blog post I think. I’m thinking some kind of change monitoring and automated deployment.</p>
-<p>Please note that I’m using this blog as another learning opportunity, so except changes, downtime etc. I’m also not sure how I active I’m actually going to be.</p>
+        <p>Just a quick post to see that the blog publishing still works. I moved the blog from Azure to <a href="https://pages.github.com/" target="_blank" rel="external">Github pages</a>. All in all really simple. You just create a repository and publish via git. In my case as I was already using git for publishing all I needed to do was change the git endpoint, add a custom domain and point my DNS to github.</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://kabtoffe.net/2017/04/25/How-this-blog-was-made/" data-id="cj3sylmdo0002p0lrgfqlmpse" class="article-share-link">Share</a>
+      <a data-url="http://kabtoffe.net/2017/06/11/Blog-moved-to-Github-Pages/" data-id="cj3sylmdx0004p0lry7znd1n3" class="article-share-link">Share</a>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Markdown/">Markdown</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/NodeJS/">NodeJS</a></li></ul>
-
     </footer>
   </div>
   
     
 <nav id="article-nav">
   
-    <a href="/2017/04/23/Dynamics-365-Document-Template-from-existing-Word-Document/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/04/25/How-this-blog-was-made/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          Dynamics 365 Document Template from Existing Word Document
+          My new shiny Markdown compatible blog
         
       </div>
     </a>
   
-  
-    <a href="/2017/06/11/Blog-moved-to-Github-Pages/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Blog moved to Github Pages</div>
-    </a>
   
 </nav>
 
