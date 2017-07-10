@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://kabtoffe.net/"/>
-  <updated>2017-06-11T17:03:35.892Z</updated>
+  <updated>2017-07-10T10:47:07.389Z</updated>
   <id>http://kabtoffe.net/</id>
   
   <author>
@@ -14,6 +14,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Export Data from Dynamics 365 using PowerShell</title>
+    <link href="http://kabtoffe.net/2017/07/10/Export-Data-from-Dynamics-365-using-PowerShell/"/>
+    <id>http://kabtoffe.net/2017/07/10/Export-Data-from-Dynamics-365-using-PowerShell/</id>
+    <published>2017-07-10T09:54:30.000Z</published>
+    <updated>2017-07-10T10:47:07.389Z</updated>
+    
+    <content type="html"><![CDATA[<p>Did you know that you can manage your Dynamics 365 instance using your favorite automation tool PowerShell? The <a href="https://github.com/seanmcne/Microsoft.Xrm.Data.PowerShell" target="_blank" rel="external">Microsoft.Xrm.Data.PowerShell-module</a> lets you manage your solutions and such but also has functionality to work on records. In this post I am going to show you how to use the module for data export.</p>
+<p>The first thing you need to do is install the module on your system. Just run the command <code>Install-Module Microsoft.Xrm.Data.PowerShell</code> in PowerShell to get it. Next you need to connect to your instance. There are a few alternatives here so please refer to the <a href="https://github.com/seanmcne/Microsoft.Xrm.Data.PowerShell" target="_blank" rel="external">project’s GitHub-page</a>. With the Microsoft hosted Dynamics 365 you can use <code>Connect-CrmOnlineDiscovery -InteractiveMode</code>to connect using a GUI.</p>
+<h2 id="Working-with-data"><a href="#Working-with-data" class="headerlink" title="Working with data"></a>Working with data</h2><p>Once connected you can try querying for some data. The command <code>Get-CrmRecords -EntityLogicalName account</code> gets you all (or the first 5000) accounts in your system. The output looks something like this:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">Key          Value</div><div class="line">---          -----</div><div class="line">CrmRecords   &#123;@&#123;accountid=f39551c1-81ff-e611-80f3-5065f38a5a01; accountid_Property=[ac...</div><div class="line">Count        349</div><div class="line">PagingCookie &lt;cookie page=&quot;1&quot;&gt;&lt;accountid last=&quot;&#123;9AD008BF-8A34-E711-80FA-5065F38BC5C1&#125;&quot;...</div><div class="line">NextPage     False</div><div class="line">FetchXml         &lt;fetch version=&quot;1.0&quot; output-format=&quot;xml-platform&quot; mapping=&quot;logical&quot; d...</div></pre></td></tr></table></figure></p>
+<p>As you can see the result is an object with a few different properties. The CrmRecords property contains the actual result of the query. So if you want to output all the accounts you would run <code>(Get-CrmRecords -EntityLogicalName account).CrmRecords</code>. That gets you something like this:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">accountid                 : f39551c1-81ff-e611-80f3-5065f38a5a01</div><div class="line">accountid_Property        : [accountid, f39551c1-81ff-e611-80f3-5065f38a5a01]</div><div class="line">ReturnProperty_EntityName : account</div><div class="line">ReturnProperty_Id         : f39551c1-81ff-e611-80f3-5065f38a5a01</div><div class="line">original                  : &#123;[accountid_Property, [accountid, f39551c1-81ff-e611-80f3-506</div><div class="line">                            5f38a5a01]], [accountid, f39551c1-81ff-e611-80f3-5065f38a5a01</div><div class="line">                            ], [ReturnProperty_EntityName, account], [ReturnProperty_Id ,</div><div class="line">                             f39551c1-81ff-e611-80f3-5065f38a5a01]&#125;</div><div class="line">logicalname               : account</div><div class="line"></div><div class="line">accountid_Property        : [accountid, b902322e-6005-e711-80f4-5065f38a5a01]</div><div class="line">accountid                 : b902322e-6005-e711-80f4-5065f38a5a01</div><div class="line">ReturnProperty_EntityName : account</div><div class="line">ReturnProperty_Id         : b902322e-6005-e711-80f4-5065f38a5a01</div><div class="line">original                  : &#123;[accountid_Property, [accountid, b902322e-6005-e711-80f4-506</div><div class="line">                            5f38a5a01]], [accountid, b902322e-6005-e711-80f4-5065f38a5a01</div><div class="line">                            ], [ReturnProperty_EntityName, account], [ReturnProperty_Id ,</div><div class="line">                             b902322e-6005-e711-80f4-5065f38a5a01]&#125;</div><div class="line">logicalname               : account</div></pre></td></tr></table></figure></p>
+<p>As you can see there doesn’t seem to be any useful data other than the Id to work with. That’s because we haven’t requested any attributes. To include the account name you need to use the <code>-Fields</code> parameter. Eg. <code>Get-CrmRecords -EntityLogicalName account -Fields &quot;name&quot;</code> includes the account name in the result like so:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">name                      : Test account</div><div class="line">name_Property             : [name, Test account]</div><div class="line">accountid_Property        : [accountid, f39551c1-81ff-e611-80f3-5065f38a5a01]</div><div class="line">accountid                 : f39551c1-81ff-e611-80f3-5065f38a5a01</div><div class="line">ReturnProperty_EntityName : account</div><div class="line">ReturnProperty_Id         : f39551c1-81ff-e611-80f3-5065f38a5a01</div><div class="line">original                  : &#123;[name_Property, [name, Test account]], [name, Test</div><div class="line">                            account], [accountid_Property, [accountid, f39551c1-81ff</div><div class="line">                            -e611-80f3-5065f38a5a01]], [accountid, f39551c1-81ff-e611-80f</div><div class="line">                            3-5065f38a5a01]...&#125;</div><div class="line">logicalname               : account</div></pre></td></tr></table></figure></p>
+<p>So now that we know how to get data from the system, let’s get it into a CSV-file. You can’t quite do a <code>Get-CrmRecords | Export-CSV</code>, but close to it. Here’s a code snippet:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(Get-CrmRecords -EntityLogicalName account -Fields &quot;name&quot;,&quot;telephone1&quot;).CrmRecords |</div><div class="line">    Select-Object -Property &quot;name&quot;,&quot;telephone1&quot; |</div><div class="line">    Export-Csv -Path &quot;accounts.csv&quot;</div></pre></td></tr></table></figure></p>
+<p>The code fetches all accounts from the system, selects just the properties we want and finally exports the result to a CSV-file. You might want to use the <code>-NoTypeInformation</code>, <code>-Delimeter</code> and <code>-Encoding</code> parameters. You can see the final code with some improvements <a href="https://github.com/kabtoffe/blog-examples/blob/master/Dynamics-365-CSV-Export/Export-Dyn365CSV.ps1" target="_blank" rel="external">here</a>.</p>
+<p>In my next post we will improve on this by supplying our own column names instead of the schema names provided by the system.</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Did you know that you can manage your Dynamics 365 instance using your favorite automation tool PowerShell? The &lt;a href=&quot;https://github.c
+    
+    </summary>
+    
+    
+      <category term="Dynamics 365" scheme="http://kabtoffe.net/tags/Dynamics-365/"/>
+    
+      <category term="PowerShell" scheme="http://kabtoffe.net/tags/PowerShell/"/>
+    
+  </entry>
   
   <entry>
     <title>Blog moved to Github Pages</title>
