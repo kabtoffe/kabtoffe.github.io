@@ -124,9 +124,7 @@
     
     <summary type="html">
     
-      &lt;p&gt;For the impatient this is how you do it:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;Extract the Dynamics 365 generated template from zip and add the CustomXML-p
+      Learn how to use an existing Word document as a basis for a Dynamics 365 template.
     
     </summary>
     
