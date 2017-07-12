@@ -80,6 +80,57 @@ ga('send', 'pageview');
       <div class="outer">
         <section id="main">
   
+    <article id="post-ConvertTo-CustomObject-function-as-a-wrapper-for-Select-Object" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/07/12/ConvertTo-CustomObject-function-as-a-wrapper-for-Select-Object/" class="article-date">
+  <time datetime="2017-07-12T12:54:31.000Z" itemprop="datePublished">2017-07-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/07/12/ConvertTo-CustomObject-function-as-a-wrapper-for-Select-Object/">ConvertTo-CustomObject function as a wrapper for Select-Object</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>In <a href="http://kabtoffe.net/2017/07/11/Generate-CSV-from-Dynamics-365-with-Custom-Headers/">yesterday’s post</a> I introduced a custom advanced function for changing property names on objects. I also showed you how to use <code>Select-Object</code> to do the same. Because the <code>Select-Object</code> cmdlet is probably more robust than my little function I decided to try and rewrite the function to use <code>Select-Object</code> under the hood.</p>
+<p><code>Select-Object</code> accepts an array of hashtable objects with two key/value pairs:</p>
+<ul>
+<li>N is for the name of the property</li>
+<li>E is the expression as a script block that need to be run to get the value</li>
+</ul>
+<p>In order to use this functionality we need to figure out a way to generate these objects dynamically using our mapping table. The approach I took was to generate the code as strings and then use <code>Invoke-Expression</code>. Since we only need to do this once and not for every object I added a <code>BEGIN</code> block to my function:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">BEGIN &#123;</div><div class="line">    $Expression = &quot;&quot;</div><div class="line">    $MappingTable.Keys | ForEach-Object &#123;</div><div class="line">        $Expression += (</div><div class="line">            @&quot;</div><div class="line">                @&#123;</div><div class="line">                    N=&quot;$($MappingTable[$_])&quot;</div><div class="line">                    E=&#123;`$_.$_&#125;</div><div class="line">                &#125;,</div><div class="line">        &quot;@</div><div class="line">        )</div><div class="line">    &#125;</div><div class="line">    $Expression = $Expression.Substring(0,$Expression.Length-1)</div><div class="line">    $SelectObjectParameter = Invoke-Expression $Expression</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>So for each key in the mapping table we generate a name and an expression to run. Eg. using a mapping table like <code>@{ &quot;name&quot; = &quot;AccountName&quot;; &quot;telephone1&quot; = &quot;Phone&quot;  }</code>generates the following string:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">@&#123;</div><div class="line">    N=&quot;Phone&quot;</div><div class="line">    E=&#123;$_.telephone1&#125;</div><div class="line">&#125;,                    @&#123;</div><div class="line">    N=&quot;AccountName&quot;</div><div class="line">    E=&#123;$_.name&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>That string is exactly what we would feed <code>Select-Object</code>. To get it into actual PowerShell objects we need to feed it to <code>Invoke-Expression</code>. That gives us an array with two separate hashtables each with a N key with a string value and an E key with a script block value.</p>
+<p>Once stored in a variable we can use this for each of the objects fed through the pipeline by using it in the <code>PROCESS</code> block of our advanced function:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">PROCESS &#123;</div><div class="line">        $SourceObject | Select-Object -Property $SelectObjectParameter</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>And that is all there is to it. The function works exactly the same as the ‘quick and dirty’ one in the last post. You can find the full function <a href="https://github.com/kabtoffe/blog-examples/blob/master/ConvertTo-CustomObject/ConvertTo-CustomObject.ps1" target="_blank" rel="external">here</a>. Import it to your session and try this example:<br> <code>Get-Process | ConvertTo-CustomObject -MappingTable @{ &quot;ProcessName&quot; = &quot;Name&quot; }</code></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://kabtoffe.net/2017/07/12/ConvertTo-CustomObject-function-as-a-wrapper-for-Select-Object/" data-id="cj511quku0000cwlrurlf3pzo" class="article-share-link">Share</a>
+      
+        <a href="http://kabtoffe.net/2017/07/12/ConvertTo-CustomObject-function-as-a-wrapper-for-Select-Object/#disqus_thread" class="article-comment-link">Comments</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PowerShell/">PowerShell</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-Generate-CSV-from-Dynamics-365-with-Custom-Headers" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/07/11/Generate-CSV-from-Dynamics-365-with-Custom-Headers/" class="article-date">
@@ -116,7 +167,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://kabtoffe.net/2017/07/11/Generate-CSV-from-Dynamics-365-with-Custom-Headers/" data-id="cj4zp18j60006vglr37te08tj" class="article-share-link">Share</a>
+      <a data-url="http://kabtoffe.net/2017/07/11/Generate-CSV-from-Dynamics-365-with-Custom-Headers/" data-id="cj511qum80005cwlriwvkeh2g" class="article-share-link">Share</a>
       
         <a href="http://kabtoffe.net/2017/07/11/Generate-CSV-from-Dynamics-365-with-Custom-Headers/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -164,7 +215,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://kabtoffe.net/2017/07/10/Export-Data-from-Dynamics-365-using-PowerShell/" data-id="cj4zp18j00004vglrbpesio9s" class="article-share-link">Share</a>
+      <a data-url="http://kabtoffe.net/2017/07/10/Export-Data-from-Dynamics-365-using-PowerShell/" data-id="cj511qule0002cwlrxgicsuai" class="article-share-link">Share</a>
       
         <a href="http://kabtoffe.net/2017/07/10/Export-Data-from-Dynamics-365-using-PowerShell/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -205,7 +256,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://kabtoffe.net/2017/06/11/Blog-moved-to-Github-Pages/" data-id="cj4zp18i90000vglrcchmzv29" class="article-share-link">Share</a>
+      <a data-url="http://kabtoffe.net/2017/06/11/Blog-moved-to-Github-Pages/" data-id="cj511qumh0006cwlrclvlixc6" class="article-share-link">Share</a>
       
         <a href="http://kabtoffe.net/2017/06/11/Blog-moved-to-Github-Pages/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -252,7 +303,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://kabtoffe.net/2017/04/25/How-this-blog-was-made/" data-id="cj4zp18jr000dvglrxyjqo3qp" class="article-share-link">Share</a>
+      <a data-url="http://kabtoffe.net/2017/04/25/How-this-blog-was-made/" data-id="cj511qumq0009cwlrdxdgf5yf" class="article-share-link">Share</a>
       
         <a href="http://kabtoffe.net/2017/04/25/How-this-blog-was-made/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -308,7 +359,7 @@ ga('send', 'pageview');
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://kabtoffe.net/2017/04/23/Dynamics-365-Document-Template-from-existing-Word-Document/" data-id="cj4zp18if0001vglre7glrq3m" class="article-share-link">Share</a>
+      <a data-url="http://kabtoffe.net/2017/04/23/Dynamics-365-Document-Template-from-existing-Word-Document/" data-id="cj511quls0004cwlrpc9yc4q8" class="article-share-link">Share</a>
       
         <a href="http://kabtoffe.net/2017/04/23/Dynamics-365-Document-Template-from-existing-Word-Document/#disqus_thread" class="article-comment-link">Comments</a>
       
@@ -344,7 +395,7 @@ ga('send', 'pageview');
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/Dynamics-365/" style="font-size: 20px;">Dynamics 365</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/NodeJS/" style="font-size: 10px;">NodeJS</a> <a href="/tags/PowerShell/" style="font-size: 15px;">PowerShell</a>
+      <a href="/tags/Dynamics-365/" style="font-size: 20px;">Dynamics 365</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/NodeJS/" style="font-size: 10px;">NodeJS</a> <a href="/tags/PowerShell/" style="font-size: 20px;">PowerShell</a>
     </div>
   </div>
 
@@ -366,6 +417,10 @@ ga('send', 'pageview');
       <ul>
         
           <li>
+            <a href="/2017/07/12/ConvertTo-CustomObject-function-as-a-wrapper-for-Select-Object/">ConvertTo-CustomObject function as a wrapper for Select-Object</a>
+          </li>
+        
+          <li>
             <a href="/2017/07/11/Generate-CSV-from-Dynamics-365-with-Custom-Headers/">Generate CSV from Dynamics 365 with Custom Headers</a>
           </li>
         
@@ -379,10 +434,6 @@ ga('send', 'pageview');
         
           <li>
             <a href="/2017/04/25/How-this-blog-was-made/">My new shiny Markdown compatible blog</a>
-          </li>
-        
-          <li>
-            <a href="/2017/04/23/Dynamics-365-Document-Template-from-existing-Word-Document/">Dynamics 365 Document Template from Existing Word Document</a>
           </li>
         
       </ul>

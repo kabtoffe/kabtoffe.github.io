@@ -3,19 +3,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Blog moved to Github Pages | kabtoffe&#39;s blog</title>
+  <title>ConvertTo-CustomObject function as a wrapper for Select-Object | kabtoffe&#39;s blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Just a quick post to see that the blog publishing still works. I moved the blog from Azure to Github pages. All in all really simple. You just create a repository and publish via git. In my case as I">
-<meta name="keywords">
+  <meta name="description" content="Change ConvertTo-CustomObject a wrapper for Select-Object instead">
+<meta name="keywords" content="PowerShell">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Blog moved to Github Pages">
-<meta property="og:url" content="http://kabtoffe.net/2017/06/11/Blog-moved-to-Github-Pages/index.html">
+<meta property="og:title" content="ConvertTo-CustomObject function as a wrapper for Select-Object">
+<meta property="og:url" content="http://kabtoffe.net/2017/07/12/ConvertTo-CustomObject-function-as-a-wrapper-for-Select-Object/index.html">
 <meta property="og:site_name" content="kabtoffe's blog">
-<meta property="og:description" content="Just a quick post to see that the blog publishing still works. I moved the blog from Azure to Github pages. All in all really simple. You just create a repository and publish via git. In my case as I">
-<meta property="og:updated_time" content="2017-06-11T17:03:35.892Z">
+<meta property="og:description" content="Change ConvertTo-CustomObject a wrapper for Select-Object instead">
+<meta property="og:updated_time" content="2017-07-12T13:32:20.522Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Blog moved to Github Pages">
-<meta name="twitter:description" content="Just a quick post to see that the blog publishing still works. I moved the blog from Azure to Github pages. All in all really simple. You just create a repository and publish via git. In my case as I">
+<meta name="twitter:title" content="ConvertTo-CustomObject function as a wrapper for Select-Object">
+<meta name="twitter:description" content="Change ConvertTo-CustomObject a wrapper for Select-Object instead">
 <meta name="twitter:creator" content="@kabtoffe">
   
     <link rel="alternate" href="/atom.xml" title="kabtoffe&#39;s blog" type="application/atom+xml">
@@ -80,10 +80,10 @@ ga('send', 'pageview');
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-Blog-moved-to-Github-Pages" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-ConvertTo-CustomObject-function-as-a-wrapper-for-Select-Object" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2017/06/11/Blog-moved-to-Github-Pages/" class="article-date">
-  <time datetime="2017-06-11T17:00:28.000Z" itemprop="datePublished">2017-06-11</time>
+    <a href="/2017/07/12/ConvertTo-CustomObject-function-as-a-wrapper-for-Select-Object/" class="article-date">
+  <time datetime="2017-07-12T12:54:31.000Z" itemprop="datePublished">2017-07-12</time>
 </a>
     
   </div>
@@ -94,7 +94,7 @@ ga('send', 'pageview');
         
   
     <h1 class="article-title" itemprop="name">
-      Blog moved to Github Pages
+      ConvertTo-CustomObject function as a wrapper for Select-Object
     </h1>
   
 
@@ -102,36 +102,43 @@ ga('send', 'pageview');
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Just a quick post to see that the blog publishing still works. I moved the blog from Azure to <a href="https://pages.github.com/" target="_blank" rel="external">Github pages</a>. All in all really simple. You just create a repository and publish via git. In my case as I was already using git for publishing all I needed to do was change the git endpoint, add a custom domain and point my DNS to github.</p>
+        <p>In <a href="http://kabtoffe.net/2017/07/11/Generate-CSV-from-Dynamics-365-with-Custom-Headers/">yesterday’s post</a> I introduced a custom advanced function for changing property names on objects. I also showed you how to use <code>Select-Object</code> to do the same. Because the <code>Select-Object</code> cmdlet is probably more robust than my little function I decided to try and rewrite the function to use <code>Select-Object</code> under the hood.</p>
+<p><code>Select-Object</code> accepts an array of hashtable objects with two key/value pairs:</p>
+<ul>
+<li>N is for the name of the property</li>
+<li>E is the expression as a script block that need to be run to get the value</li>
+</ul>
+<p>In order to use this functionality we need to figure out a way to generate these objects dynamically using our mapping table. The approach I took was to generate the code as strings and then use <code>Invoke-Expression</code>. Since we only need to do this once and not for every object I added a <code>BEGIN</code> block to my function:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line">BEGIN &#123;</div><div class="line">    $Expression = &quot;&quot;</div><div class="line">    $MappingTable.Keys | ForEach-Object &#123;</div><div class="line">        $Expression += (</div><div class="line">            @&quot;</div><div class="line">                @&#123;</div><div class="line">                    N=&quot;$($MappingTable[$_])&quot;</div><div class="line">                    E=&#123;`$_.$_&#125;</div><div class="line">                &#125;,</div><div class="line">        &quot;@</div><div class="line">        )</div><div class="line">    &#125;</div><div class="line">    $Expression = $Expression.Substring(0,$Expression.Length-1)</div><div class="line">    $SelectObjectParameter = Invoke-Expression $Expression</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>So for each key in the mapping table we generate a name and an expression to run. Eg. using a mapping table like <code>@{ &quot;name&quot; = &quot;AccountName&quot;; &quot;telephone1&quot; = &quot;Phone&quot;  }</code>generates the following string:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">@&#123;</div><div class="line">    N=&quot;Phone&quot;</div><div class="line">    E=&#123;$_.telephone1&#125;</div><div class="line">&#125;,                    @&#123;</div><div class="line">    N=&quot;AccountName&quot;</div><div class="line">    E=&#123;$_.name&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>That string is exactly what we would feed <code>Select-Object</code>. To get it into actual PowerShell objects we need to feed it to <code>Invoke-Expression</code>. That gives us an array with two separate hashtables each with a N key with a string value and an E key with a script block value.</p>
+<p>Once stored in a variable we can use this for each of the objects fed through the pipeline by using it in the <code>PROCESS</code> block of our advanced function:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">PROCESS &#123;</div><div class="line">        $SourceObject | Select-Object -Property $SelectObjectParameter</div><div class="line">    &#125;</div></pre></td></tr></table></figure></p>
+<p>And that is all there is to it. The function works exactly the same as the ‘quick and dirty’ one in the last post. You can find the full function <a href="https://github.com/kabtoffe/blog-examples/blob/master/ConvertTo-CustomObject/ConvertTo-CustomObject.ps1" target="_blank" rel="external">here</a>. Import it to your session and try this example:<br> <code>Get-Process | ConvertTo-CustomObject -MappingTable @{ &quot;ProcessName&quot; = &quot;Name&quot; }</code></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://kabtoffe.net/2017/06/11/Blog-moved-to-Github-Pages/" data-id="cj511qumh0006cwlrclvlixc6" class="article-share-link">Share</a>
+      <a data-url="http://kabtoffe.net/2017/07/12/ConvertTo-CustomObject-function-as-a-wrapper-for-Select-Object/" data-id="cj511quku0000cwlrurlf3pzo" class="article-share-link">Share</a>
       
-        <a href="http://kabtoffe.net/2017/06/11/Blog-moved-to-Github-Pages/#disqus_thread" class="article-comment-link">Comments</a>
+        <a href="http://kabtoffe.net/2017/07/12/ConvertTo-CustomObject-function-as-a-wrapper-for-Select-Object/#disqus_thread" class="article-comment-link">Comments</a>
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PowerShell/">PowerShell</a></li></ul>
+
     </footer>
   </div>
   
     
 <nav id="article-nav">
   
-    <a href="/2017/04/25/How-this-blog-was-made/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2017/07/11/Generate-CSV-from-Dynamics-365-with-Custom-Headers/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          My new shiny Markdown compatible blog
+          Generate CSV from Dynamics 365 with Custom Headers
         
       </div>
     </a>
   
-  
-    <a href="/2017/07/10/Export-Data-from-Dynamics-365-using-PowerShell/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Export Data from Dynamics 365 using PowerShell</div>
-    </a>
   
 </nav>
 
@@ -237,7 +244,7 @@ ga('send', 'pageview');
 <script>
   var disqus_shortname = 'kabtoffeblog';
   
-  var disqus_url = 'http://kabtoffe.net/2017/06/11/Blog-moved-to-Github-Pages/';
+  var disqus_url = 'http://kabtoffe.net/2017/07/12/ConvertTo-CustomObject-function-as-a-wrapper-for-Select-Object/';
   
   (function(){
     var dsq = document.createElement('script');
