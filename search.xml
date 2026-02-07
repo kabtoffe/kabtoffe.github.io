@@ -69,6 +69,7 @@ The minified bookmarklet in BOOKMARKLET.md
 The extraction logic in feedly-bookmarklet.js
 The post creation script in create-quote-post.js
 
+Note: At the moment the form is not quite usable inside Feedly, but the buttons work.
 ]]></content>
       <tags>
         <tag>Hexo</tag>
