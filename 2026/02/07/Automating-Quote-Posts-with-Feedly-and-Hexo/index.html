@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta name="description" content="The personal blog of Toffe Bergström also known online as kabtoffe.">
+
+
+
+<title>Automating Quote Post Creation with Feedly and Hexo | kabtoffe&#39;s blog</title>
+<meta property="og:type" content="website">
+<meta property="og:title" content="Automating Quote Post Creation with Feedly and Hexo">
+
+  <meta property="og:description" content="The personal blog of Toffe Bergström also known online as kabtoffe.">
+
+<meta property="og:url" content="http://kabtoffe.net/2026/02/07/Automating-Quote-Posts-with-Feedly-and-Hexo/">
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div class="header-inner">
+    <div class="site-title">
+      <h1 class="logo">
+        <a href="/">
+          <span class="bracket">[</span>kabtoffe's blog<span class="bracket">]</span>
+        </a>
+      </h1>
+    </div>
+    
+    <nav id="main-nav">
+      
+        <a class="main-nav-link" href="/">Home</a>
+      
+        <a class="main-nav-link" href="/archives">Archives</a>
+      
+        <a class="main-nav-link" href="/about-me/">About</a>
+      
+      
+        <a class="main-nav-link rss-link" href="/atom.xml" title="RSS Feed">RSS</a>
+      
+    </nav>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Automating-Quote-Posts-with-Feedly-and-Hexo" class="post-article">
+  <div class="article-meta">
+    <a href="/2026/02/07/Automating-Quote-Posts-with-Feedly-and-Hexo/" class="article-date">
+  <time class="dt-published" datetime="2026-02-06T22:00:00.000Z" itemprop="datePublished">⏰ 2026-02-07</time>
+</a>
+
+    
+
+  </div>
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Automating Quote Post Creation with Feedly and Hexo
+    </h1>
+  
+
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>I spend a lot of my time reading blog articles using my feed reader and wanted a lightweight way to capture interesting quotes and commentary directly into my blog. Rather than manually creating markdown files, I built, with a lot of assistance from Claude, a two-part automation system: a Node.js script that generates posts from parameters, and a browser bookmarklet that extracts article data from Feedly.</p>
+<p>The basic idea is that when I read through my feed and see something interesting I can use Feedly’s native highlighting functionality and notes to add my commentary and then use that as a source for post generation.</p>
+<h2 id="How-Hexo-Works"><a href="#How-Hexo-Works" class="headerlink" title="How Hexo Works"></a>How Hexo Works</h2><p>In my particular case a use Hexo for my blog. Hexo is a static site generator that converts markdown files into HTML. Here’s the basic workflow:</p>
+<ol>
+<li><strong>Source files</strong>: You write markdown files in <code>source/_posts/</code> with YAML frontmatter metadata (title, date, tags, etc.)</li>
+<li><strong>Generation</strong>: Running <code>hexo generate</code> processes these files through templates and outputs static HTML to the <code>public/</code> directory</li>
+<li><strong>Deployment</strong>: <code>hexo deploy</code> pushes the generated HTML to your hosting (in my case, GitHub Pages)</li>
+</ol>
+<p>The key advantage is that your entire blog is version-controlled markdown files—no database, no complex tooling. Each post is just a file with metadata and content. I also do not need to worry about anyone hacking my site as there is no administrator login.</p>
+<h2 id="Creating-the-Quote-Post-Script"><a href="#Creating-the-Quote-Post-Script" class="headerlink" title="Creating the Quote Post Script"></a>Creating the Quote Post Script</h2><p>To automate post creation based on the article. I built a Node.js CLI script (<code>tools/create-quote-post.js</code>) that:</p>
+<ul>
+<li><strong>Accepts command-line parameters</strong>: author, URL, title, publication date, quote, and commentary</li>
+<li><strong>Generates proper frontmatter</strong>: Creates YAML metadata with tags, source information, and post date (today, not the article date)</li>
+<li><strong>Formats the markdown body</strong>: Renders the quote as a blockquote and includes your commentary</li>
+<li><strong>Writes the file</strong>: Creates a markdown file in <code>source/_posts/</code> with a sanitized filename</li>
+</ul>
+<h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">node tools/create-quote-post.js \</span><br><span class="line">  --author <span class="string">&quot;Ben Thompson&quot;</span> \</span><br><span class="line">  --url <span class="string">&quot;https://stratechery.com/...&quot;</span> \</span><br><span class="line">  --title <span class="string">&quot;Microsoft and Software Survival&quot;</span> \</span><br><span class="line">  --<span class="built_in">date</span> <span class="string">&quot;2026-02-07&quot;</span> \</span><br><span class="line">  --quote <span class="string">&quot;That, then, raises the most obvious bear case...&quot;</span> \</span><br><span class="line">  --commentary <span class="string">&quot;Really interesting perspective&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>Generates a post with:</p>
+<ul>
+<li>Frontmatter including <code>source_author</code>, <code>source_url</code>, and <code>source_date</code> (preserving the original article’s date)</li>
+<li>Post date set to today</li>
+<li>Proper YAML list formatting for tags</li>
+<li>Quote rendered as markdown blockquote</li>
+</ul>
+<p><strong>Directory Structure</strong>: The scripts live in <code>tools/</code> rather than Hexo’s <code>scripts/</code> directory, which prevents Hexo from trying to load them as plugins during the build process.</p>
+<p>This script serves as the base for the automation hook.</p>
+<h2 id="Extracting-Data-with-a-Feedly-Bookmarklet"><a href="#Extracting-Data-with-a-Feedly-Bookmarklet" class="headerlink" title="Extracting Data with a Feedly Bookmarklet"></a>Extracting Data with a Feedly Bookmarklet</h2><p>For extracting the data off of Feedly there are a few options. Feedly does have an API but that is only available for Enterprise plan. One option to create a workflow would have been to use IFTTT to create an automation using the Feedly applets and then pipe that to the blog. I might still do that as that might more mobile friendly, but for a first try I decided to use browser automation. I could have made a browser addon, but a bookmarklet is easier to get started with. So I created a browser bookmarklet (minified JavaScript that runs in your browser) that:</p>
+<ol>
+<li><strong>Extracts article data</strong> from Feedly’s DOM:<ul>
+<li>Title, URL, author&#x2F;publication name</li>
+<li>Publication date (parsed from Feedly’s date format)</li>
+<li>All highlighted text (grouped by paragraph to preserve structure)</li>
+<li>Any notes&#x2F;comments I added in Feedly</li>
+<li>Feedly board name as a tag</li>
+</ul>
+</li>
+</ol>
+<p><img src="/../images/image.png" alt="feedly extraction demo"><br><img src="/../images/image-1.png" alt="highlighted text"></p>
+<ol start="2">
+<li><strong>Presents an editable form</strong> in a modal dialog where I can:<ul>
+<li>Review and edit all extracted data</li>
+<li>Add or modify my comments further</li>
+<li>Adjust tags before generating</li>
+</ul>
+</li>
+</ol>
+<p><img src="/../images/feedly-create-post-form.png" alt="screenshot of the create post form"></p>
+<ol start="3">
+<li><strong>Generates the bash command</strong> for the post creation, ready to copy and paste into my terminal<br><img src="/../images/image-2.png" alt="command ready to paste"></li>
+</ol>
+<h2 id="Part-2-Web-Server-Automation-Coming-Soon"><a href="#Part-2-Web-Server-Automation-Coming-Soon" class="headerlink" title="Part 2: Web Server Automation (Coming Soon)"></a>Part 2: Web Server Automation (Coming Soon)</h2><p>While the bookmarklet works well for one-off posts, the next step is building a lightweight web server that can:</p>
+<ul>
+<li>Accept article data via HTTP (from a bookmarklet or API endpoint)</li>
+<li>Generate and commit the post automatically</li>
+<li>Trigger a blog rebuild and deployment</li>
+<li>Return the published post URL</li>
+</ul>
+<p>This would eliminate the need to manually run the script, enabling a one-click publishing workflow directly from Feedly.</p>
+<hr>
+<p><strong>Want to try it?</strong> The bookmarklet and script are open for customization. You can find:</p>
+<ul>
+<li>The minified bookmarklet in <a target="_blank" rel="noopener" href="https://github.com/kabtoffe/kabtoffe.github.io/blob/master/resources/feedly-automation/BOOKMARKLET.md">BOOKMARKLET.md</a></li>
+<li>The extraction logic in <a target="_blank" rel="noopener" href="https://github.com/kabtoffe/kabtoffe.github.io/blob/master/resources/feedly-automation/feedly-bookmarklet.js">feedly-bookmarklet.js</a></li>
+<li>The post creation script in <a target="_blank" rel="noopener" href="https://github.com/kabtoffe/kabtoffe.github.io/blob/master/resources/feedly-automation/create-quote-post.js">create-quote-post.js</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+  <div class="post-tags">
+    
+      <a class="tag-link" href="/tags/Hexo/">#Hexo</a>
+    
+      <a class="tag-link" href="/tags/NodeJS/">#NodeJS</a>
+    
+      <a class="tag-link" href="/tags/Automation/">#Automation</a>
+    
+      <a class="tag-link" href="/tags/Feedly/">#Feedly</a>
+    
+      <a class="tag-link" href="/tags/Bookmarklet/">#Bookmarklet</a>
+    
+  </div>
+
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2026/02/07/ben-thompson-microsoft-and-software-survival/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">← Newer</strong>
+      <div class="article-nav-title">
+        
+          Quoting Ben Thompson - Microsoft and Software Survival
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/07/12/ConvertTo-CustomObject-function-as-a-wrapper-for-Select-Object/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older →</strong>
+      <div class="article-nav-title">ConvertTo-CustomObject function as a wrapper for Select-Object</div>
+    </a>
+  
+</nav>
+
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  <div class="sidebar-inner">
+    
+    <section class="widget">
+      <h3 class="widget-title">Recent Posts</h3>
+      <ul class="widget-list">
+        
+          <li><a href="/2026/02/07/ben-thompson-microsoft-and-software-survival/">Quoting Ben Thompson - Microsoft and Software Survival</a></li>
+        
+          <li><a href="/2026/02/07/Automating-Quote-Posts-with-Feedly-and-Hexo/">Automating Quote Post Creation with Feedly and Hexo</a></li>
+        
+          <li><a href="/2017/07/12/ConvertTo-CustomObject-function-as-a-wrapper-for-Select-Object/">ConvertTo-CustomObject function as a wrapper for Select-Object</a></li>
+        
+          <li><a href="/2017/07/11/Generate-CSV-from-Dynamics-365-with-Custom-Headers/">Generate CSV from Dynamics 365 with Custom Headers</a></li>
+        
+          <li><a href="/2017/07/10/Export-Data-from-Dynamics-365-using-PowerShell/">Export Data from Dynamics 365 using PowerShell</a></li>
+        
+      </ul>
+    </section>
+    
+    <section class="widget">
+      <h3 class="widget-title">Archives</h3>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/02/">February 2026</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">2</span></li></ul>
+    </section>
+    
+    <section class="widget">
+      <h3 class="widget-title">Tags</h3>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AI/" rel="tag">AI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Automation/" rel="tag">Automation</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bookmarklet/" rel="tag">Bookmarklet</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dynamics-365/" rel="tag">Dynamics 365</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Feedly/" rel="tag">Feedly</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/" rel="tag">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NodeJS/" rel="tag">NodeJS</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PowerShell/" rel="tag">PowerShell</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Quote/" rel="tag">Quote</a><span class="tag-list-count">1</span></li></ul>
+    </section>
+  </div>
+</aside>
+
+        
+      </div>
+      <footer id="footer">
+  <p class="footer-text">
+    &copy; 2026 Kristoffer &#34;Toffe&#34; Bergström · Powered by <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>
+  </p>
+  <div class="footer-gears">
+    <span>⚙️</span><span>⚙️</span><span>⚙️</span>
+  </div>
+</footer>
+
+    </div>
+    <!-- Analytics -->
+
+  </div>
+</body>
+</html>
