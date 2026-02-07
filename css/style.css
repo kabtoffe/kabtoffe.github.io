@@ -496,6 +496,23 @@ article:hover {
   margin: 15px 0;
 }
 
+.post-content .video-container {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  border: 2px solid #8B4513;
+  padding: 8px;
+  background-color: #E8D7C3;
+  margin: 15px 0;
+  box-sizing: border-box;
+}
+
+.post-content .video-container iframe {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+}
+
 /* Article Entry (alternate post content class) */
 .article-entry {
   margin: 30px 0;
@@ -585,6 +602,23 @@ article:hover {
   padding: 8px;
   background-color: #E8D7C3;
   margin: 15px 0;
+}
+
+.article-entry .video-container {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  border: 2px solid #8B4513;
+  padding: 8px;
+  background-color: #E8D7C3;
+  margin: 15px 0;
+  box-sizing: border-box;
+}
+
+.article-entry .video-container iframe {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
 }
 
 /* Code Highlight Wrapper */

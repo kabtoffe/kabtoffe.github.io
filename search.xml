@@ -142,7 +142,7 @@ As the cost of developing sofware, at least the coding bit, approaches zero othe
     <url>/2026/02/07/Automating-Quote-Posts-with-Feedly-and-Hexo/</url>
     <content><![CDATA[I spend a lot of my time reading blog articles using my feed reader and wanted a lightweight way to capture interesting quotes and commentary directly into my blog. Rather than manually creating markdown files, I built, with a lot of assistance from Claude, a two-part automation system: a Node.js script that generates posts from parameters, and a browser bookmarklet that extracts article data from Feedly.
 The basic idea is that when I read through my feed and see something interesting I can use Feedly’s native highlighting functionality and notes to add my commentary and then use that as a source for post generation.
-How Hexo WorksIn my particular case a use Hexo for my blog. Hexo is a static site generator that converts markdown files into HTML. Here’s the basic workflow:
+How Hexo WorksI currently use Hexo for my blog. Hexo is a static site generator that converts markdown files into HTML. Here’s the basic workflow:
 
 Source files: You write markdown files in source/_posts/ with YAML frontmatter metadata (title, date, tags, etc.)
 Generation: Running hexo generate processes these files through templates and outputs static HTML to the public/ directory
@@ -167,14 +167,14 @@ Quote rendered as markdown blockquote
 
 Directory Structure: The scripts live in tools/ rather than Hexo’s scripts/ directory, which prevents Hexo from trying to load them as plugins during the build process.
 This script serves as the base for the automation hook.
-Extracting Data with a Feedly BookmarkletFor extracting the data off of Feedly there are a few options. Feedly does have an API but that is only available for Enterprise plan. One option to create a workflow would have been to use IFTTT to create an automation using the Feedly applets and then pipe that to the blog. I might still do that as that might more mobile friendly, but for a first try I decided to use browser automation. I could have made a browser addon, but a bookmarklet is easier to get started with. So I created a browser bookmarklet (minified JavaScript that runs in your browser) that:
+Extracting Data with a Feedly BookmarkletFor extracting the data off of Feedly there are a few options. Feedly does have an API but that is only available for the Enterprise plan. One option to create a workflow would have been to use IFTTT to create an automation using the Feedly applets and then call a web api with that. I might still do that as that might more mobile friendly, but for a first try I decided to just use the browser. As a simpler alternative to a browser addon, I made a bookmarklet that:
 
 Extracts article data from Feedly’s DOM:
 Title, URL, author&#x2F;publication name
 Publication date (parsed from Feedly’s date format)
 All highlighted text (grouped by paragraph to preserve structure)
 Any notes&#x2F;comments I added in Feedly
-Feedly board name as a tag
+Feedly board names as tags
 
 
 
