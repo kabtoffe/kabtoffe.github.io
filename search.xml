@@ -7,27 +7,24 @@
 ]]></content>
   </entry>
   <entry>
-    <title>Export Data from Dynamics 365 using PowerShell</title>
-    <url>/2017/07/10/Export-Data-from-Dynamics-365-using-PowerShell/</url>
-    <content><![CDATA[Did you know that you can manage your Dynamics 365 instance using your favorite automation tool PowerShell? The Microsoft.Xrm.Data.PowerShell-module lets you manage your solutions and such but also has functionality to work on records. In this post I am going to show you how to use the module for data export.
-The first thing you need to do is install the module on your system. Just run the command Install-Module Microsoft.Xrm.Data.PowerShell in PowerShell to get it. Next you need to connect to your instance. There are a few alternatives here so please refer to the project’s GitHub-page. With the Microsoft hosted Dynamics 365 you can use Connect-CrmOnlineDiscovery -InteractiveModeto connect using a GUI.
-Working with dataOnce connected you can try querying for some data. The command Get-CrmRecords -EntityLogicalName account gets you all (or the first 5000) accounts in your system. The output looks something like this:
-Key          Value---          -----CrmRecords   &#123;@&#123;accountid=f39551c1-81ff-e611-80f3-5065f38a5a01; accountid_Property=[ac...Count        349PagingCookie &lt;cookie page=&quot;1&quot;&gt;&lt;accountid last=&quot;&#123;9AD008BF-8A34-E711-80FA-5065F38BC5C1&#125;&quot;...NextPage     FalseFetchXml         &lt;fetch version=&quot;1.0&quot; output-format=&quot;xml-platform&quot; mapping=&quot;logical&quot; d...
+    <title>ConvertTo-CustomObject function as a wrapper for Select-Object</title>
+    <url>/2017/07/12/ConvertTo-CustomObject-function-as-a-wrapper-for-Select-Object/</url>
+    <content><![CDATA[In yesterday’s post I introduced a custom advanced function for changing property names on objects. I also showed you how to use Select-Object to do the same. Because the Select-Object cmdlet is probably more robust than my little function I decided to try and rewrite the function to use Select-Object under the hood.
+Select-Object accepts an array of hashtable objects with two key&#x2F;value pairs:
 
-As you can see the result is an object with a few different properties. The CrmRecords property contains the actual result of the query. So if you want to output all the accounts you would run (Get-CrmRecords -EntityLogicalName account).CrmRecords. That gets you something like this:
-accountid                 : f39551c1-81ff-e611-80f3-5065f38a5a01accountid_Property        : [accountid, f39551c1-81ff-e611-80f3-5065f38a5a01]ReturnProperty_EntityName : accountReturnProperty_Id         : f39551c1-81ff-e611-80f3-5065f38a5a01original                  : &#123;[accountid_Property, [accountid, f39551c1-81ff-e611-80f3-506                            5f38a5a01]], [accountid, f39551c1-81ff-e611-80f3-5065f38a5a01                            ], [ReturnProperty_EntityName, account], [ReturnProperty_Id ,                             f39551c1-81ff-e611-80f3-5065f38a5a01]&#125;logicalname               : accountaccountid_Property        : [accountid, b902322e-6005-e711-80f4-5065f38a5a01]accountid                 : b902322e-6005-e711-80f4-5065f38a5a01ReturnProperty_EntityName : accountReturnProperty_Id         : b902322e-6005-e711-80f4-5065f38a5a01original                  : &#123;[accountid_Property, [accountid, b902322e-6005-e711-80f4-506                            5f38a5a01]], [accountid, b902322e-6005-e711-80f4-5065f38a5a01                            ], [ReturnProperty_EntityName, account], [ReturnProperty_Id ,                             b902322e-6005-e711-80f4-5065f38a5a01]&#125;logicalname               : account
+N is for the name of the property
+E is the expression as a script block that need to be run to get the value
 
-As you can see there doesn’t seem to be any useful data other than the Id to work with. That’s because we haven’t requested any attributes. To include the account name you need to use the -Fields parameter. Eg. Get-CrmRecords -EntityLogicalName account -Fields &quot;name&quot; includes the account name in the result like so:
-name                      : Test accountname_Property             : [name, Test account]accountid_Property        : [accountid, f39551c1-81ff-e611-80f3-5065f38a5a01]accountid                 : f39551c1-81ff-e611-80f3-5065f38a5a01ReturnProperty_EntityName : accountReturnProperty_Id         : f39551c1-81ff-e611-80f3-5065f38a5a01original                  : &#123;[name_Property, [name, Test account]], [name, Test                            account], [accountid_Property, [accountid, f39551c1-81ff                            -e611-80f3-5065f38a5a01]], [accountid, f39551c1-81ff-e611-80f                            3-5065f38a5a01]...&#125;logicalname               : account
-
-So now that we know how to get data from the system, let’s get it into a CSV-file. You can’t quite do a Get-CrmRecords | Export-CSV, but close to it. Here’s a code snippet:
-(Get-CrmRecords -EntityLogicalName account -Fields &quot;name&quot;,&quot;telephone1&quot;).CrmRecords |    Select-Object -Property &quot;name&quot;,&quot;telephone1&quot; |    Export-Csv -Path &quot;accounts.csv&quot;
-
-The code fetches all accounts from the system, selects just the properties we want and finally exports the result to a CSV-file. You might want to use the -NoTypeInformation, -Delimeter and -Encoding parameters. You can see the final code with some improvements here.
-In my next post we will improve on this by supplying our own column names instead of the schema names provided by the system.
+In order to use this functionality we need to figure out a way to generate these objects dynamically using our mapping table. The approach I took was to generate the code as strings and then use Invoke-Expression. Since we only need to do this once and not for every object I added a BEGIN block to my function:
+BEGIN &#123;    $Expression = &quot;&quot;    $MappingTable.Keys | ForEach-Object &#123;        $Expression += (            @&quot;                @&#123;                    N=&quot;$($MappingTable[$_])&quot;                    E=&#123;`$_.$_&#125;                &#125;,        &quot;@        )    &#125;    $Expression = $Expression.Substring(0,$Expression.Length-1)    $SelectObjectParameter = Invoke-Expression $Expression&#125;
+So for each key in the mapping table we generate a name and an expression to run. Eg. using a mapping table like @{ &quot;name&quot; = &quot;AccountName&quot;; &quot;telephone1&quot; = &quot;Phone&quot;  }generates the following string:
+@&#123;    N=&quot;Phone&quot;    E=&#123;$_.telephone1&#125;&#125;,                    @&#123;    N=&quot;AccountName&quot;    E=&#123;$_.name&#125;&#125;
+That string is exactly what we would feed Select-Object. To get it into actual PowerShell objects we need to feed it to Invoke-Expression. That gives us an array with two separate hashtables each with a N key with a string value and an E key with a script block value.
+Once stored in a variable we can use this for each of the objects fed through the pipeline by using it in the PROCESS block of our advanced function:
+PROCESS &#123;        $SourceObject | Select-Object -Property $SelectObjectParameter    &#125;  
+And that is all there is to it. The function works exactly the same as the ‘quick and dirty’ one in the last post. You can find the full function here. Import it to your session and try this example: Get-Process | ConvertTo-CustomObject -MappingTable @{ &quot;ProcessName&quot; = &quot;Name&quot; }
 ]]></content>
       <tags>
-        <tag>Dynamics 365</tag>
         <tag>PowerShell</tag>
       </tags>
   </entry>
@@ -56,23 +53,28 @@ Note that this is might not be supported, but seems to work just fine.
       </tags>
   </entry>
   <entry>
-    <title>My new shiny Markdown compatible blog</title>
-    <url>/2017/04/25/How-this-blog-was-made/</url>
-    <content><![CDATA[MarkdownI remember hearing about Markdown previously but hadn’t paid it much attention. Then I heard it mentioned on a podcast I listen to  I also noticed that the Readme file on Visual Studio Team Services was done in markdown.
+    <title>Export Data from Dynamics 365 using PowerShell</title>
+    <url>/2017/07/10/Export-Data-from-Dynamics-365-using-PowerShell/</url>
+    <content><![CDATA[Did you know that you can manage your Dynamics 365 instance using your favorite automation tool PowerShell? The Microsoft.Xrm.Data.PowerShell-module lets you manage your solutions and such but also has functionality to work on records. In this post I am going to show you how to use the module for data export.
+The first thing you need to do is install the module on your system. Just run the command Install-Module Microsoft.Xrm.Data.PowerShell in PowerShell to get it. Next you need to connect to your instance. There are a few alternatives here so please refer to the project’s GitHub-page. With the Microsoft hosted Dynamics 365 you can use Connect-CrmOnlineDiscovery -InteractiveModeto connect using a GUI.
+Working with dataOnce connected you can try querying for some data. The command Get-CrmRecords -EntityLogicalName account gets you all (or the first 5000) accounts in your system. The output looks something like this:
+Key          Value---          -----CrmRecords   &#123;@&#123;accountid=f39551c1-81ff-e611-80f3-5065f38a5a01; accountid_Property=[ac...Count        349PagingCookie &lt;cookie page=&quot;1&quot;&gt;&lt;accountid last=&quot;&#123;9AD008BF-8A34-E711-80FA-5065F38BC5C1&#125;&quot;...NextPage     FalseFetchXml         &lt;fetch version=&quot;1.0&quot; output-format=&quot;xml-platform&quot; mapping=&quot;logical&quot; d...
 
+As you can see the result is an object with a few different properties. The CrmRecords property contains the actual result of the query. So if you want to output all the accounts you would run (Get-CrmRecords -EntityLogicalName account).CrmRecords. That gets you something like this:
+accountid                 : f39551c1-81ff-e611-80f3-5065f38a5a01accountid_Property        : [accountid, f39551c1-81ff-e611-80f3-5065f38a5a01]ReturnProperty_EntityName : accountReturnProperty_Id         : f39551c1-81ff-e611-80f3-5065f38a5a01original                  : &#123;[accountid_Property, [accountid, f39551c1-81ff-e611-80f3-506                            5f38a5a01]], [accountid, f39551c1-81ff-e611-80f3-5065f38a5a01                            ], [ReturnProperty_EntityName, account], [ReturnProperty_Id ,                             f39551c1-81ff-e611-80f3-5065f38a5a01]&#125;logicalname               : accountaccountid_Property        : [accountid, b902322e-6005-e711-80f4-5065f38a5a01]accountid                 : b902322e-6005-e711-80f4-5065f38a5a01ReturnProperty_EntityName : accountReturnProperty_Id         : b902322e-6005-e711-80f4-5065f38a5a01original                  : &#123;[accountid_Property, [accountid, b902322e-6005-e711-80f4-506                            5f38a5a01]], [accountid, b902322e-6005-e711-80f4-5065f38a5a01                            ], [ReturnProperty_EntityName, account], [ReturnProperty_Id ,                             b902322e-6005-e711-80f4-5065f38a5a01]&#125;logicalname               : account
 
-Naturally I was intrigued. As a wannabe programmer and configuration nazi the idea of using a simple markup syntax to write formatted documents sounded great. I had a brief stint using LaTeX while at school (no one else did though) and while I did do my final year project documentation with it, I quickly lost interest.
-The blogAnyway… I had thought about starting a blog for a while. I use Feedly every day and follow lots of blogs. Since I’ve benefited greatly from the community I thought it was time to give something back.
-Getting back to the main topic of how this blog came about. I searched for blogging engines that supported Markdown and the first result on Google was Hexo. Hexo is a static site generator built using NodeJS. Seemed like a great fit for a backend guy like me.
-I installed NodeJS using Chocolatey and followed the instructions to get up and running. Simple enough. The original plan was to host it on an Azure Web App, so I followed another set of instructions in order to do that.
-Note that in the Azure portal you should use the deployment options instead of continuous integration. That’s where you find the Local Git repo option you need. I first tried the Free plan, but apparently custom domains are not supported on that, so I switched to the Shared plan. See more details here. I’ll probably move the blog to Github pages though since that’s free. Or I could host it on my router…
-Once everything was setup all I need to do to update the blog, besides writing the posts, is hexo deploy --generate. I placed the blog source files in Dropbox so I can get to them wherever I am. This post was started on my phone and finished on an iPad. I can’t generate and deploy on the go though. I’m sure PowerShell can help, but that is another blog post I think. I’m thinking some kind of change monitoring and automated deployment.
-Please note that I’m using this blog as another learning opportunity, so except changes, downtime etc. I’m also not sure how I active I’m actually going to be.
+As you can see there doesn’t seem to be any useful data other than the Id to work with. That’s because we haven’t requested any attributes. To include the account name you need to use the -Fields parameter. Eg. Get-CrmRecords -EntityLogicalName account -Fields &quot;name&quot; includes the account name in the result like so:
+name                      : Test accountname_Property             : [name, Test account]accountid_Property        : [accountid, f39551c1-81ff-e611-80f3-5065f38a5a01]accountid                 : f39551c1-81ff-e611-80f3-5065f38a5a01ReturnProperty_EntityName : accountReturnProperty_Id         : f39551c1-81ff-e611-80f3-5065f38a5a01original                  : &#123;[name_Property, [name, Test account]], [name, Test                            account], [accountid_Property, [accountid, f39551c1-81ff                            -e611-80f3-5065f38a5a01]], [accountid, f39551c1-81ff-e611-80f                            3-5065f38a5a01]...&#125;logicalname               : account
+
+So now that we know how to get data from the system, let’s get it into a CSV-file. You can’t quite do a Get-CrmRecords | Export-CSV, but close to it. Here’s a code snippet:
+(Get-CrmRecords -EntityLogicalName account -Fields &quot;name&quot;,&quot;telephone1&quot;).CrmRecords |    Select-Object -Property &quot;name&quot;,&quot;telephone1&quot; |    Export-Csv -Path &quot;accounts.csv&quot;
+
+The code fetches all accounts from the system, selects just the properties we want and finally exports the result to a CSV-file. You might want to use the -NoTypeInformation, -Delimeter and -Encoding parameters. You can see the final code with some improvements here.
+In my next post we will improve on this by supplying our own column names instead of the schema names provided by the system.
 ]]></content>
       <tags>
-        <tag>Markdown</tag>
-        <tag>Hexo</tag>
-        <tag>NodeJS</tag>
+        <tag>PowerShell</tag>
+        <tag>Dynamics 365</tag>
       </tags>
   </entry>
   <entry>
@@ -94,30 +96,45 @@ We retrieve the attributes we want from the system (the keys of the $Fieldmappin
 While this may seem like a complex way to do it, using objects gets us some nice benefits. Eg. try replacing the Export-CSV line with Out-Gridview and see that happens. If you would like to include more attributes, all you need to is add items to the mapping table.
 ]]></content>
       <tags>
-        <tag>Dynamics 365</tag>
         <tag>PowerShell</tag>
+        <tag>Dynamics 365</tag>
       </tags>
   </entry>
   <entry>
-    <title>ConvertTo-CustomObject function as a wrapper for Select-Object</title>
-    <url>/2017/07/12/ConvertTo-CustomObject-function-as-a-wrapper-for-Select-Object/</url>
-    <content><![CDATA[In yesterday’s post I introduced a custom advanced function for changing property names on objects. I also showed you how to use Select-Object to do the same. Because the Select-Object cmdlet is probably more robust than my little function I decided to try and rewrite the function to use Select-Object under the hood.
-Select-Object accepts an array of hashtable objects with two key&#x2F;value pairs:
+    <title>My new shiny Markdown compatible blog</title>
+    <url>/2017/04/25/How-this-blog-was-made/</url>
+    <content><![CDATA[MarkdownI remember hearing about Markdown previously but hadn’t paid it much attention. Then I heard it mentioned on a podcast I listen to  I also noticed that the Readme file on Visual Studio Team Services was done in markdown.
 
-N is for the name of the property
-E is the expression as a script block that need to be run to get the value
 
-In order to use this functionality we need to figure out a way to generate these objects dynamically using our mapping table. The approach I took was to generate the code as strings and then use Invoke-Expression. Since we only need to do this once and not for every object I added a BEGIN block to my function:
-BEGIN &#123;    $Expression = &quot;&quot;    $MappingTable.Keys | ForEach-Object &#123;        $Expression += (            @&quot;                @&#123;                    N=&quot;$($MappingTable[$_])&quot;                    E=&#123;`$_.$_&#125;                &#125;,        &quot;@        )    &#125;    $Expression = $Expression.Substring(0,$Expression.Length-1)    $SelectObjectParameter = Invoke-Expression $Expression&#125;
-So for each key in the mapping table we generate a name and an expression to run. Eg. using a mapping table like @{ &quot;name&quot; = &quot;AccountName&quot;; &quot;telephone1&quot; = &quot;Phone&quot;  }generates the following string:
-@&#123;    N=&quot;Phone&quot;    E=&#123;$_.telephone1&#125;&#125;,                    @&#123;    N=&quot;AccountName&quot;    E=&#123;$_.name&#125;&#125;
-That string is exactly what we would feed Select-Object. To get it into actual PowerShell objects we need to feed it to Invoke-Expression. That gives us an array with two separate hashtables each with a N key with a string value and an E key with a script block value.
-Once stored in a variable we can use this for each of the objects fed through the pipeline by using it in the PROCESS block of our advanced function:
-PROCESS &#123;        $SourceObject | Select-Object -Property $SelectObjectParameter    &#125;  
-And that is all there is to it. The function works exactly the same as the ‘quick and dirty’ one in the last post. You can find the full function here. Import it to your session and try this example: Get-Process | ConvertTo-CustomObject -MappingTable @{ &quot;ProcessName&quot; = &quot;Name&quot; }
+Naturally I was intrigued. As a wannabe programmer and configuration nazi the idea of using a simple markup syntax to write formatted documents sounded great. I had a brief stint using LaTeX while at school (no one else did though) and while I did do my final year project documentation with it, I quickly lost interest.
+The blogAnyway… I had thought about starting a blog for a while. I use Feedly every day and follow lots of blogs. Since I’ve benefited greatly from the community I thought it was time to give something back.
+Getting back to the main topic of how this blog came about. I searched for blogging engines that supported Markdown and the first result on Google was Hexo. Hexo is a static site generator built using NodeJS. Seemed like a great fit for a backend guy like me.
+I installed NodeJS using Chocolatey and followed the instructions to get up and running. Simple enough. The original plan was to host it on an Azure Web App, so I followed another set of instructions in order to do that.
+Note that in the Azure portal you should use the deployment options instead of continuous integration. That’s where you find the Local Git repo option you need. I first tried the Free plan, but apparently custom domains are not supported on that, so I switched to the Shared plan. See more details here. I’ll probably move the blog to Github pages though since that’s free. Or I could host it on my router…
+Once everything was setup all I need to do to update the blog, besides writing the posts, is hexo deploy --generate. I placed the blog source files in Dropbox so I can get to them wherever I am. This post was started on my phone and finished on an iPad. I can’t generate and deploy on the go though. I’m sure PowerShell can help, but that is another blog post I think. I’m thinking some kind of change monitoring and automated deployment.
+Please note that I’m using this blog as another learning opportunity, so except changes, downtime etc. I’m also not sure how I active I’m actually going to be.
 ]]></content>
       <tags>
-        <tag>PowerShell</tag>
+        <tag>Markdown</tag>
+        <tag>Hexo</tag>
+        <tag>NodeJS</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Quoting Ben Thompson - Microsoft and Software Survival</title>
+    <url>/2026/02/07/ben-thompson-microsoft-and-software-survival/</url>
+    <content><![CDATA[Ben Thompson in the article Microsoft and Software Survival (published February 3, 2026):
+
+That, then, raises the most obvious bear case for any software company: why pay for software when you can just ask AI to write your own application, perfectly suited to your needs? Is software going to be a total commodity and a non-viable business model in the future?
+I’m skeptical, for a number of reasons. First, companies — particularly American ones — are very good at focusing on their core competency, and for most companies in the world, that isn’t software. There is a reason most companies pay other companies for software, and the most fundamental reason to do so won’t change with AI.
+Second, writing the original app is just the beginning: there is maintenance, there are security patches, there are new features, there are changing standards — writing an app is a commitment to a never-ending journey — a journey, to return to point one, that has nothing to do with the company’s core competency.
+Third, selling software isn’t just about selling code. There is support, there is compliance, there are integrations with other software, the list of what is actually valuable goes far beyond code. This is why companies don’t run purely open source software: they don’t want code, they want a product, with everything that entails.
+
+As the cost of developing sofware, at least the coding bit, approaches zero other concerns are more pressing.
+]]></content>
+      <tags>
+        <tag>Quote</tag>
+        <tag>AI</tag>
       </tags>
   </entry>
 </search>

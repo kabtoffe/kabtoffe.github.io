@@ -6,7 +6,7 @@
   <link href="http://kabtoffe.net/atom.xml" rel="self"/>
   
   <link href="http://kabtoffe.net/"/>
-  <updated>2026-02-07T09:09:05.341Z</updated>
+  <updated>2026-02-07T11:54:09.408Z</updated>
   <id>http://kabtoffe.net/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Quoting Ben Thompson - Microsoft and Software Survival</title>
+    <link href="http://kabtoffe.net/2026/02/07/ben-thompson-microsoft-and-software-survival/"/>
+    <id>http://kabtoffe.net/2026/02/07/ben-thompson-microsoft-and-software-survival/</id>
+    <published>2026-02-06T22:00:00.000Z</published>
+    <updated>2026-02-07T11:54:09.408Z</updated>
+    
+    <content type="html"><![CDATA[<p>Ben Thompson in the article <a href="https://stratechery.com/2026/microsoft-and-software-survival/">Microsoft and Software Survival</a> (published February 3, 2026):</p><blockquote><p>That, then, raises the most obvious bear case for any software company: why pay for software when you can just ask AI to write your own application, perfectly suited to your needs? Is software going to be a total commodity and a non-viable business model in the future?</p><p>I’m skeptical, for a number of reasons. First, companies — particularly American ones — are very good at focusing on their core competency, and for most companies in the world, that isn’t software. There is a reason most companies pay other companies for software, and the most fundamental reason to do so won’t change with AI.</p><p>Second, writing the original app is just the beginning: there is maintenance, there are security patches, there are new features, there are changing standards — writing an app is a commitment to a never-ending journey — a journey, to return to point one, that has nothing to do with the company’s core competency.</p><p>Third, selling software isn’t just about selling code. There is support, there is compliance, there are integrations with other software, the list of what is actually valuable goes far beyond code. This is why companies don’t run purely open source software: they don’t want code, they want a product, with everything that entails.</p></blockquote><p>As the cost of developing sofware, at least the coding bit, approaches zero other concerns are more pressing.</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;Ben Thompson in the article &lt;a href=&quot;https://stratechery.com/2026/microsoft-and-software-survival/&quot;&gt;Microsoft and Software Survival&lt;/a&gt; (</summary>
+      
+    
+    
+    
+    
+    <category term="Quote" scheme="http://kabtoffe.net/tags/Quote/"/>
+    
+    <category term="AI" scheme="http://kabtoffe.net/tags/AI/"/>
+    
+  </entry>
   
   <entry>
     <title>ConvertTo-CustomObject function as a wrapper for Select-Object</title>
@@ -50,9 +74,9 @@
     
     
     
-    <category term="Dynamics 365" scheme="http://kabtoffe.net/tags/Dynamics-365/"/>
-    
     <category term="PowerShell" scheme="http://kabtoffe.net/tags/PowerShell/"/>
+    
+    <category term="Dynamics 365" scheme="http://kabtoffe.net/tags/Dynamics-365/"/>
     
   </entry>
   
@@ -74,9 +98,9 @@
     
     
     
-    <category term="Dynamics 365" scheme="http://kabtoffe.net/tags/Dynamics-365/"/>
-    
     <category term="PowerShell" scheme="http://kabtoffe.net/tags/PowerShell/"/>
+    
+    <category term="Dynamics 365" scheme="http://kabtoffe.net/tags/Dynamics-365/"/>
     
   </entry>
   
