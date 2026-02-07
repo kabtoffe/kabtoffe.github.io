@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  
+  <title>Generate CSV from Dynamics 365 with Custom Headers | kabtoffe&#39;s blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="Learn how to transform the Dynamics 365 record to a custom object with nicer property names.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Generate CSV from Dynamics 365 with Custom Headers">
+<meta property="og:url" content="http://kabtoffe.net/2017/07/11/Generate-CSV-from-Dynamics-365-with-Custom-Headers/index.html">
+<meta property="og:site_name" content="kabtoffe&#39;s blog">
+<meta property="og:description" content="Learn how to transform the Dynamics 365 record to a custom object with nicer property names.">
+<meta property="og:locale">
+<meta property="article:published_time" content="2017-07-11T13:39:31.000Z">
+<meta property="article:modified_time" content="2026-02-07T09:09:05.343Z">
+<meta property="article:author" content="Kristoffer &quot;Toffe&quot; Bergström">
+<meta property="article:tag" content="Dynamics 365">
+<meta property="article:tag" content="PowerShell">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="kabtoffe's blog" type="application/atom+xml">
+  
+  
+    <link rel="shortcut icon" href="/favicon.png">
+  
+  
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/typeface-source-code-pro@0.0.71/index.min.css">
+
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.2.0/css/fork-awesome.min.css">
+
+<meta name="generator" content="Hexo 8.1.1"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">kabtoffe&#39;s blog</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"><span class="fa fa-bars"></span></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+        
+          <a class="nav-icon" href="/atom.xml" title="RSS Feed"><span class="fa fa-rss"></span></a>
+        
+        <a class="nav-icon nav-search-btn" title="Suche"><span class="fa fa-search"></span></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Suche"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://kabtoffe.net"></form>
+      </div>
+    </div>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><article id="post-Generate-CSV-from-Dynamics-365-with-Custom-Headers" class="h-entry article article-type-post" itemprop="blogPost" itemscope itemtype="https://schema.org/BlogPosting">
+  <div class="article-meta">
+    <a href="/2017/07/11/Generate-CSV-from-Dynamics-365-with-Custom-Headers/" class="article-date">
+  <time class="dt-published" datetime="2017-07-11T13:39:31.000Z" itemprop="datePublished">2017-07-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Generate CSV from Dynamics 365 with Custom Headers
+    </h1>
+  
+
+      </header>
+    
+    <div class="e-content article-entry" itemprop="articleBody">
+      
+        <p>In my previous <a href="http://kabtoffe.net/2017/07/10/Export-Data-from-Dynamics-365-using-PowerShell/">post</a> we retrieved account records from Dynamics 365 (CRM) and exported those to a CSV-file. In this post we will expand the example with a transformation function to get nicer property names and CSV headers.</p>
+<p>The <code>Export-CSV</code> cmdlet exports all the attributes on the objects piped to it. In our last example we used <code>Select-Object</code> to only include the properties we wanted. These properties are still named by the original object. In most cases this is not desirable. You could just replace the CSV file header row, but a cleaner way would be to transform the object somehow. One way to achieve this is to use <code>Select-Object</code> as mentioned <a target="_blank" rel="noopener" href="https://blogs.technet.microsoft.com/heyscriptingguy/2013/10/10/powertip-change-output-object-property-names-with-powershell/">here</a>.</p>
+<p>Using our example from before:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">(Get-CrmRecords -EntityLogicalName account -Fields &quot;name&quot;,&quot;telephone1&quot;).CrmRecords |</span><br><span class="line">Select-Object @&#123;</span><br><span class="line">        N=&quot;AccountName&quot;</span><br><span class="line">        E=&#123;$_.name&#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    @&#123;</span><br><span class="line">        N=&quot;Phonenumber&quot;</span><br><span class="line">        E=&#123;$_.telephone1&#125;</span><br><span class="line">    &#125; |</span><br><span class="line">Export-Csv -Path &quot;accounts.csv&quot;</span><br></pre></td></tr></table></figure>
+<p>This is a nice trick and certainly very flexible. You can select any property on the source object and assign it to a new property. But what if you want to parametrize and use a mapping table for the transformation? You could probably cook-up a function that provides a mapping array for <code>Select-Object</code>. But since I only just came up with that and it actually sounds a bit complicated, I propose a different approach.</p>
+<p>Let’s create an <a target="_blank" rel="noopener" href="https://msdn.microsoft.com/en-us/powershell/reference/5.1/microsoft.powershell.core/about/about_functions_advanced">advanced function</a> to do the heavy lifting for us:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">function ConvertTo-CustomObject&#123;</span><br><span class="line">    [CmdletBinding()]</span><br><span class="line"></span><br><span class="line">    param(</span><br><span class="line">        [Parameter(Mandatory=$True,ValueFromPipeline=$True)]</span><br><span class="line">        $SourceObject,</span><br><span class="line"></span><br><span class="line">        [Parameter(Mandatory=$True)]</span><br><span class="line">        [hashtable]$MappingTable</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">    PROCESS &#123;</span><br><span class="line">        $Property = @&#123;&#125;</span><br><span class="line">        $MappingTable.Keys | ForEach-Object &#123;</span><br><span class="line">            $Property.Add(</span><br><span class="line">                $MappingTable[$_],</span><br><span class="line">                $SourceObject.$_</span><br><span class="line">            )</span><br><span class="line">        &#125;</span><br><span class="line">        New-Object psobject -Property $Property</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>The function <code>ConvertTo-CustomObject</code> accepts objects from the pipeline and a mapping table. It then uses the mapping table to iterate across the the properties we want adding them to a property hashtable. Lastly it creates a new object using the properties and writes it to the output.</p>
+<p>So again, using our example, we create a mapping table like so:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$FieldsMappings = @&#123;</span><br><span class="line">    &quot;name&quot; = &quot;AccountName&quot;</span><br><span class="line">    &quot;telephone1&quot; = &quot;Phone&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>And then we can replace the <code>Select-Object</code> part with our function:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(Get-CrmRecords -EntityLogicalName account -Fields $FieldsMappings.Keys -AllRows).CrmRecords |</span><br><span class="line">    ConvertTo-CustomObject -MappingTable $FieldsMappings |</span><br><span class="line">    Export-Csv -Path &quot;account.csv&quot;</span><br></pre></td></tr></table></figure>
+<p>We retrieve the attributes we want from the system (the keys of the <code>$Fieldmappings</code> hashtable), pipe the objects to our function and write the resulting objects to a CSV like before, but with a nicer header row. Complete code <a target="_blank" rel="noopener" href="https://github.com/kabtoffe/blog-examples/blob/master/Dynamics-365-CSV-Export/Export-Dyn365CSV_2.ps1">here</a>.</p>
+<p>While this may seem like a complex way to do it, using objects gets us some nice benefits. Eg. try replacing the <code>Export-CSV</code> line with <code>Out-Gridview</code> and see that happens. If you would like to include more attributes, all you need to is add items to the mapping table.</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://kabtoffe.net/2017/07/11/Generate-CSV-from-Dynamics-365-with-Custom-Headers/" data-id="cuidZL-8ex0CfU7jc3xvKABxL" data-title="Generate CSV from Dynamics 365 with Custom Headers" class="article-share-link"><span class="fa fa-share">Teilen</span></a>
+      
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Dynamics-365/" rel="tag">Dynamics 365</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PowerShell/" rel="tag">PowerShell</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/07/12/ConvertTo-CustomObject-function-as-a-wrapper-for-Select-Object/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Neuer</strong>
+      <div class="article-nav-title">
+        
+          ConvertTo-CustomObject function as a wrapper for Select-Object
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2017/07/10/Export-Data-from-Dynamics-365-using-PowerShell/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Älter</strong>
+      <div class="article-nav-title">Export Data from Dynamics 365 using PowerShell</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dynamics-365/" rel="tag">Dynamics 365</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/" rel="tag">Markdown</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NodeJS/" rel="tag">NodeJS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PowerShell/" rel="tag">PowerShell</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Dynamics-365/" style="font-size: 20px;">Dynamics 365</a> <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/Markdown/" style="font-size: 10px;">Markdown</a> <a href="/tags/NodeJS/" style="font-size: 10px;">NodeJS</a> <a href="/tags/PowerShell/" style="font-size: 20px;">PowerShell</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archiv</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">letzter Beitrag</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2017/07/12/ConvertTo-CustomObject-function-as-a-wrapper-for-Select-Object/">ConvertTo-CustomObject function as a wrapper for Select-Object</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/11/Generate-CSV-from-Dynamics-365-with-Custom-Headers/">Generate CSV from Dynamics 365 with Custom Headers</a>
+          </li>
+        
+          <li>
+            <a href="/2017/07/10/Export-Data-from-Dynamics-365-using-PowerShell/">Export Data from Dynamics 365 using PowerShell</a>
+          </li>
+        
+          <li>
+            <a href="/2017/06/11/Blog-moved-to-Github-Pages/">Blog moved to Github Pages</a>
+          </li>
+        
+          <li>
+            <a href="/2017/04/25/How-this-blog-was-made/">My new shiny Markdown compatible blog</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+      &copy; 2026 Kristoffer &#34;Toffe&#34; Bergström<br>
+      Powered by <a href="https://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+
+<script src="/js/jquery-3.6.4.min.js"></script>
+
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+
+  </div>
+</body>
+</html>
