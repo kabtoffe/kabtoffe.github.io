@@ -461,6 +461,16 @@ article:hover {
   padding: 15px 20px;
 }
 
+.post-content ul,
+.post-content ol {
+  margin: 15px 0;
+  padding-left: 40px;
+}
+
+.post-content li {
+  margin-bottom: 8px;
+}
+
 .post-content a {
   color: #C0504D;
   text-decoration: none;
@@ -540,6 +550,16 @@ article:hover {
   font-style: italic;
   background-color: #E8D7C3;
   padding: 15px 20px;
+}
+
+.article-entry ul,
+.article-entry ol {
+  margin: 15px 0;
+  padding-left: 40px;
+}
+
+.article-entry li {
+  margin-bottom: 8px;
 }
 
 .article-entry a {
