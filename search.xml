@@ -215,4 +215,22 @@ Please note that I’m using this blog as another learning opportunity, so excep
         <tag>Markdown</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Quoting Steve Yegge - Stevey’s Birthday Blog</title>
+    <url>/2026/02/07/steve-yegge-steveys-birthday-blog/</url>
+    <content><![CDATA[Steve Yegge in the article Stevey’s Birthday Blog (published February 2, 2026):
+
+Agent orchestrators are programs that use agents to run other agents.
+There are, as far as I can tell, four main players in this space: Ralph Wiggum, Loom, Claude Flow, and Gas Town. More will come very soon, from all corners. But I thought I’d share my thoughts on how to tell the current group apart, as they are all very important.
+[…]
+I think Geoffrey Huntley and I have been exploring two of the key components of the Industrial Revolution happening in agentic software development: factories, and workers. In my view, Claude Code is a worker. Geoffrey has built a super-worker, and also a team of super workers with Loom, whereas I’ve built a super-factory. These are all orthogonal, complementary, and necessary.
+Claude Flow is a bit different; it also tries to be a factory, and it’s quite clever, but it’s not thinking about the problem the way I am. All three of the others have orchestration as their core primitive. Whereas for Gas Town, the work itself is the primitive. Gas Town federates work into an auditable ledger for tracking millions of work items in a blockchain. I’m solving a completely different problem.
+
+I’ve been reading Steve’s and Gene Kim’s Vibe Coding book and it’s a super interesting journey Steve is on. Where he leads others will follow.
+]]></content>
+      <tags>
+        <tag>Quote</tag>
+        <tag>AI Coding</tag>
+      </tags>
+  </entry>
 </search>
