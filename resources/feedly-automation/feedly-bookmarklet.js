@@ -40,9 +40,42 @@ function extractFeedlyData() {
     }
   }
 
+  // Helper function to check if element has TextHighlight class (excludes AI variants like TextHighlight--leo)
+  function isTextHighlight(element) {
+    return element.classList && element.classList.contains("TextHighlight");
+  }
+
+  // Helper function to convert HTML with links to markdown
+  function htmlToMarkdown(element) {
+    // If the element itself is an <a> tag, convert it to markdown link
+    if (element.tagName === "A" && element.href) {
+      const linkText = Array.from(element.childNodes)
+        .map(node => node.nodeType === 3 ? node.textContent : (node.innerText || node.textContent || ""))
+        .join("")
+        .trim();
+      return `[${linkText}](${element.href})`;
+    }
+
+    let text = "";
+    element.childNodes.forEach(node => {
+      if (node.nodeType === 3) { // Text node
+        text += node.textContent;
+      } else if (node.nodeType === 1) { // Element node
+        if (node.tagName === "A" && node.href) {
+          text += `[${node.innerText.trim()}](${node.href})`;
+        } else if (isTextHighlight(node)) {
+          text += htmlToMarkdown(node);
+        } else {
+          text += node.innerText;
+        }
+      }
+    });
+    return text;
+  }
+
   // Extract highlights grouped by paragraph to preserve structure
   const paragraphsWithHighlights = new Set();
-  const highlightElements = document.querySelectorAll(".TextHighlight");
+  const highlightElements = document.querySelectorAll('[class~="TextHighlight"]');
 
   // Find all parent paragraphs that contain highlights
   highlightElements.forEach(el => {
@@ -55,11 +88,83 @@ function extractFeedlyData() {
     }
   });
 
-  // Extract text from each paragraph, joining highlights within it with spaces
-  const highlights = Array.from(paragraphsWithHighlights).map(p => {
-    const textHighlights = p.querySelectorAll(".TextHighlight");
-    return Array.from(textHighlights).map(el => el.innerText.trim()).filter(h => h).join(" ");
-  }).filter(h => h);
+  // Get all paragraphs and find indices of those with highlights
+  const allParagraphs = Array.from(document.querySelectorAll('p'));
+  const highlightedIndices = [];
+  allParagraphs.forEach((p, index) => {
+    if (paragraphsWithHighlights.has(p)) {
+      highlightedIndices.push(index);
+    }
+  });
+
+  // Helper function to check if there's actual text content between two elements
+  function hasActualTextBetween(element1, element2) {
+    let current = element1.nextSibling;
+    while (current && current !== element2) {
+      if (current.nodeType === 3) { // Text node
+        if (current.textContent.trim()) {
+          return true;
+        }
+      } else if (current.nodeType === 1) { // Element node
+        // Skip images and line breaks, but check for text content
+        if (current.tagName !== 'IMG' && current.tagName !== 'BR' && current.tagName !== 'SCRIPT' && current.tagName !== 'STYLE') {
+          if (current.textContent.trim()) {
+            return true;
+          }
+        }
+      }
+      current = current.nextSibling;
+    }
+    return false;
+  }
+
+  // Extract text from each paragraph, preserving markdown links within highlights
+  const highlights = [];
+
+  highlightedIndices.forEach((index, arrayIndex) => {
+    // Add [...] if there are unhighlighted paragraphs between this and the previous highlighted paragraph
+    if (arrayIndex > 0) {
+      const prevIndex = highlightedIndices[arrayIndex - 1];
+      if (index - prevIndex > 1) {
+        highlights.push("[...]");
+      }
+    }
+
+    // Extract highlights from this paragraph
+    const p = allParagraphs[index];
+    const textHighlights = p.querySelectorAll('[class~="TextHighlight"]');
+    const highlightArray = Array.from(textHighlights);
+    const parts = [];
+
+    highlightArray.forEach((el, elIndex) => {
+      // Check if this highlight element contains links
+      const hasLinks = el.querySelector("a");
+      let highlightText;
+      if (hasLinks || el.tagName === "A") {
+        highlightText = htmlToMarkdown(el).trim();
+      } else {
+        highlightText = (el.innerText || "").trim();
+      }
+      // Remove spaces before punctuation
+      highlightText = highlightText.replace(/\s+([,.;:!?\)])/g, '$1');
+      parts.push(highlightText);
+
+      // Check if there's actual text between this highlight and the next one
+      if (elIndex < highlightArray.length - 1) {
+        const nextEl = highlightArray[elIndex + 1];
+        if (hasActualTextBetween(el, nextEl)) {
+          parts.push("...");
+        }
+      }
+    });
+
+    let paragraphHighlights = parts.filter(h => h).join(" ");
+    // Remove spaces before punctuation in the final joined text
+    paragraphHighlights = paragraphHighlights.replace(/\s+([,.;:!?\)])/g, '$1');
+    if (paragraphHighlights) {
+      highlights.push(paragraphHighlights);
+    }
+  });
 
   // Extract comments/notes
   const commentElements = document.querySelectorAll("div.Comment__body p.Comment__text");
