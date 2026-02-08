@@ -198,24 +198,6 @@ body {
 /* ============================================================================
    Post Styles
    ========================================================================= */
-#posts {
-  padding: 20px;
-}
-
-article {
-  margin-bottom: 40px;
-  padding: 30px;
-  background: #F5EFE7;
-  border: 2px solid #8B4513;
-  border-radius: 2px;
-  box-shadow: 0 4px 12px rgba(0,0,0,.1);
-  transition: all 0.3s ease;
-}
-
-article:hover {
-  box-shadow: 0 8px 20px rgba(0,0,0,.2);
-  transform: translateY(-2px);
-}
 
 /* Archive Styles */
 .archives-wrap {
@@ -346,17 +328,8 @@ article:hover {
   letter-spacing: 1px;
 }
 
-/* Post Meta */
-.post-meta {
-  color: #A0A0A0;
-  font-size: 14px;
-  margin-bottom: 20px;
-  padding: 10px 15px;
-  background-color: #E8D7C3;
-  border-left: 3px solid #C0504D;
-}
-
-/* Article Meta */
+/* Post/Article Meta */
+.post-meta,
 .article-meta {
   color: #A0A0A0;
   font-size: 14px;
@@ -513,19 +486,19 @@ article:hover {
   aspect-ratio: 16 / 9;
 }
 
-/* Article Entry (alternate post content class) */
-.article-entry {
+/* Article Content */
+.e-content {
   margin: 30px 0;
   line-height: 1.8;
   font-size: 16px;
 }
 
-.article-entry p {
+.e-content p {
   margin-bottom: 24px;
   text-align: left;
 }
 
-.article-entry h2 {
+.e-content h2 {
   color: #8B4513;
   font-size: 28px;
   margin: 30px 0 15px;
@@ -534,14 +507,14 @@ article:hover {
   font-weight: 700;
 }
 
-.article-entry h3 {
+.e-content h3 {
   color: #5C2E0F;
   font-size: 22px;
   margin: 20px 0 10px;
   font-weight: 600;
 }
 
-.article-entry code {
+.e-content code {
   background-color: #E8D7C3;
   color: #000;
   padding: 2px 6px;
@@ -550,7 +523,7 @@ article:hover {
   font-size: 14px;
 }
 
-.article-entry pre {
+.e-content pre {
   background-color: #E8D7C3;
   color: #5C2E0F;
   padding: 20px;
@@ -563,7 +536,7 @@ article:hover {
   box-sizing: border-box;
 }
 
-.article-entry blockquote {
+.e-content blockquote {
   border-left: 4px solid #B8860B;
   padding-left: 20px;
   margin: 15px 0;
@@ -573,29 +546,29 @@ article:hover {
   padding: 15px 20px;
 }
 
-.article-entry ul,
-.article-entry ol {
+.e-content ul,
+.e-content ol {
   margin: 15px 0;
   padding-left: 40px;
 }
 
-.article-entry li {
+.e-content li {
   margin-bottom: 8px;
 }
 
-.article-entry a {
+.e-content a {
   color: #C0504D;
   text-decoration: none;
   border-bottom: 1px dotted #B8860B;
   transition: all 0.3s ease;
 }
 
-.article-entry a:hover {
+.e-content a:hover {
   color: #8B4513;
   border-bottom: 1px solid #B8860B;
 }
 
-.article-entry img {
+.e-content img {
   max-width: 100%;
   height: auto;
   border: 2px solid #8B4513;
@@ -604,7 +577,7 @@ article:hover {
   margin: 15px 0;
 }
 
-.article-entry .video-container {
+.e-content .video-container {
   position: relative;
   width: 100%;
   max-width: 100%;
@@ -615,15 +588,14 @@ article:hover {
   box-sizing: border-box;
 }
 
-.article-entry .video-container iframe {
+.e-content .video-container iframe {
   width: 100%;
   height: auto;
   aspect-ratio: 16 / 9;
 }
 
 /* Code Highlight Wrapper */
-.article-entry figure.highlight,
-.post-content figure.highlight {
+figure.highlight {
   width: 100%;
   margin: 20px 0;
   background-color: #E8D7C3;
@@ -634,14 +606,12 @@ article:hover {
   overflow-x: auto;
 }
 
-.article-entry figure.highlight table,
-.post-content figure.highlight table {
+figure.highlight table {
   width: 100%;
   border-collapse: collapse;
 }
 
-.article-entry figure.highlight pre,
-.post-content figure.highlight pre {
+figure.highlight pre {
   background: transparent;
   border: none;
   margin: 0;
@@ -653,8 +623,7 @@ article:hover {
   white-space: pre-wrap;
 }
 
-.article-entry figure.highlight .gutter,
-.post-content figure.highlight .gutter {
+figure.highlight .gutter {
   background-color: rgba(139, 69, 19, 0.1);
   color: #A0A0A0;
   padding: 20px 10px;
@@ -665,8 +634,7 @@ article:hover {
   max-width: 100px;
 }
 
-.article-entry figure.highlight code,
-.post-content figure.highlight code {
+figure.highlight code {
   word-wrap: break-word;
   word-break: break-word;
   white-space: pre-wrap;

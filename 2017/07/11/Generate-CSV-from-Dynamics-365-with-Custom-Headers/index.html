@@ -63,19 +63,17 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-Generate-CSV-from-Dynamics-365-with-Custom-Headers" class="post-article">
-  <div class="article-meta">
-    <a href="/2017/07/11/Generate-CSV-from-Dynamics-365-with-Custom-Headers/" class="article-date">
+        <section id="main"><div class="article-meta">
+  <a href="/2017/07/11/Generate-CSV-from-Dynamics-365-with-Custom-Headers/" class="article-date">
   <time class="dt-published" datetime="2017-07-11T13:39:31.000Z" itemprop="datePublished">⏰ 2017-07-11</time>
 </a>
 
-    
+  
 
-  </div>
-  <div class="article-inner">
+</div>
+
+  <header class="article-header">
     
-      <header class="article-header">
-        
   
     <h1 class="p-name article-title" itemprop="headline name">
       Generate CSV from Dynamics 365 with Custom Headers
@@ -83,11 +81,11 @@
   
 
 
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>In my previous <a href="http://kabtoffe.net/2017/07/10/Export-Data-from-Dynamics-365-using-PowerShell/">post</a> we retrieved account records from Dynamics 365 (CRM) and exported those to a CSV-file. In this post we will expand the example with a transformation function to get nicer property names and CSV headers.</p>
+  </header>
+
+<div class="e-content" itemprop="articleBody">
+  
+    <p>In my previous <a href="http://kabtoffe.net/2017/07/10/Export-Data-from-Dynamics-365-using-PowerShell/">post</a> we retrieved account records from Dynamics 365 (CRM) and exported those to a CSV-file. In this post we will expand the example with a transformation function to get nicer property names and CSV headers.</p>
 <p>The <code>Export-CSV</code> cmdlet exports all the attributes on the objects piped to it. In our last example we used <code>Select-Object</code> to only include the properties we wanted. These properties are still named by the original object. In most cases this is not desirable. You could just replace the CSV file header row, but a cleaner way would be to transform the object somehow. One way to achieve this is to use <code>Select-Object</code> as mentioned <a target="_blank" rel="noopener" href="https://blogs.technet.microsoft.com/heyscriptingguy/2013/10/10/powertip-change-output-object-property-names-with-powershell/">here</a>.</p>
 <p>Using our example from before:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">(Get-CrmRecords -EntityLogicalName account -Fields &quot;name&quot;,&quot;telephone1&quot;).CrmRecords |</span><br><span class="line">Select-Object @&#123;</span><br><span class="line">        N=&quot;AccountName&quot;</span><br><span class="line">        E=&#123;$_.name&#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    @&#123;</span><br><span class="line">        N=&quot;Phonenumber&quot;</span><br><span class="line">        E=&#123;$_.telephone1&#125;</span><br><span class="line">    &#125; |</span><br><span class="line">Export-Csv -Path &quot;accounts.csv&quot;</span><br></pre></td></tr></table></figure>
@@ -102,10 +100,10 @@
 <p>We retrieve the attributes we want from the system (the keys of the <code>$Fieldmappings</code> hashtable), pipe the objects to our function and write the resulting objects to a CSV like before, but with a nicer header row. Complete code <a target="_blank" rel="noopener" href="https://github.com/kabtoffe/blog-examples/blob/master/Dynamics-365-CSV-Export/Export-Dyn365CSV_2.ps1">here</a>.</p>
 <p>While this may seem like a complex way to do it, using objects gets us some nice benefits. Eg. try replacing the <code>Export-CSV</code> line with <code>Out-Gridview</code> and see that happens. If you would like to include more attributes, all you need to is add items to the mapping table.</p>
 
-      
-    </div>
-    <footer class="article-footer">
-      
+  
+</div>
+<footer class="article-footer">
+  
   <div class="post-tags">
     
       <a class="tag-link" href="/tags/PowerShell/">#PowerShell</a>
@@ -115,10 +113,9 @@
   </div>
 
 
-    </footer>
-  </div>
+</footer>
+
   
-    
 <nav id="article-nav">
   
     <a href="/2017/07/12/ConvertTo-CustomObject-function-as-a-wrapper-for-Select-Object/" id="article-nav-newer" class="article-nav-link-wrap">
@@ -139,8 +136,7 @@
 </nav>
 
 
-  
-</article>
+
 
 </section>
         

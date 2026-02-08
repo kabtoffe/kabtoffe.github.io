@@ -63,19 +63,17 @@
 </header>
 
       <div class="outer">
-        <section id="main"><article id="post-ConvertTo-CustomObject-function-as-a-wrapper-for-Select-Object" class="post-article">
-  <div class="article-meta">
-    <a href="/2017/07/12/ConvertTo-CustomObject-function-as-a-wrapper-for-Select-Object/" class="article-date">
+        <section id="main"><div class="article-meta">
+  <a href="/2017/07/12/ConvertTo-CustomObject-function-as-a-wrapper-for-Select-Object/" class="article-date">
   <time class="dt-published" datetime="2017-07-12T12:54:31.000Z" itemprop="datePublished">⏰ 2017-07-12</time>
 </a>
 
-    
+  
 
-  </div>
-  <div class="article-inner">
+</div>
+
+  <header class="article-header">
     
-      <header class="article-header">
-        
   
     <h1 class="p-name article-title" itemprop="headline name">
       ConvertTo-CustomObject function as a wrapper for Select-Object
@@ -83,11 +81,11 @@
   
 
 
-      </header>
-    
-    <div class="e-content article-entry" itemprop="articleBody">
-      
-        <p>In <a href="http://kabtoffe.net/2017/07/11/Generate-CSV-from-Dynamics-365-with-Custom-Headers/">yesterday’s post</a> I introduced a custom advanced function for changing property names on objects. I also showed you how to use <code>Select-Object</code> to do the same. Because the <code>Select-Object</code> cmdlet is probably more robust than my little function I decided to try and rewrite the function to use <code>Select-Object</code> under the hood.</p>
+  </header>
+
+<div class="e-content" itemprop="articleBody">
+  
+    <p>In <a href="http://kabtoffe.net/2017/07/11/Generate-CSV-from-Dynamics-365-with-Custom-Headers/">yesterday’s post</a> I introduced a custom advanced function for changing property names on objects. I also showed you how to use <code>Select-Object</code> to do the same. Because the <code>Select-Object</code> cmdlet is probably more robust than my little function I decided to try and rewrite the function to use <code>Select-Object</code> under the hood.</p>
 <p><code>Select-Object</code> accepts an array of hashtable objects with two key&#x2F;value pairs:</p>
 <ul>
 <li>N is for the name of the property</li>
@@ -102,10 +100,10 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">PROCESS &#123;</span><br><span class="line">        $SourceObject | Select-Object -Property $SelectObjectParameter</span><br><span class="line">    &#125;  </span><br></pre></td></tr></table></figure>
 <p>And that is all there is to it. The function works exactly the same as the ‘quick and dirty’ one in the last post. You can find the full function <a target="_blank" rel="noopener" href="https://github.com/kabtoffe/blog-examples/blob/master/ConvertTo-CustomObject/ConvertTo-CustomObject.ps1">here</a>. Import it to your session and try this example:<br> <code>Get-Process | ConvertTo-CustomObject -MappingTable @{ &quot;ProcessName&quot; = &quot;Name&quot; }</code></p>
 
-      
-    </div>
-    <footer class="article-footer">
-      
+  
+</div>
+<footer class="article-footer">
+  
   <div class="post-tags">
     
       <a class="tag-link" href="/tags/PowerShell/">#PowerShell</a>
@@ -113,10 +111,9 @@
   </div>
 
 
-    </footer>
-  </div>
+</footer>
+
   
-    
 <nav id="article-nav">
   
     <a href="/2026/02/07/steve-yegge-steveys-birthday-blog/" id="article-nav-newer" class="article-nav-link-wrap">
@@ -137,8 +134,7 @@
 </nav>
 
 
-  
-</article>
+
 
 </section>
         
