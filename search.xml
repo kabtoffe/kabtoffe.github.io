@@ -248,6 +248,22 @@ If you later decide you want to transition away from Power Platform, you only ne
         <tag>Quote</tag>
         <tag>AI Coding</tag>
         <tag>Power Apps</tag>
+        <tag>Power Platform</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Quoting Neeraj Nandwana - Announcing General Availability (GA) of building single-page applications for Power Pages</title>
+    <url>/2026/02/11/neeraj-nandwana-announcing-general-availability-ga-of-building-single-page-applications-for-power-pages/</url>
+    <content><![CDATA[Neeraj Nandwana in the article Announcing General Availability (GA) of building single-page applications for Power Pages (published February 9, 2026):
+
+You can run your SPA locally with full authentication and Web API access to accelerate your development cycle. This means JavaScript hot reload, local debugging, and immediate feedback without deploying changes to your portal every time. For step-by-step instructions, see Set up local development for SPA sites.
+
+When you want to authenticate locally you need to login to the live portal once using the built in Entra ID identity provider. That makes sure you have a contact that is connected to your Entra user. When you login on localhost that is the identty you use with the development proxy.
+As far as I can tell you cannot currently use another provider this, but I might be wrong. The documentation is currently not very broad.
+]]></content>
+      <tags>
+        <tag>Quote</tag>
+        <tag>AI Coding</tag>
       </tags>
   </entry>
 </search>

@@ -6,7 +6,7 @@
   <link href="http://kabtoffe.net/atom.xml" rel="self"/>
   
   <link href="http://kabtoffe.net/"/>
-  <updated>2026-02-11T16:48:04.048Z</updated>
+  <updated>2026-02-11T17:02:50.036Z</updated>
   <id>http://kabtoffe.net/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://kabtoffe.net/2026/02/11/neeraj-nandwana-generally-available-host-and-run-code-apps-in-power-apps/"/>
     <id>http://kabtoffe.net/2026/02/11/neeraj-nandwana-generally-available-host-and-run-code-apps-in-power-apps/</id>
     <published>2026-02-10T22:00:00.000Z</published>
-    <updated>2026-02-11T16:48:04.048Z</updated>
+    <updated>2026-02-11T17:02:50.036Z</updated>
     
     <content type="html"><![CDATA[<p>Neeraj Nandwana in the article <a href="https://www.microsoft.com/en-us/power-platform/blog/power-apps/generally-available-host-and-run-code-apps-in-power-apps/">Generally available: host and run code apps in Power Apps</a> (published February 9, 2026):</p><blockquote><p>Power Apps code apps bring the full strength of Power Platform to web developers. Build in any code‑first IDE, iterate locally, and run the same app seamlessly within Power Platform. Build with popular frameworks (React, Vue, and others) while keeping full control over your UI and logic.</p></blockquote><p>One aspect that is interesting with this technology is that it’s “normal web development” and the data sources are neatly wrapped as service providers. Since you make your own UI you can, by making smart decisions, keep the app loosely coupled to the backend.</p><p>If you later decide you want to transition away from Power Platform, you only need to implement the backend again making the transition easier for your users. There’s obviously a lot of benefits you get from Power Platform, but you might not need all of it.</p>]]></content>
     
@@ -39,6 +39,32 @@
     <category term="AI Coding" scheme="http://kabtoffe.net/tags/AI-Coding/"/>
     
     <category term="Power Apps" scheme="http://kabtoffe.net/tags/Power-Apps/"/>
+    
+    <category term="Power Platform" scheme="http://kabtoffe.net/tags/Power-Platform/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Quoting Neeraj Nandwana - Announcing General Availability (GA) of building single-page applications for Power Pages</title>
+    <link href="http://kabtoffe.net/2026/02/11/neeraj-nandwana-announcing-general-availability-ga-of-building-single-page-applications-for-power-pages/"/>
+    <id>http://kabtoffe.net/2026/02/11/neeraj-nandwana-announcing-general-availability-ga-of-building-single-page-applications-for-power-pages/</id>
+    <published>2026-02-10T22:00:00.000Z</published>
+    <updated>2026-02-11T17:02:13.609Z</updated>
+    
+    <content type="html"><![CDATA[<p>Neeraj Nandwana in the article <a href="https://www.microsoft.com/en-us/power-platform/blog/power-pages/announcing-general-availability-ga-of-building-single-page-applications-on-power-pages/">Announcing General Availability (GA) of building single-page applications for Power Pages</a> (published February 9, 2026):</p><blockquote><p>You can run your SPA locally with full authentication and Web API access to accelerate your development cycle. This means JavaScript hot reload, local debugging, and immediate feedback without deploying changes to your portal every time. For step-by-step instructions, see <a href="https://learn.microsoft.com/en-us/power-pages/configure/create-code-sites#set-up-local-development-by-enabling-web-api-calls-from-localhost-using-microsoft-entra-id-authentication">Set up local development for SPA sites</a>.</p></blockquote><p>When you want to authenticate locally you need to login to the live portal once using the built in Entra ID identity provider. That makes sure you have a contact that is connected to your Entra user. When you login on localhost that is the identty you use with the development proxy.</p><p>As far as I can tell you cannot currently use another provider this, but I might be wrong. The documentation is currently not very broad.</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;Neeraj Nandwana in the article &lt;a href=&quot;https://www.microsoft.com/en-us/power-platform/blog/power-pages/announcing-general-availability-g</summary>
+      
+    
+    
+    
+    
+    <category term="Quote" scheme="http://kabtoffe.net/tags/Quote/"/>
+    
+    <category term="AI Coding" scheme="http://kabtoffe.net/tags/AI-Coding/"/>
     
   </entry>
   
