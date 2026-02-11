@@ -6,7 +6,7 @@
   <link href="http://kabtoffe.net/atom.xml" rel="self"/>
   
   <link href="http://kabtoffe.net/"/>
-  <updated>2026-02-11T16:47:06.681Z</updated>
+  <updated>2026-02-11T16:48:04.048Z</updated>
   <id>http://kabtoffe.net/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://kabtoffe.net/2026/02/11/neeraj-nandwana-generally-available-host-and-run-code-apps-in-power-apps/"/>
     <id>http://kabtoffe.net/2026/02/11/neeraj-nandwana-generally-available-host-and-run-code-apps-in-power-apps/</id>
     <published>2026-02-10T22:00:00.000Z</published>
-    <updated>2026-02-11T16:47:06.681Z</updated>
+    <updated>2026-02-11T16:48:04.048Z</updated>
     
     <content type="html"><![CDATA[<p>Neeraj Nandwana in the article <a href="https://www.microsoft.com/en-us/power-platform/blog/power-apps/generally-available-host-and-run-code-apps-in-power-apps/">Generally available: host and run code apps in Power Apps</a> (published February 9, 2026):</p><blockquote><p>Power Apps code apps bring the full strength of Power Platform to web developers. Build in any code‑first IDE, iterate locally, and run the same app seamlessly within Power Platform. Build with popular frameworks (React, Vue, and others) while keeping full control over your UI and logic.</p></blockquote><p>One aspect that is interesting with this technology is that it’s “normal web development” and the data sources are neatly wrapped as service providers. Since you make your own UI you can, by making smart decisions, keep the app loosely coupled to the backend.</p><p>If you later decide you want to transition away from Power Platform, you only need to implement the backend again making the transition easier for your users. There’s obviously a lot of benefits you get from Power Platform, but you might not need all of it.</p>]]></content>
     
@@ -35,6 +35,10 @@
     
     
     <category term="Quote" scheme="http://kabtoffe.net/tags/Quote/"/>
+    
+    <category term="AI Coding" scheme="http://kabtoffe.net/tags/AI-Coding/"/>
+    
+    <category term="Power Apps" scheme="http://kabtoffe.net/tags/Power-Apps/"/>
     
   </entry>
   
