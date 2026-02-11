@@ -234,4 +234,18 @@ I’ve been reading Steve’s and Gene Kim’s Vibe Coding book and it’s a sup
         <tag>AI Coding</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Quoting Neeraj Nandwana - Generally available: host and run code apps in Power Apps</title>
+    <url>/2026/02/11/neeraj-nandwana-generally-available-host-and-run-code-apps-in-power-apps/</url>
+    <content><![CDATA[Neeraj Nandwana in the article Generally available: host and run code apps in Power Apps (published February 9, 2026):
+
+Power Apps code apps bring the full strength of Power Platform to web developers. Build in any code‑first IDE, iterate locally, and run the same app seamlessly within Power Platform. Build with popular frameworks (React, Vue, and others) while keeping full control over your UI and logic.
+
+One aspect that is interesting with this technology is that it’s “normal web development” and the data sources are neatly wrapped as service providers. Since you make your own UI you can, by making smart decisions, keep the app loosely coupled to the backend.
+If you later decide you want to transition away from Power Platform, you only need to implement the backend again making the transition easier for your users. There’s obviously a lot of benefits you get from Power Platform, but you might not need all of it.
+]]></content>
+      <tags>
+        <tag>Quote</tag>
+      </tags>
+  </entry>
 </search>
