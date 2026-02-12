@@ -41,6 +41,30 @@
   </entry>
   
   <entry>
+    <title>Quoting Unknown - Introducing Showboat and Rodney, so agents can demo what they’ve built</title>
+    <link href="http://kabtoffe.net/2026/02/12/unknown-introducing-showboat-and-rodney-so-agents-can-demo-what-theyve-built/"/>
+    <id>http://kabtoffe.net/2026/02/12/unknown-introducing-showboat-and-rodney-so-agents-can-demo-what-theyve-built/</id>
+    <published>2026-02-11T22:00:00.000Z</published>
+    <updated>2026-02-12T17:45:43.360Z</updated>
+    
+    <content type="html"><![CDATA[<p>Simon Willison in the article <a href="https://simonwillison.net/2026/Feb/10/showboat-and-rodney/">Introducing Showboat and Rodney, so agents can demo what they’ve built</a> (published February 10, 2026):</p><blockquote><p>The frontier models all understand that “red&#x2F;green TDD” means they should write the test first, run it and watch it fail and then write the code to make it pass - it’s a convenient shortcut.</p><p>I find this greatly increases the quality of the code and the likelihood that the agent will produce the right thing with the smallest amount of prompts to guide it.</p></blockquote>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;Simon Willison in the article &lt;a href=&quot;https://simonwillison.net/2026/Feb/10/showboat-and-rodney/&quot;&gt;Introducing Showboat and Rodney, so ag</summary>
+      
+    
+    
+    
+    
+    <category term="Quote" scheme="http://kabtoffe.net/tags/Quote/"/>
+    
+    <category term="AI Coding" scheme="http://kabtoffe.net/tags/AI-Coding/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Quoting Neeraj Nandwana - Generally available: host and run code apps in Power Apps</title>
     <link href="http://kabtoffe.net/2026/02/11/neeraj-nandwana-generally-available-host-and-run-code-apps-in-power-apps/"/>
     <id>http://kabtoffe.net/2026/02/11/neeraj-nandwana-generally-available-host-and-run-code-apps-in-power-apps/</id>

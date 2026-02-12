@@ -283,4 +283,18 @@ Trust brings freedom.
         <tag>Software Development</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Quoting Unknown - Introducing Showboat and Rodney, so agents can demo what they’ve built</title>
+    <url>/2026/02/12/unknown-introducing-showboat-and-rodney-so-agents-can-demo-what-theyve-built/</url>
+    <content><![CDATA[Simon Willison in the article Introducing Showboat and Rodney, so agents can demo what they’ve built (published February 10, 2026):
+
+The frontier models all understand that “red&#x2F;green TDD” means they should write the test first, run it and watch it fail and then write the code to make it pass - it’s a convenient shortcut.
+I find this greatly increases the quality of the code and the likelihood that the agent will produce the right thing with the smallest amount of prompts to guide it.
+
+]]></content>
+      <tags>
+        <tag>Quote</tag>
+        <tag>AI Coding</tag>
+      </tags>
+  </entry>
 </search>
