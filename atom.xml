@@ -6,7 +6,7 @@
   <link href="http://kabtoffe.net/atom.xml" rel="self"/>
   
   <link href="http://kabtoffe.net/"/>
-  <updated>2026-02-11T17:02:50.036Z</updated>
+  <updated>2026-02-12T17:43:29.115Z</updated>
   <id>http://kabtoffe.net/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Quoting codemanship - An Ode To “It Can’t Be Done”</title>
+    <link href="http://kabtoffe.net/2026/02/12/codemanship-an-ode-to-it-cant-be-done/"/>
+    <id>http://kabtoffe.net/2026/02/12/codemanship-an-ode-to-it-cant-be-done/</id>
+    <published>2026-02-11T22:00:00.000Z</published>
+    <updated>2026-02-12T17:43:29.115Z</updated>
+    
+    <content type="html"><![CDATA[<p>codemanship in the article <a href="https://codemanship.wordpress.com/2026/02/12/an-ode-to-it-cant-be-done/">An Ode To “It Can’t Be Done”</a> (published February 10, 2026):</p><blockquote><p>Command-and-control cultures are often a product of lack of trust. And in many cases, that lack of trust has been earned by past performance. Many disappointments, many broken promises. So organisations micromanage, and if anything’s guaranteed to end an experiment in software agility, it’s that.</p><p>To earn trust, teams need to deliver rapidly, reliably and sustainably. To gain the autonomy needed to deliver rapidly, reliably and sustainable, teams need to be trusted. Catch 22.</p><p>[…]</p><p>And the poker metaphor is very appropriate here, since the real benefit of agile software development is minimising risk. We don’t let uncertainty pile up into big batches and big releases, and managers usually realise that their picture of actual progress is far more realistic, enabling them to make more informed decisions grounded in the reality of user feedback about working software.</p></blockquote><p>Trust brings freedom.</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;codemanship in the article &lt;a href=&quot;https://codemanship.wordpress.com/2026/02/12/an-ode-to-it-cant-be-done/&quot;&gt;An Ode To “It Can’t Be Done”</summary>
+      
+    
+    
+    
+    
+    <category term="Quote" scheme="http://kabtoffe.net/tags/Quote/"/>
+    
+    <category term="Software Development" scheme="http://kabtoffe.net/tags/Software-Development/"/>
+    
+  </entry>
   
   <entry>
     <title>Quoting Neeraj Nandwana - Generally available: host and run code apps in Power Apps</title>

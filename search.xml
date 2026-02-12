@@ -266,4 +266,21 @@ As far as I can tell you cannot currently use another provider this, but I might
         <tag>AI Coding</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Quoting codemanship - An Ode To “It Can’t Be Done”</title>
+    <url>/2026/02/12/codemanship-an-ode-to-it-cant-be-done/</url>
+    <content><![CDATA[codemanship in the article An Ode To “It Can’t Be Done” (published February 10, 2026):
+
+Command-and-control cultures are often a product of lack of trust. And in many cases, that lack of trust has been earned by past performance. Many disappointments, many broken promises. So organisations micromanage, and if anything’s guaranteed to end an experiment in software agility, it’s that.
+To earn trust, teams need to deliver rapidly, reliably and sustainably. To gain the autonomy needed to deliver rapidly, reliably and sustainable, teams need to be trusted. Catch 22.
+[…]
+And the poker metaphor is very appropriate here, since the real benefit of agile software development is minimising risk. We don’t let uncertainty pile up into big batches and big releases, and managers usually realise that their picture of actual progress is far more realistic, enabling them to make more informed decisions grounded in the reality of user feedback about working software.
+
+Trust brings freedom.
+]]></content>
+      <tags>
+        <tag>Quote</tag>
+        <tag>Software Development</tag>
+      </tags>
+  </entry>
 </search>
