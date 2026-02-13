@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta name="description" content="The personal blog of Toffe Bergström also known online as kabtoffe.">
+
+
+
+<title>Extending Quote Post Automation: From Feedly-Specific to Universal Meta Tag Extraction | kabtoffe&#39;s blog</title>
+<link rel="canonical" href="http://kabtoffe.net/2026/02/13/Extending-Quote-Post-Automation-with-Meta-Tags/">
+<meta name="robots" content="index, follow">
+<meta name="author" content="Kristoffer Bergström">
+<meta name="generator" content="Hexo ">
+<meta name="theme-color" content="#8B4513">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Extending Quote Post Automation: From Feedly-Specific to Universal Meta Tag Extraction">
+
+  <meta property="og:description" content="The personal blog of Toffe Bergström also known online as kabtoffe.">
+
+<meta property="og:url" content="http://kabtoffe.net/2026/02/13/Extending-Quote-Post-Automation-with-Meta-Tags/">
+<meta property="og:image" content="/images/header-background.jpeg">
+<meta property="og:site_name" content="kabtoffe&#39;s blog">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:creator" content="@kabtoffe">
+
+
+<link rel="alternate" type="application/atom+xml" title="kabtoffe&#39;s blog" href="/atom.xml">
+
+
+
+<link rel="stylesheet" href="/css/style.css">
+
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div class="header-inner">
+    <div class="site-title">
+      <h1 class="logo">
+        <a href="/">
+          <span class="bracket">[</span>kabtoffe's blog<span class="bracket">]</span>
+        </a>
+      </h1>
+    </div>
+    
+    <nav id="main-nav">
+      
+        <a class="main-nav-link" href="/">Home</a>
+      
+        <a class="main-nav-link" href="/archives">Archives</a>
+      
+        <a class="main-nav-link" href="/About-Me/">About</a>
+      
+      
+        <a class="main-nav-link rss-link" href="/atom.xml" title="RSS Feed">RSS</a>
+      
+    </nav>
+  </div>
+</header>
+
+      <div class="outer">
+        <section id="main"><div class="article-meta">
+  <a href="/2026/02/13/Extending-Quote-Post-Automation-with-Meta-Tags/" class="article-date">
+  <time class="dt-published" datetime="2026-02-12T22:00:00.000Z" itemprop="datePublished">⏰ 2026-02-13</time>
+</a>
+
+  
+
+</div>
+
+  <header class="article-header">
+    
+  
+    <h1 class="p-name article-title" itemprop="headline name">
+      Extending Quote Post Automation: From Feedly-Specific to Universal Meta Tag Extraction
+    </h1>
+  
+
+
+  </header>
+
+<div class="e-content" itemprop="articleBody">
+  
+    <p>In my <a href="/2026/02/07/Automating-Quote-Posts-with-Feedly-and-Hexo/">previous post</a>, I documented a two-part system for automating quote post creation: a Node.js script and a Feedly-specific bookmarklet. Since then, I’ve extended the tooling to be more general-purpose and robust.</p>
+<h2 id="The-Problem-with-Feedly-Only-Extraction"><a href="#The-Problem-with-Feedly-Only-Extraction" class="headerlink" title="The Problem with Feedly-Only Extraction"></a>The Problem with Feedly-Only Extraction</h2><p>The original bookmarklet relied on Feedly’s specific DOM structure, which meant it only worked when reading articles <em>within</em> Feedly’s interface. This was limiting—I wanted to capture quotes from:</p>
+<ul>
+<li>Articles linked in tweets</li>
+<li>Blog posts I encounter through search</li>
+<li>News sites I visit directly</li>
+<li>Any webpage with proper meta tags</li>
+</ul>
+<h2 id="The-Solution-Universal-Meta-Tag-Extraction"><a href="#The-Solution-Universal-Meta-Tag-Extraction" class="headerlink" title="The Solution: Universal Meta Tag Extraction"></a>The Solution: Universal Meta Tag Extraction</h2><p>Instead of parsing Feedly’s DOM, I refactored the bookmarklet to extract metadata using standard HTML meta tags that most modern websites include:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">property</span>=<span class="string">&quot;og:author&quot;</span> <span class="attr">content</span>=<span class="string">&quot;Author Name&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">property</span>=<span class="string">&quot;og:title&quot;</span> <span class="attr">content</span>=<span class="string">&quot;Article Title&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">property</span>=<span class="string">&quot;article:published_time&quot;</span> <span class="attr">content</span>=<span class="string">&quot;2026-02-07&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">property</span>=<span class="string">&quot;article:tag&quot;</span> <span class="attr">content</span>=<span class="string">&quot;Technology&quot;</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="What-Gets-Extracted-Now"><a href="#What-Gets-Extracted-Now" class="headerlink" title="What Gets Extracted Now"></a>What Gets Extracted Now</h3><p>The bookmarklet automatically captures:</p>
+<ol>
+<li><p><strong>Author</strong> - With fallback chain:</p>
+<ul>
+<li><code>article:author</code> meta tag</li>
+<li><code>og:author</code> (Open Graph)</li>
+<li>Site name from <code>og:site_name</code> or <code>application-name</code></li>
+<li>Falls back to “Unknown” if not found</li>
+</ul>
+</li>
+<li><p><strong>Title</strong> - Tries multiple sources:</p>
+<ul>
+<li>Open Graph <code>og:title</code></li>
+<li>Twitter Card <code>twitter:title</code></li>
+<li>HTML <code>&lt;title&gt;</code> tag as last resort</li>
+</ul>
+</li>
+<li><p><strong>Publication Date</strong> - Extracts and validates ISO format (YYYY-MM-DD):</p>
+<ul>
+<li><code>article:published_time</code></li>
+<li><code>datePublished</code> meta tag</li>
+<li>Custom <code>publish_date</code> meta tag</li>
+</ul>
+</li>
+<li><p><strong>Tags</strong> - Extracts all <code>article:tag</code> meta tags:</p>
+<ul>
+<li>Can capture multiple tags from a single page</li>
+<li>Pre-fills the Tags field in the form</li>
+<li>Fully editable before generating the command</li>
+</ul>
+</li>
+<li><p><strong>Highlighted Text</strong> - Uses <code>window.getSelection()</code> to capture:</p>
+<ul>
+<li>Text you highlight&#x2F;select BEFORE clicking the bookmark</li>
+<li>Preserves your selection exactly as you made it</li>
+</ul>
+</li>
+</ol>
+<h3 id="Auto-Fetch-Metadata-from-URL"><a href="#Auto-Fetch-Metadata-from-URL" class="headerlink" title="Auto-Fetch Metadata from URL"></a>Auto-Fetch Metadata from URL</h3><p>Both the bookmarklet and <code>create-quote-post.js</code> now also intelligently fetch missing metadata:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># If author is missing or &quot;Unknown&quot;, the script fetches it from the URL</span></span><br><span class="line">node tools/create-quote-post.js \</span><br><span class="line">  --url <span class="string">&quot;https://example.com/article&quot;</span> \</span><br><span class="line">  --quote <span class="string">&quot;The quote...&quot;</span> \</span><br><span class="line">  --commentary <span class="string">&quot;My thoughts...&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>The script will:</p>
+<ul>
+<li>Fetch the article’s HTML</li>
+<li>Extract author, title, date, and tags from meta tags</li>
+<li>Log what it found: <code>✓ Found author: Ben Thompson</code></li>
+<li>Use the extracted values for post generation</li>
+</ul>
+<p>The general bookmarklet works on any website with proper meta tags, pawing the path for future automations.</p>
+<p>The updated resources are available at:</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/kabtoffe/kabtoffe.github.io/blob/master/resources/bookmarklets/feedly-bookmarklet.js">feedly-bookmarklet.js</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/kabtoffe/kabtoffe.github.io/blob/master/resources/bookmarklets/general-bookmarklet.js">general-bookmarklet.js</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/kabtoffe/kabtoffe.github.io/blob/master/resources/create-quote-post.js">create-quote-post.js</a></li>
+</ul>
+
+  
+</div>
+<footer class="article-footer">
+  
+  <div class="post-tags">
+    
+      <a class="tag-link" href="/tags/Hexo/">#Hexo</a>
+    
+      <a class="tag-link" href="/tags/NodeJS/">#NodeJS</a>
+    
+      <a class="tag-link" href="/tags/Automation/">#Automation</a>
+    
+      <a class="tag-link" href="/tags/Bookmarklet/">#Bookmarklet</a>
+    
+      <a class="tag-link" href="/tags/Meta-Tags/">#Meta Tags</a>
+    
+  </div>
+
+
+</footer>
+
+  
+<nav id="article-nav">
+  
+    <a href="/2026/02/13/geoffrey-huntley-dont-waste-your-back-pressure/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">← Newer</strong>
+      <div class="article-nav-title">
+        
+          Quoting Geoffrey Huntley - don’t waste your back pressure
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2026/02/12/codemanship-an-ode-to-it-cant-be-done/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older →</strong>
+      <div class="article-nav-title">Quoting codemanship - An Ode To “It Can’t Be Done”</div>
+    </a>
+  
+</nav>
+
+
+
+
+</section>
+        
+          <aside id="sidebar">
+  <div class="sidebar-inner">
+    
+    <section class="widget">
+      <h3 class="widget-title">Recent Posts</h3>
+      <ul class="widget-list">
+        
+          <li><a href="/2026/02/13/scott-hanselman-is-the-craft-dead/">Quoting Scott Hanselman - Is the craft dead?</a></li>
+        
+          <li><a href="/2026/02/13/geoffrey-huntley-dont-waste-your-back-pressure/">Quoting Geoffrey Huntley - don’t waste your back pressure</a></li>
+        
+          <li><a href="/2026/02/13/Extending-Quote-Post-Automation-with-Meta-Tags/">Extending Quote Post Automation: From Feedly-Specific to Universal Meta Tag Extraction</a></li>
+        
+          <li><a href="/2026/02/12/codemanship-an-ode-to-it-cant-be-done/">Quoting codemanship - An Ode To “It Can’t Be Done”</a></li>
+        
+          <li><a href="/2026/02/12/unknown-introducing-showboat-and-rodney-so-agents-can-demo-what-theyve-built/">Quoting Unknown - Introducing Showboat and Rodney, so agents can demo what they’ve built</a></li>
+        
+      </ul>
+    </section>
+    
+    <section class="widget">
+      <h3 class="widget-title">Archives</h3>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2026/02/">February 2026</a><span class="archive-list-count">10</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/07/">July 2017</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/06/">June 2017</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2017/04/">April 2017</a><span class="archive-list-count">2</span></li></ul>
+    </section>
+    
+    <section class="widget">
+      <h3 class="widget-title">Tags</h3>
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/AI/" rel="tag">AI</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/AI-Coding/" rel="tag">AI Coding</a><span class="tag-list-count">6</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Automation/" rel="tag">Automation</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Bookmarklet/" rel="tag">Bookmarklet</a><span class="tag-list-count">2</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Dynamics-365/" rel="tag">Dynamics 365</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Feedly/" rel="tag">Feedly</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Markdown/" rel="tag">Markdown</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Meta-Tags/" rel="tag">Meta Tags</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/NodeJS/" rel="tag">NodeJS</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Power-Apps/" rel="tag">Power Apps</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Power-Platform/" rel="tag">Power Platform</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/PowerShell/" rel="tag">PowerShell</a><span class="tag-list-count">3</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Quote/" rel="tag">Quote</a><span class="tag-list-count">8</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/Software-Development/" rel="tag">Software Development</a><span class="tag-list-count">1</span></li></ul>
+    </section>
+  </div>
+</aside>
+
+        
+      </div>
+      <footer id="footer">
+  <p class="footer-text">
+    &copy; 2026 Kristoffer &#34;Toffe&#34; Bergström · Powered by <a target="_blank" rel="noopener" href="http://hexo.io">Hexo</a>
+  </p>
+  <div class="footer-gears">
+    <span>⚙️</span><span>⚙️</span><span>⚙️</span>
+  </div>
+</footer>
+
+    </div>
+    <!-- Analytics -->
+
+  </div>
+</body>
+</html>

@@ -327,4 +327,82 @@ There are many ways to tune back-pressure and as Moss states it starts with choi
         <tag>AI Coding</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Extending Quote Post Automation: From Feedly-Specific to Universal Meta Tag Extraction</title>
+    <url>/2026/02/13/Extending-Quote-Post-Automation-with-Meta-Tags/</url>
+    <content><![CDATA[In my previous post, I documented a two-part system for automating quote post creation: a Node.js script and a Feedly-specific bookmarklet. Since then, I’ve extended the tooling to be more general-purpose and robust.
+The Problem with Feedly-Only ExtractionThe original bookmarklet relied on Feedly’s specific DOM structure, which meant it only worked when reading articles within Feedly’s interface. This was limiting—I wanted to capture quotes from:
+
+Articles linked in tweets
+Blog posts I encounter through search
+News sites I visit directly
+Any webpage with proper meta tags
+
+The Solution: Universal Meta Tag ExtractionInstead of parsing Feedly’s DOM, I refactored the bookmarklet to extract metadata using standard HTML meta tags that most modern websites include:
+&lt;meta property=&quot;og:author&quot; content=&quot;Author Name&quot;&gt;&lt;meta property=&quot;og:title&quot; content=&quot;Article Title&quot;&gt;&lt;meta property=&quot;article:published_time&quot; content=&quot;2026-02-07&quot;&gt;&lt;meta property=&quot;article:tag&quot; content=&quot;Technology&quot;&gt;
+
+What Gets Extracted NowThe bookmarklet automatically captures:
+
+Author - With fallback chain:
+
+article:author meta tag
+og:author (Open Graph)
+Site name from og:site_name or application-name
+Falls back to “Unknown” if not found
+
+
+Title - Tries multiple sources:
+
+Open Graph og:title
+Twitter Card twitter:title
+HTML &lt;title&gt; tag as last resort
+
+
+Publication Date - Extracts and validates ISO format (YYYY-MM-DD):
+
+article:published_time
+datePublished meta tag
+Custom publish_date meta tag
+
+
+Tags - Extracts all article:tag meta tags:
+
+Can capture multiple tags from a single page
+Pre-fills the Tags field in the form
+Fully editable before generating the command
+
+
+Highlighted Text - Uses window.getSelection() to capture:
+
+Text you highlight&#x2F;select BEFORE clicking the bookmark
+Preserves your selection exactly as you made it
+
+
+
+Auto-Fetch Metadata from URLBoth the bookmarklet and create-quote-post.js now also intelligently fetch missing metadata:
+# If author is missing or &quot;Unknown&quot;, the script fetches it from the URLnode tools/create-quote-post.js \  --url &quot;https://example.com/article&quot; \  --quote &quot;The quote...&quot; \  --commentary &quot;My thoughts...&quot;
+
+The script will:
+
+Fetch the article’s HTML
+Extract author, title, date, and tags from meta tags
+Log what it found: ✓ Found author: Ben Thompson
+Use the extracted values for post generation
+
+The general bookmarklet works on any website with proper meta tags, pawing the path for future automations.
+The updated resources are available at:
+
+feedly-bookmarklet.js
+general-bookmarklet.js
+create-quote-post.js
+
+]]></content>
+      <tags>
+        <tag>Hexo</tag>
+        <tag>NodeJS</tag>
+        <tag>Automation</tag>
+        <tag>Bookmarklet</tag>
+        <tag>Meta Tags</tag>
+      </tags>
+  </entry>
 </search>

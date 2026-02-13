@@ -1,14 +1,17 @@
 /**
  * Feedly Bookmarklet for creating quote posts
+ * Source: This file is the authoritative source for the Feedly bookmarklet
  *
  * Instructions:
  * 1. Create a new bookmark in your browser
- * 2. Name it: "Create Quote Post"
+ * 2. Name it: "Create Quote Post (Feedly)"
  * 3. Paste the minified code below as the URL (starts with javascript:)
  * 4. Visit a Feedly article and click the bookmark
  *
  * Minified bookmarklet (copy everything after javascript:):
- * javascript:(function(){function extractFeedly(){const titleEl=document.querySelector("a.ArticleTitle");const title=titleEl?titleEl.innerText:"";const url=titleEl?titleEl.href:"";const sourceEl=document.querySelector("a[data-source-id]")||document.querySelector(".EntrySource");const author=sourceEl?sourceEl.innerText.replace(/\s+/g," ").trim():"Unknown";const date=new Date().toISOString().split("T")[0];return{title,url,author,date};}const data=extractFeedly();const quote=prompt("Paste the quote here (leave empty to skip):","");const commentary=prompt("Add your commentary (leave empty to skip):","");if(!quote&&!commentary){alert("At least one of quote or commentary is required");return;}const cmd=`node scripts/create-quote-post.js --author "${data.author.replace(/"/g,'\\"')}" --url "${data.url}" --title "${data.title.replace(/"/g,'\\"')}" --date "${data.date}"${quote?` --quote "${quote.replace(/"/g,'\\"')}"`:""} ${commentary?`--commentary "${commentary.replace(/"/g,'\\"')}"`:""} `;const output=`${cmd}`;const textarea=document.createElement("textarea");textarea.value=output;textarea.style.position="fixed";textarea.style.top="10px";textarea.style.right="10px";textarea.style.width="400px";textarea.style.height="150px";textarea.style.zIndex="10000";textarea.style.fontFamily="monospace";textarea.style.fontSize="12px";textarea.style.padding="10px";textarea.style.border="2px solid #333";textarea.style.borderRadius="4px";textarea.style.backgroundColor="#f0f0f0";document.body.appendChild(textarea);textarea.select();document.execCommand("copy");const msg=document.createElement("div");msg.textContent="✓ Command copied to clipboard!";msg.style.position="fixed";msg.style.top="10px";msg.style.left="10px";msg.style.padding="10px 20px";msg.style.backgroundColor="#4CAF50";msg.style.color="white";msg.style.borderRadius="4px";msg.style.zIndex="10001";msg.style.fontFamily="sans-serif";document.body.appendChild(msg);setTimeout(()=>{document.body.removeChild(textarea);document.body.removeChild(msg);},3000);})();
+ */
+
+/* javascript:!function(){function t(t){return t.replace(/"/g,'\\"')}!function(e){const n="qpb-styles";if(!document.getElementById(n)){const t=document.createElement("style");t.id=n,t.textContent=".qpb-overlay{position:fixed!important;top:0!important;left:0!important;width:100%!important;height:100%!important;background:rgba(0,0,0,.5)!important;z-index:9999!important;pointer-events:none!important}.qpb-overlay *{box-sizing:border-box!important;margin:0!important;padding:0!important;font:inherit!important}.qpb-dialog{position:fixed!important;top:50%!important;left:50%!important;transform:translate(-50%,-50%)!important;width:90%!important;max-width:700px!important;max-height:90vh!important;background:#fff!important;border-radius:8px!important;box-shadow:0 4px 20px rgba(0,0,0,.3)!important;z-index:10000!important;padding:20px!important;overflow-y:auto!important;color:#333!important;pointer-events:auto!important}.qpb-dialog h2{margin:0 0 20px 0!important;font-size:20px!important;font-weight:bold!important}.qpb-dialog p{margin:0 0 10px 0!important;font-size:14px!important;color:#666!important}.qpb-dialog label{display:block!important;margin-bottom:5px!important;font-weight:bold!important;font-size:14px!important;color:#333!important}.qpb-dialog textarea{width:100%!important;padding:8px!important;font-size:13px!important;border:1px solid #ddd!important;border-radius:4px!important;resize:vertical!important;color:#333!important;background:#fff!important;font-family:monospace!important}.qpb-command-textarea{height:250px!important;white-space:pre-wrap!important;overflow-wrap:break-word!important;user-select:all!important;margin-bottom:15px!important}.qpb-buttons{display:flex!important;gap:10px!important;margin-top:20px!important}.qpb-btn{flex:1!important;padding:12px!important;border:none!important;border-radius:4px!important;cursor:pointer!important;font-size:14px!important;font-weight:bold!important}.qpb-btn-green{background:#4CAF50!important;color:#fff!important}.qpb-btn-gray{background:#999!important;color:#fff!important}",document.head.appendChild(t)}const o=document.createElement("div");o.className="qpb-overlay";const a=document.createElement("div");a.className="qpb-dialog";const r=document.createElement("h2");r.textContent="Create Quote Post";const i=document.createElement("div"),p=(t,e,n="")=>{const o=document.createElement("div");o.style.marginBottom="15px !important";const a=document.createElement("label");a.textContent=t;const r=document.createElement("textarea");return r.value=e||"",r.placeholder=n,r.style.minHeight="Quote"===t||"Commentary"===t?"100px !important":"40px !important",r.style.fontFamily="Quote"===t||"Commentary"===t?"monospace !important":"inherit !important",o.appendChild(a),o.appendChild(r),{container:o,input:r}},m=p("Author",e.author),c=p("Source URL",e.url),l=p("Article Title",e.title),d=p("Publication Date (YYYY-MM-DD)",e.date),s=p("Tags (comma-separated)",(e.tags||[]).join(", ")),u=p("Quote",e.highlights.join("\n\n"),"Enter or edit the quote..."),h=p("Your Commentary",e.comments.join("\n\n"),"Enter or edit your commentary...");i.appendChild(m.container),i.appendChild(c.container),i.appendChild(l.container),i.appendChild(d.container),i.appendChild(s.container),i.appendChild(u.container),i.appendChild(h.container);const b=document.createElement("div");b.className="qpb-buttons";const g=document.createElement("button");g.textContent="Generate Command",g.className="qpb-btn qpb-btn-green";const x=document.createElement("button");x.textContent="Cancel",x.className="qpb-btn qpb-btn-gray";const y=()=>{document.body.contains(o)&&document.body.removeChild(o),document.body.contains(a)&&document.body.removeChild(a)};g.onclick=()=>{const e=u.input.value.trim(),n=h.input.value.trim();if(!e&&!n)return void alert("At least one of quote or commentary is required");const o={quote:e,commentary:n,author:m.input.value.trim(),url:c.input.value.trim(),title:l.input.value.trim(),date:d.input.value.trim(),tags:s.input.value.trim()};y(),function(e){const n=function(e,n){let o=`node tools/create-quote-post.js \\\n  --author "${t(e.author)}" \\\n  --url "${e.url}" \\\n  --title "${t(e.title)}" \\\n  --date "${e.date}"`;return n.tags&&(o+=` \\\n  --tags "${t(n.tags)}"`),n.quote&&(o+=` \\\n  --quote "${t(n.quote)}"`),n.commentary&&(o+=` \\\n  --commentary "${t(n.commentary)}"`),o}({author:e.author,url:e.url,title:e.title,date:e.date},{tags:e.tags,quote:e.quote,commentary:e.commentary}),o=document.createElement("div");o.className="qpb-overlay";const a=document.createElement("div");a.className="qpb-dialog",a.style.maxWidth="650px !important";const r=document.createElement("h2");r.textContent="Copy your command";const i=document.createElement("p");i.textContent="Select all text and copy (Ctrl+A then Ctrl+C):";const p=document.createElement("textarea");p.value=n,p.readOnly=!1,p.className="qpb-command-textarea",p.style.fontSize="11px !important";const m=document.createElement("div");m.className="qpb-buttons";const c=document.createElement("button");c.textContent="📋 Copy to Clipboard",c.className="qpb-btn qpb-btn-green",c.onclick=async()=>{try{await navigator.clipboard.writeText(n),c.textContent="✓ Copied!",setTimeout(()=>{c.textContent="📋 Copy to Clipboard"},2e3)}catch(t){c.textContent="Copy failed",console.error("Copy failed:",t)}};const l=document.createElement("button");l.textContent="Done",l.className="qpb-btn qpb-btn-gray";const d=()=>{document.body.contains(o)&&document.body.removeChild(o),document.body.contains(a)&&document.body.removeChild(a)};l.onclick=d,o.onclick=d,m.appendChild(c),m.appendChild(l),a.appendChild(r),a.appendChild(i),a.appendChild(p),a.appendChild(m),document.body.appendChild(o),document.body.appendChild(a)}(o)},x.onclick=y,o.onclick=y,b.appendChild(g),b.appendChild(x),a.appendChild(r),a.appendChild(i),a.appendChild(b),document.body.appendChild(o),document.body.appendChild(a)}(function(){const t=document.querySelector("a.ArticleTitle"),e=t?t.innerText:"",n=t?t.href:"";let o="Unknown";const a=document.querySelector("span.authors");a&&(o=a.innerText.replace(/^by\s+/,"").trim());let r=(new Date).toISOString().split("T")[0];const i=document.querySelector(".EntryMetadataWrapper span[title]");if(i){const t=i.getAttribute("title").match(/Published: (\w+),\s+(\d+)\s+(\w+)\s+(\d+)/);if(t){const[e,n,o,a,i]=t,p=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"].indexOf(a)+1;r=`${i}-${String(p).padStart(2,"0")}-${String(o).padStart(2,"0")}`}}function p(t){if("A"===t.tagName&&t.href)return`[${Array.from(t.childNodes).map(t=>3===t.nodeType?t.textContent:t.innerText||t.textContent||"").join("").trim()}](${t.href})`;let e="";return t.childNodes.forEach(t=>{3===t.nodeType?e+=t.textContent:1===t.nodeType&&("A"===t.tagName&&t.href?e+=`[${t.innerText.trim()}](${t.href})`:function(t){return t.classList&&t.classList.contains("TextHighlight")}(t)?e+=p(t):e+=t.innerText)}),e}const m=new Set;document.querySelectorAll('[class~="TextHighlight"]').forEach(t=>{let e=t.parentElement;for(;e&&"P"!==e.tagName;)e=e.parentElement;e&&"P"===e.tagName&&m.add(e)});const c=Array.from(document.querySelectorAll("p")),l=[];c.forEach((t,e)=>{m.has(t)&&l.push(e)});const d=[];l.forEach((t,e)=>{e>0&&t-l[e-1]>1&&d.push("[...]");const n=c[t].querySelectorAll('[class~="TextHighlight"]'),o=Array.from(n),a=[];o.forEach((t,e)=>{let n;n=t.querySelector("a")||"A"===t.tagName?p(t).trim():(t.innerText||"").trim(),n=n.replace(/\s+([,.;:!?\)])/g,"$1"),a.push(n),e<o.length-1&&function(t,e){let n=t.nextSibling;for(;n&&n!==e;){if(3===n.nodeType){if(n.textContent.trim())return!0}else if(1===n.nodeType&&"IMG"!==n.tagName&&"BR"!==n.tagName&&"SCRIPT"!==n.tagName&&"STYLE"!==n.tagName&&n.textContent.trim())return!0;n=n.nextSibling}return!1}(t,o[e+1])&&a.push("...")});let r=a.filter(t=>t).join(" ");r=r.replace(/\s+([,.;:!?\)])/g,"$1"),r&&d.push(r)});const s=document.querySelectorAll("div.Comment__body p.Comment__text"),u=Array.from(s).map(t=>t.innerText.trim()).filter(t=>t);let h=[];const b=document.querySelector(".EntryStackablePrompts");if(b){const t=b.querySelector("strong");if(t){const e=t.innerText.trim();e&&h.push(e)}}return{title:e,url:n,author:o,date:r,highlights:d,comments:u,tags:h}}())}();
  */
 
 // Non-minified version for development/understanding:
@@ -187,38 +190,26 @@ function extractFeedlyData() {
 }
 
 function showEditForm(data) {
+  // Inject CSS to prevent site styles from interfering
+  const styleId = "qpb-styles";
+  if (!document.getElementById(styleId)) {
+    const style = document.createElement("style");
+    style.id = styleId;
+    style.textContent = `.qpb-overlay{position:fixed!important;top:0!important;left:0!important;width:100%!important;height:100%!important;background:rgba(0,0,0,.5)!important;z-index:9999!important;pointer-events:none!important}.qpb-overlay *{box-sizing:border-box!important;margin:0!important;padding:0!important;font:inherit!important}.qpb-dialog{position:fixed!important;top:50%!important;left:50%!important;transform:translate(-50%,-50%)!important;width:90%!important;max-width:700px!important;max-height:90vh!important;background:#fff!important;border-radius:8px!important;box-shadow:0 4px 20px rgba(0,0,0,.3)!important;z-index:10000!important;padding:20px!important;overflow-y:auto!important;color:#333!important;pointer-events:auto!important}.qpb-dialog h2{margin:0 0 20px 0!important;font-size:20px!important;font-weight:bold!important}.qpb-dialog p{margin:0 0 10px 0!important;font-size:14px!important;color:#666!important}.qpb-dialog label{display:block!important;margin-bottom:5px!important;font-weight:bold!important;font-size:14px!important;color:#333!important}.qpb-dialog textarea{width:100%!important;padding:8px!important;font-size:13px!important;border:1px solid #ddd!important;border-radius:4px!important;resize:vertical!important;color:#333!important;background:#fff!important;font-family:monospace!important}.qpb-command-textarea{height:250px!important;white-space:pre-wrap!important;overflow-wrap:break-word!important;user-select:all!important;margin-bottom:15px!important}.qpb-buttons{display:flex!important;gap:10px!important;margin-top:20px!important}.qpb-btn{flex:1!important;padding:12px!important;border:none!important;border-radius:4px!important;cursor:pointer!important;font-size:14px!important;font-weight:bold!important}.qpb-btn-green{background:#4CAF50!important;color:#fff!important}.qpb-btn-gray{background:#999!important;color:#fff!important}`;
+    document.head.appendChild(style);
+  }
+
   // Create overlay
   const overlay = document.createElement("div");
-  overlay.style.position = "fixed";
-  overlay.style.top = "0";
-  overlay.style.left = "0";
-  overlay.style.width = "100%";
-  overlay.style.height = "100%";
-  overlay.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
-  overlay.style.zIndex = "9999";
+  overlay.className = "qpb-overlay";
 
   // Create dialog
   const dialog = document.createElement("div");
-  dialog.style.position = "fixed";
-  dialog.style.top = "50%";
-  dialog.style.left = "50%";
-  dialog.style.transform = "translate(-50%, -50%)";
-  dialog.style.width = "90%";
-  dialog.style.maxWidth = "700px";
-  dialog.style.maxHeight = "90vh";
-  dialog.style.backgroundColor = "white";
-  dialog.style.borderRadius = "8px";
-  dialog.style.boxShadow = "0 4px 20px rgba(0, 0, 0, 0.3)";
-  dialog.style.zIndex = "10000";
-  dialog.style.padding = "20px";
-  dialog.style.fontFamily = "sans-serif";
-  dialog.style.overflowY = "auto";
+  dialog.className = "qpb-dialog";
 
   // Title
   const title = document.createElement("h2");
   title.textContent = "Create Quote Post";
-  title.style.margin = "0 0 20px 0";
-  title.style.fontSize = "20px";
 
   // Form container
   const form = document.createElement("div");
@@ -226,27 +217,16 @@ function showEditForm(data) {
   // Helper to create field
   const createField = (label, value, placeholder = "") => {
     const container = document.createElement("div");
-    container.style.marginBottom = "15px";
+    container.style.marginBottom = "15px !important";
 
     const labelEl = document.createElement("label");
     labelEl.textContent = label;
-    labelEl.style.display = "block";
-    labelEl.style.marginBottom = "5px";
-    labelEl.style.fontWeight = "bold";
-    labelEl.style.fontSize = "14px";
 
     const input = document.createElement("textarea");
     input.value = value || "";
     input.placeholder = placeholder;
-    input.style.width = "100%";
-    input.style.padding = "8px";
-    input.style.fontFamily = label === "Quote" || label === "Commentary" ? "monospace" : "sans-serif";
-    input.style.fontSize = "13px";
-    input.style.border = "1px solid #ddd";
-    input.style.borderRadius = "4px";
-    input.style.boxSizing = "border-box";
-    input.style.minHeight = label === "Quote" || label === "Commentary" ? "100px" : "40px";
-    input.style.resize = "vertical";
+    input.style.minHeight = label === "Quote" || label === "Commentary" ? "100px !important" : "40px !important";
+    input.style.fontFamily = label === "Quote" || label === "Commentary" ? "monospace !important" : "inherit !important";
 
     container.appendChild(labelEl);
     container.appendChild(input);
@@ -272,34 +252,17 @@ function showEditForm(data) {
 
   // Buttons container
   const buttonContainer = document.createElement("div");
-  buttonContainer.style.display = "flex";
-  buttonContainer.style.gap = "10px";
-  buttonContainer.style.marginTop = "20px";
+  buttonContainer.className = "qpb-buttons";
 
   // Generate button
   const generateBtn = document.createElement("button");
   generateBtn.textContent = "Generate Command";
-  generateBtn.style.flex = "1";
-  generateBtn.style.padding = "12px";
-  generateBtn.style.backgroundColor = "#4CAF50";
-  generateBtn.style.color = "white";
-  generateBtn.style.border = "none";
-  generateBtn.style.borderRadius = "4px";
-  generateBtn.style.cursor = "pointer";
-  generateBtn.style.fontSize = "14px";
-  generateBtn.style.fontWeight = "bold";
+  generateBtn.className = "qpb-btn qpb-btn-green";
 
   // Cancel button
   const cancelBtn = document.createElement("button");
   cancelBtn.textContent = "Cancel";
-  cancelBtn.style.flex = "1";
-  cancelBtn.style.padding = "12px";
-  cancelBtn.style.backgroundColor = "#999";
-  cancelBtn.style.color = "white";
-  cancelBtn.style.border = "none";
-  cancelBtn.style.borderRadius = "4px";
-  cancelBtn.style.cursor = "pointer";
-  cancelBtn.style.fontSize = "14px";
+  cancelBtn.className = "qpb-btn qpb-btn-gray";
 
   // Remove dialog function
   const removeDialog = () => {
@@ -391,77 +354,36 @@ function showCommandDialog(content) {
 
   // Create overlay
   const overlay = document.createElement("div");
-  overlay.style.position = "fixed";
-  overlay.style.top = "0";
-  overlay.style.left = "0";
-  overlay.style.width = "100%";
-  overlay.style.height = "100%";
-  overlay.style.backgroundColor = "rgba(0, 0, 0, 0.5)";
-  overlay.style.zIndex = "9999";
-  overlay.style.pointerEvents = "none";
+  overlay.className = "qpb-overlay";
 
   // Create dialog
   const dialog = document.createElement("div");
-  dialog.style.position = "fixed";
-  dialog.style.top = "50%";
-  dialog.style.left = "50%";
-  dialog.style.transform = "translate(-50%, -50%)";
-  dialog.style.width = "90%";
-  dialog.style.maxWidth = "650px";
-  dialog.style.backgroundColor = "white";
-  dialog.style.borderRadius = "8px";
-  dialog.style.boxShadow = "0 4px 20px rgba(0, 0, 0, 0.3)";
-  dialog.style.zIndex = "10000";
-  dialog.style.padding = "20px";
-  dialog.style.fontFamily = "sans-serif";
-  dialog.style.pointerEvents = "auto";
+  dialog.className = "qpb-dialog";
+  dialog.style.maxWidth = "650px !important";
 
   // Title
   const title = document.createElement("h2");
   title.textContent = "Copy your command";
-  title.style.margin = "0 0 15px 0";
-  title.style.fontSize = "18px";
 
   // Instructions
   const instructions = document.createElement("p");
   instructions.textContent = "Select all text and copy (Ctrl+A then Ctrl+C):";
-  instructions.style.margin = "0 0 10px 0";
-  instructions.style.fontSize = "14px";
-  instructions.style.color = "#666";
 
   // Textarea with command
   const textarea = document.createElement("textarea");
   textarea.value = command;
   textarea.readOnly = false;
-  textarea.style.width = "100%";
-  textarea.style.height = "250px";
-  textarea.style.padding = "10px";
-  textarea.style.fontFamily = "monospace";
-  textarea.style.fontSize = "11px";
-  textarea.style.border = "1px solid #ddd";
-  textarea.style.borderRadius = "4px";
-  textarea.style.boxSizing = "border-box";
-  textarea.style.marginBottom = "15px";
-  textarea.style.whiteSpace = "pre-wrap";
-  textarea.style.overflowWrap = "break-word";
-  textarea.style.userSelect = "all";
+  textarea.className = "qpb-command-textarea";
+  textarea.style.fontSize = "11px !important";
 
   // Button container
   const buttonContainer = document.createElement("div");
-  buttonContainer.style.display = "flex";
-  buttonContainer.style.gap = "10px";
+  buttonContainer.className = "qpb-buttons";
 
   // Copy to clipboard button
   const copyBtn = document.createElement("button");
   copyBtn.textContent = "📋 Copy to Clipboard";
-  copyBtn.style.flex = "1";
-  copyBtn.style.padding = "10px 20px";
-  copyBtn.style.backgroundColor = "#4CAF50";
-  copyBtn.style.color = "white";
-  copyBtn.style.border = "none";
-  copyBtn.style.borderRadius = "4px";
-  copyBtn.style.cursor = "pointer";
-  copyBtn.style.fontSize = "14px";
+  copyBtn.className = "qpb-btn qpb-btn-green";
 
   copyBtn.onclick = async () => {
     try {
@@ -479,14 +401,7 @@ function showCommandDialog(content) {
   // Done button
   const doneBtn = document.createElement("button");
   doneBtn.textContent = "Done";
-  doneBtn.style.flex = "1";
-  doneBtn.style.padding = "10px 20px";
-  doneBtn.style.backgroundColor = "#999";
-  doneBtn.style.color = "white";
-  doneBtn.style.border = "none";
-  doneBtn.style.borderRadius = "4px";
-  doneBtn.style.cursor = "pointer";
-  doneBtn.style.fontSize = "14px";
+  doneBtn.className = "qpb-btn qpb-btn-gray";
 
   // Remove dialog function
   const removeDialog = () => {
