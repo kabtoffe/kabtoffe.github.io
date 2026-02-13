@@ -297,4 +297,34 @@ I find this greatly increases the quality of the code and the likelihood that th
         <tag>AI Coding</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Quoting Scott Hanselman - Is the craft dead?</title>
+    <url>/2026/02/13/scott-hanselman-is-the-craft-dead/</url>
+    <content><![CDATA[Scott Hanselman in the article Is the craft dead? (published January 17, 2026):
+
+I’ve been coding now for money for 35 years and systems are still complicated, computers still do dumb stuff, humans still do dumb stuff,
+There is value in good taste, there is value in craftsmanship, and there is value in human judgment.
+[…]
+I think that there will be lots of work for us cleaning up after the slop, but if you know what you’re doing AI augmented development is going to get you some amazing results and I am enjoying learning a ton during this momentous era shift - but the craft still exists.
+
+I agree. Getting quality results from LLMs requires discipline.
+]]></content>
+      <tags>
+        <tag>Quote</tag>
+        <tag>AI Coding</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Quoting Unknown - don’t waste your back pressure</title>
+    <url>/2026/02/13/unknown-dont-waste-your-back-pressure/</url>
+    <content><![CDATA[Unknown in the article don’t waste your back pressure (published January 17, 2026):
+
+There are many ways to tune back-pressure and as Moss states it starts with choice of programming language, applying engineering knowledge to design a fast test suite that provides signal but perhaps my favorite one is… pre-commit hooks (aka prek).
+
+]]></content>
+      <tags>
+        <tag>Quote</tag>
+        <tag>AI Coding</tag>
+      </tags>
+  </entry>
 </search>
