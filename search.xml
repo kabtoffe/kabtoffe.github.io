@@ -65,8 +65,7 @@ This would eliminate the need to manually run the script, enabling a one-click p
 
 Want to try it? The bookmarklet and script are open for customization. You can find:
 
-The minified bookmarklet in BOOKMARKLET.md
-The extraction logic in feedly-bookmarklet.js
+The extraction logic and minified version in feedly-bookmarklet.js
 The post creation script in create-quote-post.js
 
 Note: At the moment the form is not quite usable inside Feedly, but the buttons work.
