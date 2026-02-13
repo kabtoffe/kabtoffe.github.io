@@ -315,8 +315,8 @@ I agree. Getting quality results from LLMs requires discipline.
       </tags>
   </entry>
   <entry>
-    <title>Quoting Unknown - don’t waste your back pressure</title>
-    <url>/2026/02/13/unknown-dont-waste-your-back-pressure/</url>
+    <title>Quoting Geoffrey Huntley - don’t waste your back pressure</title>
+    <url>/2026/02/13/geoffrey-huntley-dont-waste-your-back-pressure/</url>
     <content><![CDATA[Geoffrey Huntley in the article don’t waste your back pressure (published January 17, 2026):
 
 There are many ways to tune back-pressure and as Moss states it starts with choice of programming language, applying engineering knowledge to design a fast test suite that provides signal but perhaps my favorite one is… pre-commit hooks (aka prek).
