@@ -41,6 +41,54 @@
   </entry>
   
   <entry>
+    <title>Quoting Laura Kokkarinen - How to setup SharePoint Online Sites.Selected permissions — Step by step</title>
+    <link href="http://kabtoffe.net/2026/02/13/laura-kokkarinen-how-to-setup-sharepoint-online-sitesselected-permissions-step-by-step/"/>
+    <id>http://kabtoffe.net/2026/02/13/laura-kokkarinen-how-to-setup-sharepoint-online-sitesselected-permissions-step-by-step/</id>
+    <published>2026-02-13T22:00:00.000Z</published>
+    <updated>2026-02-14T15:53:00.502Z</updated>
+    
+    <content type="html"><![CDATA[<p>Laura Kokkarinen in the article <a href="https://laurakokkarinen.com/how-to-setup-sharepoint-online-sites-selected-permissions-step-by-step/">How to setup SharePoint Online Sites.Selected permissions — Step by step</a> (published February 14, 2026):</p><blockquote><p>The process of granting these permissions is two-fold:</p><p>Grant the Sites.Selected permission for your Azure app’s managed identity to the SharePoint Online API as you normally would.<br>Add the permission your app needs on a specific site via the Microsoft Graph API to the site entity.</p></blockquote><p>Good link to have on hand.</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;Laura Kokkarinen in the article &lt;a href=&quot;https://laurakokkarinen.com/how-to-setup-sharepoint-online-sites-selected-permissions-step-by-st</summary>
+      
+    
+    
+    
+    
+    <category term="Quote" scheme="http://kabtoffe.net/tags/Quote/"/>
+    
+    <category term="SharePoint" scheme="http://kabtoffe.net/tags/SharePoint/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Quoting codemanship - Why LLMs Will Always Need An Expert In The Loop</title>
+    <link href="http://kabtoffe.net/2026/02/13/codemanship-why-llms-will-always-need-an-expert-in-the-loop/"/>
+    <id>http://kabtoffe.net/2026/02/13/codemanship-why-llms-will-always-need-an-expert-in-the-loop/</id>
+    <published>2026-02-13T22:00:00.000Z</published>
+    <updated>2026-02-14T17:07:26.077Z</updated>
+    
+    <content type="html"><![CDATA[<p>codemanship in the article <a href="https://codemanship.wordpress.com/2026/02/14/why-llms-will-always-need-an-expert-in-the-loop/">Why LLMs Will Always Need An Expert In The Loop</a> (published February 14, 2026):</p><blockquote><p>So, there are two very likely futures we can work with (or, more accurately, around). We should not expect LLMs to get significantly more reliable, and we should not expect them to make sound decisions about modular design, dependencies and high-level architecture on non-trivial systems.</p><p>The full skinny: a software developer will be required behind the wheel for any “AI” or “agentic” workflow that’s built around LLMs.</p></blockquote><p>A software developer yes, but where in the process are they needed. There is lots to be done in tooling yet. Lovable is a good example, by setting the guardrails on the platform it enables less technical users to achieve great things.</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;codemanship in the article &lt;a href=&quot;https://codemanship.wordpress.com/2026/02/14/why-llms-will-always-need-an-expert-in-the-loop/&quot;&gt;Why LL</summary>
+      
+    
+    
+    
+    
+    <category term="Quote" scheme="http://kabtoffe.net/tags/Quote/"/>
+    
+    <category term="AI" scheme="http://kabtoffe.net/tags/AI/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Quoting Scott Hanselman - Is the craft dead?</title>
     <link href="http://kabtoffe.net/2026/02/12/scott-hanselman-is-the-craft-dead/"/>
     <id>http://kabtoffe.net/2026/02/12/scott-hanselman-is-the-craft-dead/</id>
