@@ -117,6 +117,10 @@ body {
   max-width: 100%;
 }
 
+.site-title {
+  text-align: center;
+}
+
 .site-title h1.logo {
   font-size: 48px;
   font-weight: bold;
