@@ -6,7 +6,7 @@
   <link href="http://kabtoffe.net/atom.xml" rel="self"/>
   
   <link href="http://kabtoffe.net/"/>
-  <updated>2026-02-13T18:41:02.039Z</updated>
+  <updated>2026-02-14T16:41:14.393Z</updated>
   <id>http://kabtoffe.net/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Quoting Mikko Koskinen - AI Is Not Replacing Jobs, It’s Replacing the Work Inside Them</title>
+    <link href="http://kabtoffe.net/2026/02/13/mikko-koskinen-ai-is-not-replacing-jobs-its-replacing-the-work-inside-them/"/>
+    <id>http://kabtoffe.net/2026/02/13/mikko-koskinen-ai-is-not-replacing-jobs-its-replacing-the-work-inside-them/</id>
+    <published>2026-02-13T22:00:00.000Z</published>
+    <updated>2026-02-14T16:41:14.393Z</updated>
+    
+    <content type="html"><![CDATA[<p>Mikko Koskinen in the article <a href="https://mikkokoskinen.com/2026/02/14/ai-is-not-replacing-jobs-its-replacing-the-work-inside-them/">AI Is Not Replacing Jobs, It’s Replacing the Work Inside Them</a> (published February 14, 2026):</p><blockquote><p>A useful comparison is software development, where this change is already well advanced. Writing code used to be a largely manual activity. Then the AI helped us write part of the code. Now AI can generate significant parts of it, suggest improvements, and assist throughout the process.</p><p>Developers have not disappeared, but their role has changed. Less time is spent writing code line by line, and more time is spent defining what should be built, guiding the system, and validating the outcome.</p><p>The work has moved up a level—from execution to intent and verification.</p></blockquote>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;Mikko Koskinen in the article &lt;a href=&quot;https://mikkokoskinen.com/2026/02/14/ai-is-not-replacing-jobs-its-replacing-the-work-inside-them/&quot;</summary>
+      
+    
+    
+    
+    
+    <category term="Quote" scheme="http://kabtoffe.net/tags/Quote/"/>
+    
+    <category term="AI" scheme="http://kabtoffe.net/tags/AI/"/>
+    
+  </entry>
   
   <entry>
     <title>Quoting Scott Hanselman - Is the craft dead?</title>

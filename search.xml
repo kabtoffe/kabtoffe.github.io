@@ -404,4 +404,19 @@ create-quote-post.js
         <tag>Meta Tags</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Quoting Mikko Koskinen - AI Is Not Replacing Jobs, It’s Replacing the Work Inside Them</title>
+    <url>/2026/02/13/mikko-koskinen-ai-is-not-replacing-jobs-its-replacing-the-work-inside-them/</url>
+    <content><![CDATA[Mikko Koskinen in the article AI Is Not Replacing Jobs, It’s Replacing the Work Inside Them (published February 14, 2026):
+
+A useful comparison is software development, where this change is already well advanced. Writing code used to be a largely manual activity. Then the AI helped us write part of the code. Now AI can generate significant parts of it, suggest improvements, and assist throughout the process.
+Developers have not disappeared, but their role has changed. Less time is spent writing code line by line, and more time is spent defining what should be built, guiding the system, and validating the outcome.
+The work has moved up a level—from execution to intent and verification.
+
+]]></content>
+      <tags>
+        <tag>Quote</tag>
+        <tag>AI</tag>
+      </tags>
+  </entry>
 </search>
