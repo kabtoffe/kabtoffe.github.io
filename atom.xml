@@ -6,7 +6,7 @@
   <link href="http://kabtoffe.net/atom.xml" rel="self"/>
   
   <link href="http://kabtoffe.net/"/>
-  <updated>2026-02-14T16:22:15.167Z</updated>
+  <updated>2026-02-13T18:41:02.039Z</updated>
   <id>http://kabtoffe.net/</id>
   
   <author>
@@ -15,31 +15,6 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>Quoting Test Author - Test Post</title>
-    <link href="http://kabtoffe.net/2026/02/13/test-author-test-post/"/>
-    <id>http://kabtoffe.net/2026/02/13/test-author-test-post/</id>
-    <published>2026-02-13T22:00:00.000Z</published>
-    <updated>2026-02-14T16:22:15.167Z</updated>
-    
-    <content type="html"><![CDATA[<p>Test Author in the article <a href="https://example.com/test-article">Test Post</a>:</p><blockquote><p>This is a test quote.</p></blockquote><p>This is a test commentary.</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;Test Author in the article &lt;a href=&quot;https://example.com/test-article&quot;&gt;Test Post&lt;/a&gt;:&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;This is a test quote.&lt;/p&gt;
-&lt;/bloc</summary>
-      
-    
-    
-    
-    
-    <category term="Quote" scheme="http://kabtoffe.net/tags/Quote/"/>
-    
-  </entry>
   
   <entry>
     <title>Quoting Scott Hanselman - Is the craft dead?</title>

@@ -404,17 +404,4 @@ create-quote-post.js
         <tag>Meta Tags</tag>
       </tags>
   </entry>
-  <entry>
-    <title>Quoting Test Author - Test Post</title>
-    <url>/2026/02/13/test-author-test-post/</url>
-    <content><![CDATA[Test Author in the article Test Post:
-
-This is a test quote.
-
-This is a test commentary.
-]]></content>
-      <tags>
-        <tag>Quote</tag>
-      </tags>
-  </entry>
 </search>
