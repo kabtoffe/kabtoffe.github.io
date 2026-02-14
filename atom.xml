@@ -89,6 +89,30 @@
   </entry>
   
   <entry>
+    <title>Quoting Unknown - Autonomous agents - Technique 3: Provide tools for steps your agent can&#39;t easily handle (like Agent Flows)</title>
+    <link href="http://kabtoffe.net/2026/02/13/unknown-autonomous-agents-technique-3-provide-tools-for-steps-your-agent-cant-easily-handle-like-agent-flows/"/>
+    <id>http://kabtoffe.net/2026/02/13/unknown-autonomous-agents-technique-3-provide-tools-for-steps-your-agent-cant-easily-handle-like-agent-flows/</id>
+    <published>2026-02-13T22:00:00.000Z</published>
+    <updated>2026-02-14T19:03:00.244Z</updated>
+    
+    <content type="html"><![CDATA[<p>Unknown in the article <a href="https://www.sharepointnutsandbolts.com/2026/02/Copilot-Studio-Agent-Flows.html">Autonomous agents - Technique 3: Provide tools for steps your agent can’t easily handle (like Agent Flows)</a> (published February 8, 2026):</p><blockquote><p>They need to call out to tools which are pre-defined and wrap up the complex details of taking actions on specific systems, integrating data, or performing precise steps in a process. Every agent framework has a ‘tools’ concept, and for Microsoft agents built with Copilot Studio, this is agent flows</p></blockquote><p>Keeping post for reference. Express mode seems to be new.</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;Unknown in the article &lt;a href=&quot;https://www.sharepointnutsandbolts.com/2026/02/Copilot-Studio-Agent-Flows.html&quot;&gt;Autonomous agents - Techn</summary>
+      
+    
+    
+    
+    
+    <category term="Quote" scheme="http://kabtoffe.net/tags/Quote/"/>
+    
+    <category term="Power Automate" scheme="http://kabtoffe.net/tags/Power-Automate/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Quoting Scott Hanselman - Is the craft dead?</title>
     <link href="http://kabtoffe.net/2026/02/12/scott-hanselman-is-the-craft-dead/"/>
     <id>http://kabtoffe.net/2026/02/12/scott-hanselman-is-the-craft-dead/</id>

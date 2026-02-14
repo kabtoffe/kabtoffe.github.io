@@ -449,4 +449,18 @@ A software developer yes, but where in the process are they needed. There is lot
         <tag>AI</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Quoting Unknown - Autonomous agents - Technique 3: Provide tools for steps your agent can&#39;t easily handle (like Agent Flows)</title>
+    <url>/2026/02/13/unknown-autonomous-agents-technique-3-provide-tools-for-steps-your-agent-cant-easily-handle-like-agent-flows/</url>
+    <content><![CDATA[Unknown in the article Autonomous agents - Technique 3: Provide tools for steps your agent can’t easily handle (like Agent Flows) (published February 8, 2026):
+
+They need to call out to tools which are pre-defined and wrap up the complex details of taking actions on specific systems, integrating data, or performing precise steps in a process. Every agent framework has a ‘tools’ concept, and for Microsoft agents built with Copilot Studio, this is agent flows
+
+Keeping post for reference. Express mode seems to be new.
+]]></content>
+      <tags>
+        <tag>Quote</tag>
+        <tag>Power Automate</tag>
+      </tags>
+  </entry>
 </search>
