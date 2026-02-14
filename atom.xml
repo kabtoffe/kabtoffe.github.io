@@ -113,6 +113,30 @@
   </entry>
   
   <entry>
+    <title>Quoting Matthew Devaney - Connect To Dataverse Knowledge In Copilot Studio</title>
+    <link href="http://kabtoffe.net/2026/02/13/matthew-devaney-connect-to-dataverse-knowledge-in-copilot-studio/"/>
+    <id>http://kabtoffe.net/2026/02/13/matthew-devaney-connect-to-dataverse-knowledge-in-copilot-studio/</id>
+    <published>2026-02-13T22:00:00.000Z</published>
+    <updated>2026-02-14T20:09:23.985Z</updated>
+    
+    <content type="html"><![CDATA[<p>Matthew Devaney in the article <a href="https://www.matthewdevaney.com/connect-to-dataverse-knowledge-in-copilot-studio/">Connect To Dataverse Knowledge In Copilot Studio</a> (published January 25, 2026):</p><blockquote><p>You can connect an agent to… Dataverse knowledge in Copilot Studio. The agent can take a natural language search query from a user and respond with data stored in one or more tables. Simply connecting the agent to Dataverse is not enough. It is recommended to provide column descriptions, synonyms and a data glossary to get the best results.</p></blockquote>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;Matthew Devaney in the article &lt;a href=&quot;https://www.matthewdevaney.com/connect-to-dataverse-knowledge-in-copilot-studio/&quot;&gt;Connect To Data</summary>
+      
+    
+    
+    
+    
+    <category term="Quote" scheme="http://kabtoffe.net/tags/Quote/"/>
+    
+    <category term="Copilot Studio" scheme="http://kabtoffe.net/tags/Copilot-Studio/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Quoting Scott Hanselman - Is the craft dead?</title>
     <link href="http://kabtoffe.net/2026/02/12/scott-hanselman-is-the-craft-dead/"/>
     <id>http://kabtoffe.net/2026/02/12/scott-hanselman-is-the-craft-dead/</id>
@@ -475,25 +499,6 @@
     <category term="NodeJS" scheme="http://kabtoffe.net/tags/NodeJS/"/>
     
     <category term="Markdown" scheme="http://kabtoffe.net/tags/Markdown/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Dynamics 365 Document Template from Existing Word Document</title>
-    <link href="http://kabtoffe.net/2017/04/23/Dynamics-365-Document-Template-from-existing-Word-Document/"/>
-    <id>http://kabtoffe.net/2017/04/23/Dynamics-365-Document-Template-from-existing-Word-Document/</id>
-    <published>2017-04-23T13:16:31.000Z</published>
-    <updated>2017-04-24T19:13:11.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>For the impatient this is how you do it:</p><blockquote><p>Extract the Dynamics 365 generated template from zip and add the CustomXML-part to your existing template.</p></blockquote><p>I couldn’t find a post on how to create a new Dynamics 365 Document Template using an existing document or template. I’m sure many organisations have an existing template with all the right formatting, headers and footers they would like to use.</p><p>Knowing how .docx-files are structured and how Dynamics 365 stores the metadata it was easy enough to figure out. I thought I would share how with you.</p><h3 id="Step-by-step"><a href="#Step-by-step" class="headerlink" title="Step by step"></a>Step by step</h3><ol><li>Create a new blank template from Dynamics 365 <a href="https://www.microsoft.com/en-us/dynamics/crm-customer-center/using-word-templates-in-dynamics-365.aspx">the way you would normally do it</a> and save the file to your computer</li><li>Change the extension of the file to .zip and extract it</li><li>Open the existing document you would like to use with Dynamics 365</li><li>In your Word template click Developer &gt; XML Mapping Pane<br><img src="https://www.microsoft.com/en-us/dynamics/crm-customer-center/crm_ITPro_WordTemplateSelectXMLMapping.png" alt="XML mapping pane"></li><li>In the drop down menu select (Add new part…)<br><img src="https://www.microsoft.com/en-us/dynamics/crm-customer-center/crm_ITPro_WordTemplateXMLMappingDefault.png" alt="Dropdown menu"></li><li>Navigate to your extracted template and select the xml-file (item.xml) under the CustomXML-directory</li><li>Proceed as you normally would with a blank template</li></ol><p>Note that this is <em>might not be supported</em>, but seems to work just fine.</p>]]></content>
-    
-    
-    <summary type="html">Learn how to use an existing Word document as a basis for a Dynamics 365 template.</summary>
-    
-    
-    
-    
-    <category term="Dynamics 365" scheme="http://kabtoffe.net/tags/Dynamics-365/"/>
     
   </entry>
   

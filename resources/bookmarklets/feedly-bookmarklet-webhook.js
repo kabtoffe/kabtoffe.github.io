@@ -31,6 +31,17 @@ function extractFeedlyData() {
     author = authorsSpan.innerText.replace(/^by\s+/, "").trim();
   }
 
+  // Fallback: try to get author from source info if still unknown
+  if (author === "Unknown") {
+    const sourceInfo = document.querySelector(".EntryMetadataBasic__source-info");
+    if (sourceInfo) {
+      const sourceText = sourceInfo.innerText.trim();
+      if (sourceText) {
+        author = sourceText;
+      }
+    }
+  }
+
   // Extract publication date from metadata
   let date = new Date().toISOString().split("T")[0];
   const dateSpan = document.querySelector(".EntryMetadataWrapper span[title]");
@@ -164,13 +175,33 @@ function extractFeedlyData() {
 
   // Extract board names as tags
   let boardNames = [];
-  const promptsContainer = document.querySelector(".EntryStackablePrompts");
-  if (promptsContainer) {
-    const strongEl = promptsContainer.querySelector("strong");
-    if (strongEl) {
-      const boardText = strongEl.innerText.trim();
-      if (boardText) {
-        boardNames.push(boardText);
+
+  // Try to find boards in entry metadata or save locations
+  const boardElements = document.querySelectorAll(
+    ".EntryMetadataBasic__boards, " +
+    ".entry-boards, " +
+    "[class*='board'][class*='item'], " +
+    ".EntryStackablePrompts strong"
+  );
+
+  const seenBoards = new Set();
+  for (const el of boardElements) {
+    const boardText = el.innerText.trim();
+    if (boardText && !seenBoards.has(boardText)) {
+      boardNames.push(boardText);
+      seenBoards.add(boardText);
+    }
+  }
+
+  // Fallback: look for any elements with board-related class names
+  if (boardNames.length === 0) {
+    const allElements = document.querySelectorAll("[class*='board' i]");
+    for (const el of allElements) {
+      const text = el.innerText.trim();
+      // Filter out UI elements and keep only reasonable board names
+      if (text && text.length > 0 && text.length < 100 && !seenBoards.has(text)) {
+        boardNames.push(text);
+        seenBoards.add(text);
       }
     }
   }

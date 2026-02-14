@@ -463,4 +463,17 @@ Keeping post for reference. Express mode seems to be new.
         <tag>Power Automate</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Quoting Matthew Devaney - Connect To Dataverse Knowledge In Copilot Studio</title>
+    <url>/2026/02/13/matthew-devaney-connect-to-dataverse-knowledge-in-copilot-studio/</url>
+    <content><![CDATA[Matthew Devaney in the article Connect To Dataverse Knowledge In Copilot Studio (published January 25, 2026):
+
+You can connect an agent to… Dataverse knowledge in Copilot Studio. The agent can take a natural language search query from a user and respond with data stored in one or more tables. Simply connecting the agent to Dataverse is not enough. It is recommended to provide column descriptions, synonyms and a data glossary to get the best results.
+
+]]></content>
+      <tags>
+        <tag>Quote</tag>
+        <tag>Copilot Studio</tag>
+      </tags>
+  </entry>
 </search>
