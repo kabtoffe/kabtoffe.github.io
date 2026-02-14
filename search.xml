@@ -2,7 +2,7 @@
 <search>
   <entry>
     <title>Automating Quote Post Creation with Feedly and Hexo</title>
-    <url>/2026/02/07/Automating-Quote-Posts-with-Feedly-and-Hexo/</url>
+    <url>/2026/02/06/Automating-Quote-Posts-with-Feedly-and-Hexo/</url>
     <content><![CDATA[I spend a lot of my time reading blog articles using my feed reader and wanted a lightweight way to capture interesting quotes and commentary directly into my blog. Rather than manually creating markdown files, I built, with a lot of assistance from Claude, a two-part automation system: a Node.js script that generates posts from parameters, and a browser bookmarklet that extracts article data from Feedly.
 The basic idea is that when I read through my feed and see something interesting I can use Feedly’s native highlighting functionality and notes to add my commentary and then use that as a source for post generation.
 How Hexo WorksI currently use Hexo for my blog. Hexo is a static site generator that converts markdown files into HTML. Here’s the basic workflow:
@@ -157,7 +157,7 @@ In my next post we will improve on this by supplying our own column names instea
   </entry>
   <entry>
     <title>Quoting Ben Thompson - Microsoft and Software Survival</title>
-    <url>/2026/02/07/ben-thompson-microsoft-and-software-survival/</url>
+    <url>/2026/02/06/ben-thompson-microsoft-and-software-survival/</url>
     <content><![CDATA[Ben Thompson in the article Microsoft and Software Survival (published February 3, 2026):
 
 That, then, raises the most obvious bear case for any software company: why pay for software when you can just ask AI to write your own application, perfectly suited to your needs? Is software going to be a total commodity and a non-viable business model in the future?
@@ -217,7 +217,7 @@ Please note that I’m using this blog as another learning opportunity, so excep
   </entry>
   <entry>
     <title>Quoting Steve Yegge - Stevey’s Birthday Blog</title>
-    <url>/2026/02/07/steve-yegge-steveys-birthday-blog/</url>
+    <url>/2026/02/06/steve-yegge-steveys-birthday-blog/</url>
     <content><![CDATA[Steve Yegge in the article Stevey’s Birthday Blog (published February 2, 2026):
 
 Agent orchestrators are programs that use agents to run other agents.
@@ -235,7 +235,7 @@ I’ve been reading Steve’s and Gene Kim’s Vibe Coding book and it’s a sup
   </entry>
   <entry>
     <title>Quoting Neeraj Nandwana - Generally available: host and run code apps in Power Apps</title>
-    <url>/2026/02/11/neeraj-nandwana-generally-available-host-and-run-code-apps-in-power-apps/</url>
+    <url>/2026/02/10/neeraj-nandwana-generally-available-host-and-run-code-apps-in-power-apps/</url>
     <content><![CDATA[Neeraj Nandwana in the article Generally available: host and run code apps in Power Apps (published February 9, 2026):
 
 Power Apps code apps bring the full strength of Power Platform to web developers. Build in any code‑first IDE, iterate locally, and run the same app seamlessly within Power Platform. Build with popular frameworks (React, Vue, and others) while keeping full control over your UI and logic.
@@ -252,7 +252,7 @@ If you later decide you want to transition away from Power Platform, you only ne
   </entry>
   <entry>
     <title>Quoting Neeraj Nandwana - Announcing General Availability (GA) of building single-page applications for Power Pages</title>
-    <url>/2026/02/11/neeraj-nandwana-announcing-general-availability-ga-of-building-single-page-applications-for-power-pages/</url>
+    <url>/2026/02/10/neeraj-nandwana-announcing-general-availability-ga-of-building-single-page-applications-for-power-pages/</url>
     <content><![CDATA[Neeraj Nandwana in the article Announcing General Availability (GA) of building single-page applications for Power Pages (published February 9, 2026):
 
 You can run your SPA locally with full authentication and Web API access to accelerate your development cycle. This means JavaScript hot reload, local debugging, and immediate feedback without deploying changes to your portal every time. For step-by-step instructions, see Set up local development for SPA sites.
@@ -267,7 +267,7 @@ As far as I can tell you cannot currently use another provider this, but I might
   </entry>
   <entry>
     <title>Quoting codemanship - An Ode To “It Can’t Be Done”</title>
-    <url>/2026/02/12/codemanship-an-ode-to-it-cant-be-done/</url>
+    <url>/2026/02/11/codemanship-an-ode-to-it-cant-be-done/</url>
     <content><![CDATA[codemanship in the article An Ode To “It Can’t Be Done” (published February 10, 2026):
 
 Command-and-control cultures are often a product of lack of trust. And in many cases, that lack of trust has been earned by past performance. Many disappointments, many broken promises. So organisations micromanage, and if anything’s guaranteed to end an experiment in software agility, it’s that.
@@ -284,7 +284,7 @@ Trust brings freedom.
   </entry>
   <entry>
     <title>Quoting Unknown - Introducing Showboat and Rodney, so agents can demo what they’ve built</title>
-    <url>/2026/02/12/unknown-introducing-showboat-and-rodney-so-agents-can-demo-what-theyve-built/</url>
+    <url>/2026/02/11/unknown-introducing-showboat-and-rodney-so-agents-can-demo-what-theyve-built/</url>
     <content><![CDATA[Simon Willison in the article Introducing Showboat and Rodney, so agents can demo what they’ve built (published February 10, 2026):
 
 The frontier models all understand that “red&#x2F;green TDD” means they should write the test first, run it and watch it fail and then write the code to make it pass - it’s a convenient shortcut.
@@ -298,7 +298,7 @@ I find this greatly increases the quality of the code and the likelihood that th
   </entry>
   <entry>
     <title>Quoting Scott Hanselman - Is the craft dead?</title>
-    <url>/2026/02/13/scott-hanselman-is-the-craft-dead/</url>
+    <url>/2026/02/12/scott-hanselman-is-the-craft-dead/</url>
     <content><![CDATA[Scott Hanselman in the article Is the craft dead? (published January 17, 2026):
 
 I’ve been coding now for money for 35 years and systems are still complicated, computers still do dumb stuff, humans still do dumb stuff,
@@ -315,7 +315,7 @@ I agree. Getting quality results from LLMs requires discipline.
   </entry>
   <entry>
     <title>Quoting Geoffrey Huntley - don’t waste your back pressure</title>
-    <url>/2026/02/13/geoffrey-huntley-dont-waste-your-back-pressure/</url>
+    <url>/2026/02/12/geoffrey-huntley-dont-waste-your-back-pressure/</url>
     <content><![CDATA[Geoffrey Huntley in the article don’t waste your back pressure (published January 17, 2026):
 
 There are many ways to tune back-pressure and as Moss states it starts with choice of programming language, applying engineering knowledge to design a fast test suite that provides signal but perhaps my favorite one is… pre-commit hooks (aka prek).
@@ -328,7 +328,7 @@ There are many ways to tune back-pressure and as Moss states it starts with choi
   </entry>
   <entry>
     <title>Extending Quote Post Automation: From Feedly-Specific to Universal Meta Tag Extraction</title>
-    <url>/2026/02/13/Extending-Quote-Post-Automation-with-Meta-Tags/</url>
+    <url>/2026/02/12/Extending-Quote-Post-Automation-with-Meta-Tags/</url>
     <content><![CDATA[In my previous post, I documented a two-part system for automating quote post creation: a Node.js script and a Feedly-specific bookmarklet. Since then, I’ve extended the tooling to be more general-purpose and robust.
 The Problem with Feedly-Only ExtractionThe original bookmarklet relied on Feedly’s specific DOM structure, which meant it only worked when reading articles within Feedly’s interface. This was limiting—I wanted to capture quotes from:
 
