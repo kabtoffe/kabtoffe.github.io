@@ -91,6 +91,32 @@
   </entry>
   
   <entry>
+    <title>Quoting Diana Birkelbach #PCFLady - Navigating to and from Generative Pages</title>
+    <link href="http://kabtoffe.net/2026/02/15/diana-birkelbach-pcflady-navigating-to-and-from-generative-pages/"/>
+    <id>http://kabtoffe.net/2026/02/15/diana-birkelbach-pcflady-navigating-to-and-from-generative-pages/</id>
+    <published>2026-02-15T22:00:00.000Z</published>
+    <updated>2026-02-16T14:09:16.753Z</updated>
+    
+    <content type="html"><![CDATA[<p>Diana Birkelbach #PCFLady in the article <a href="https://dianabirkelbach.wordpress.com/2026/02/15/navigating-to-and-from-generative-pages/">Navigating to and from Generative Pages</a> (published February 15, 2026):</p><blockquote><p>We can use the navigateTo API as long we don’t need to pass parameters to the GenPage, or use the URL if we need them. When using the data URL parameters, we need to take care that those parameters are not necessary passed to the current GenPage; it depends how the page was opened. It could be the URL from the from or other hosting opener.</p></blockquote><p>Still waiting for these to reach EU tenants. In the meantime vibe coding PCF-controls is an option.</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;Diana Birkelbach #PCFLady in the article &lt;a href=&quot;https://dianabirkelbach.wordpress.com/2026/02/15/navigating-to-and-from-generative-page</summary>
+      
+    
+    
+    
+    
+    <category term="Quote" scheme="http://kabtoffe.net/tags/Quote/"/>
+    
+    <category term="Power Platform" scheme="http://kabtoffe.net/tags/Power-Platform/"/>
+    
+    <category term="Model Driven Apps" scheme="http://kabtoffe.net/tags/Model-Driven-Apps/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Quoting Mikko Koskinen - AI Is Not Replacing Jobs, It’s Replacing the Work Inside Them</title>
     <link href="http://kabtoffe.net/2026/02/13/mikko-koskinen-ai-is-not-replacing-jobs-its-replacing-the-work-inside-them/"/>
     <id>http://kabtoffe.net/2026/02/13/mikko-koskinen-ai-is-not-replacing-jobs-its-replacing-the-work-inside-them/</id>
@@ -482,27 +508,6 @@
     
     
     <category term="PowerShell" scheme="http://kabtoffe.net/tags/PowerShell/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Generate CSV from Dynamics 365 with Custom Headers</title>
-    <link href="http://kabtoffe.net/2017/07/11/Generate-CSV-from-Dynamics-365-with-Custom-Headers/"/>
-    <id>http://kabtoffe.net/2017/07/11/Generate-CSV-from-Dynamics-365-with-Custom-Headers/</id>
-    <published>2017-07-11T13:39:31.000Z</published>
-    <updated>2026-02-07T09:09:05.343Z</updated>
-    
-    <content type="html"><![CDATA[<p>In my previous <a href="http://kabtoffe.net/2017/07/10/Export-Data-from-Dynamics-365-using-PowerShell/">post</a> we retrieved account records from Dynamics 365 (CRM) and exported those to a CSV-file. In this post we will expand the example with a transformation function to get nicer property names and CSV headers.</p><p>The <code>Export-CSV</code> cmdlet exports all the attributes on the objects piped to it. In our last example we used <code>Select-Object</code> to only include the properties we wanted. These properties are still named by the original object. In most cases this is not desirable. You could just replace the CSV file header row, but a cleaner way would be to transform the object somehow. One way to achieve this is to use <code>Select-Object</code> as mentioned <a href="https://blogs.technet.microsoft.com/heyscriptingguy/2013/10/10/powertip-change-output-object-property-names-with-powershell/">here</a>.</p><p>Using our example from before:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">(Get-CrmRecords -EntityLogicalName account -Fields &quot;name&quot;,&quot;telephone1&quot;).CrmRecords |</span><br><span class="line">Select-Object @&#123;</span><br><span class="line">        N=&quot;AccountName&quot;</span><br><span class="line">        E=&#123;$_.name&#125;</span><br><span class="line">    &#125;,</span><br><span class="line">    @&#123;</span><br><span class="line">        N=&quot;Phonenumber&quot;</span><br><span class="line">        E=&#123;$_.telephone1&#125;</span><br><span class="line">    &#125; |</span><br><span class="line">Export-Csv -Path &quot;accounts.csv&quot;</span><br></pre></td></tr></table></figure><p>This is a nice trick and certainly very flexible. You can select any property on the source object and assign it to a new property. But what if you want to parametrize and use a mapping table for the transformation? You could probably cook-up a function that provides a mapping array for <code>Select-Object</code>. But since I only just came up with that and it actually sounds a bit complicated, I propose a different approach.</p><p>Let’s create an <a href="https://msdn.microsoft.com/en-us/powershell/reference/5.1/microsoft.powershell.core/about/about_functions_advanced">advanced function</a> to do the heavy lifting for us:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">function ConvertTo-CustomObject&#123;</span><br><span class="line">    [CmdletBinding()]</span><br><span class="line"></span><br><span class="line">    param(</span><br><span class="line">        [Parameter(Mandatory=$True,ValueFromPipeline=$True)]</span><br><span class="line">        $SourceObject,</span><br><span class="line"></span><br><span class="line">        [Parameter(Mandatory=$True)]</span><br><span class="line">        [hashtable]$MappingTable</span><br><span class="line">    )</span><br><span class="line"></span><br><span class="line">    PROCESS &#123;</span><br><span class="line">        $Property = @&#123;&#125;</span><br><span class="line">        $MappingTable.Keys | ForEach-Object &#123;</span><br><span class="line">            $Property.Add(</span><br><span class="line">                $MappingTable[$_],</span><br><span class="line">                $SourceObject.$_</span><br><span class="line">            )</span><br><span class="line">        &#125;</span><br><span class="line">        New-Object psobject -Property $Property</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>The function <code>ConvertTo-CustomObject</code> accepts objects from the pipeline and a mapping table. It then uses the mapping table to iterate across the the properties we want adding them to a property hashtable. Lastly it creates a new object using the properties and writes it to the output.</p><p>So again, using our example, we create a mapping table like so:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$FieldsMappings = @&#123;</span><br><span class="line">    &quot;name&quot; = &quot;AccountName&quot;</span><br><span class="line">    &quot;telephone1&quot; = &quot;Phone&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>And then we can replace the <code>Select-Object</code> part with our function:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">(Get-CrmRecords -EntityLogicalName account -Fields $FieldsMappings.Keys -AllRows).CrmRecords |</span><br><span class="line">    ConvertTo-CustomObject -MappingTable $FieldsMappings |</span><br><span class="line">    Export-Csv -Path &quot;account.csv&quot;</span><br></pre></td></tr></table></figure><p>We retrieve the attributes we want from the system (the keys of the <code>$Fieldmappings</code> hashtable), pipe the objects to our function and write the resulting objects to a CSV like before, but with a nicer header row. Complete code <a href="https://github.com/kabtoffe/blog-examples/blob/master/Dynamics-365-CSV-Export/Export-Dyn365CSV_2.ps1">here</a>.</p><p>While this may seem like a complex way to do it, using objects gets us some nice benefits. Eg. try replacing the <code>Export-CSV</code> line with <code>Out-Gridview</code> and see that happens. If you would like to include more attributes, all you need to is add items to the mapping table.</p>]]></content>
-    
-    
-    <summary type="html">Learn how to transform the Dynamics 365 record to a custom object with nicer property names.</summary>
-    
-    
-    
-    
-    <category term="PowerShell" scheme="http://kabtoffe.net/tags/PowerShell/"/>
-    
-    <category term="Dynamics 365" scheme="http://kabtoffe.net/tags/Dynamics-365/"/>
     
   </entry>
   

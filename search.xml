@@ -523,4 +523,19 @@ I don’t know anything about this, saving it for reference. My Power Pages expe
         <tag>Power Pages</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Quoting Diana Birkelbach #PCFLady - Navigating to and from Generative Pages</title>
+    <url>/2026/02/15/diana-birkelbach-pcflady-navigating-to-and-from-generative-pages/</url>
+    <content><![CDATA[Diana Birkelbach #PCFLady in the article Navigating to and from Generative Pages (published February 15, 2026):
+
+We can use the navigateTo API as long we don’t need to pass parameters to the GenPage, or use the URL if we need them. When using the data URL parameters, we need to take care that those parameters are not necessary passed to the current GenPage; it depends how the page was opened. It could be the URL from the from or other hosting opener.
+
+Still waiting for these to reach EU tenants. In the meantime vibe coding PCF-controls is an option.
+]]></content>
+      <tags>
+        <tag>Quote</tag>
+        <tag>Power Platform</tag>
+        <tag>Model Driven Apps</tag>
+      </tags>
+  </entry>
 </search>
