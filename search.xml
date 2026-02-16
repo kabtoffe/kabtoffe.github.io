@@ -493,4 +493,19 @@ Anyway, the platform is old, but that also means it’s a really solid base to b
         <tag>Power Platform</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Quoting Hemant Gaur - Public preview: Power Apps MCP and enhanced agent feed for your business applications</title>
+    <url>/2026/02/15/hemant-gaur-public-preview-power-apps-mcp-and-enhanced-agent-feed-for-your-business-applications/</url>
+    <content><![CDATA[Hemant Gaur in the article Public preview: Power Apps MCP and enhanced agent feed for your business applications (published February 11, 2026):
+
+Today, we’re excited to bring the… Power Apps MCP (… Model Context Protocol) Server to public preview. The Power Apps MCP Server enables agents to automate repetitive app tasks, with human review and approval through the new task-centric enhanced agent feed. The Power Apps MCP Server also provides built‑in supervision tools that allow humans to review, assist, and take control of agent actions when needed.
+
+I like the idea of the agent feed. One place where one can do all the human-in-the-loop tasks. No need to reinvent to wheel for all new automations with adaptive cards, approvals etc.
+]]></content>
+      <tags>
+        <tag>Quote</tag>
+        <tag>Power Platform</tag>
+        <tag>Copilot Studio</tag>
+      </tags>
+  </entry>
 </search>

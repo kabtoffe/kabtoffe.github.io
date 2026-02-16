@@ -41,6 +41,32 @@
   </entry>
   
   <entry>
+    <title>Quoting Hemant Gaur - Public preview: Power Apps MCP and enhanced agent feed for your business applications</title>
+    <link href="http://kabtoffe.net/2026/02/15/hemant-gaur-public-preview-power-apps-mcp-and-enhanced-agent-feed-for-your-business-applications/"/>
+    <id>http://kabtoffe.net/2026/02/15/hemant-gaur-public-preview-power-apps-mcp-and-enhanced-agent-feed-for-your-business-applications/</id>
+    <published>2026-02-15T22:00:00.000Z</published>
+    <updated>2026-02-16T13:52:08.255Z</updated>
+    
+    <content type="html"><![CDATA[<p>Hemant Gaur in the article <a href="https://www.microsoft.com/en-us/power-platform/blog/power-apps/public-preview-power-apps-mcp-and-enhanced-agent-feed-for-your-business-applications/">Public preview: Power Apps MCP and enhanced agent feed for your business applications</a> (published February 11, 2026):</p><blockquote><p>Today, we’re excited to bring the… Power Apps MCP (… Model Context Protocol) Server to public preview. The Power Apps MCP Server enables agents to automate repetitive app tasks, with human review and approval through the new task-centric enhanced agent feed. The Power Apps MCP Server also provides built‑in supervision tools that allow humans to review, assist, and take control of agent actions when needed.</p></blockquote><p>I like the idea of the agent feed. One place where one can do all the human-in-the-loop tasks. No need to reinvent to wheel for all new automations with adaptive cards, approvals etc.</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;Hemant Gaur in the article &lt;a href=&quot;https://www.microsoft.com/en-us/power-platform/blog/power-apps/public-preview-power-apps-mcp-and-enha</summary>
+      
+    
+    
+    
+    
+    <category term="Quote" scheme="http://kabtoffe.net/tags/Quote/"/>
+    
+    <category term="Power Platform" scheme="http://kabtoffe.net/tags/Power-Platform/"/>
+    
+    <category term="Copilot Studio" scheme="http://kabtoffe.net/tags/Copilot-Studio/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Quoting Mikko Koskinen - AI Is Not Replacing Jobs, It’s Replacing the Work Inside Them</title>
     <link href="http://kabtoffe.net/2026/02/13/mikko-koskinen-ai-is-not-replacing-jobs-its-replacing-the-work-inside-them/"/>
     <id>http://kabtoffe.net/2026/02/13/mikko-koskinen-ai-is-not-replacing-jobs-its-replacing-the-work-inside-them/</id>
@@ -477,26 +503,6 @@
     <category term="PowerShell" scheme="http://kabtoffe.net/tags/PowerShell/"/>
     
     <category term="Dynamics 365" scheme="http://kabtoffe.net/tags/Dynamics-365/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Blog moved to Github Pages</title>
-    <link href="http://kabtoffe.net/2017/06/11/Blog-moved-to-Github-Pages/"/>
-    <id>http://kabtoffe.net/2017/06/11/Blog-moved-to-Github-Pages/</id>
-    <published>2017-06-11T17:00:28.000Z</published>
-    <updated>2026-02-07T09:09:05.341Z</updated>
-    
-    <content type="html"><![CDATA[<p>Just a quick post to see that the blog publishing still works. I moved the blog from Azure to <a href="https://pages.github.com/">Github pages</a>. All in all really simple. You just create a repository and publish via git. In my case as I was already using git for publishing all I needed to do was change the git endpoint, add a custom domain and point my DNS to github.</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;Just a quick post to see that the blog publishing still works. I moved the blog from Azure to &lt;a href=&quot;https://pages.github.com/&quot;&gt;Github </summary>
-      
-    
-    
-    
     
   </entry>
   
