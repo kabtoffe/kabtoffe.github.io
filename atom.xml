@@ -6,7 +6,7 @@
   <link href="http://kabtoffe.net/atom.xml" rel="self"/>
   
   <link href="http://kabtoffe.net/"/>
-  <updated>2026-02-14T16:41:14.393Z</updated>
+  <updated>2026-02-16T13:45:38.099Z</updated>
   <id>http://kabtoffe.net/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Quoting Jonas Rapp - My advice for Still Growing Developers</title>
+    <link href="http://kabtoffe.net/2026/02/15/jonas-rapp-my-advice-for-still-growing-developers/"/>
+    <id>http://kabtoffe.net/2026/02/15/jonas-rapp-my-advice-for-still-growing-developers/</id>
+    <published>2026-02-15T22:00:00.000Z</published>
+    <updated>2026-02-16T13:45:38.099Z</updated>
+    
+    <content type="html"><![CDATA[<p>Jonas Rapp in the article <a href="https://jonasr.app/my-advice-for-growing-developers/">My advice for Still Growing Developers</a> (published February 15, 2026):</p><blockquote><p>We who work on Power Platform usually come from one background: 1) I’m a true rookie, or 2) like me, with a lot of dev experience and knowing more than we actually need today.</p><p>Today I always start to look at what is possible to solve the issue OOTB, and only if it is impossible or there are too many workarounds that make maintainability a nightmare.</p><p>Never ignore maintainability.</p></blockquote><p>We had Microsoft CRM 3.0 at work for way too long. It got deployed in production 2007 and we finally replaced it with Dynamics 365 Customer Engagement Online in 2017. So we got a good 10 years from it. I didn’t really develop on the old platform but I did make a PowerShell-module that we used a bunch for automations and also the migration.</p><p>Anyway, the platform is old, but that also means it’s a really solid base to build on.</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;Jonas Rapp in the article &lt;a href=&quot;https://jonasr.app/my-advice-for-growing-developers/&quot;&gt;My advice for Still Growing Developers&lt;/a&gt; (publ</summary>
+      
+    
+    
+    
+    
+    <category term="Quote" scheme="http://kabtoffe.net/tags/Quote/"/>
+    
+    <category term="Power Platform" scheme="http://kabtoffe.net/tags/Power-Platform/"/>
+    
+  </entry>
   
   <entry>
     <title>Quoting Mikko Koskinen - AI Is Not Replacing Jobs, It’s Replacing the Work Inside Them</title>
@@ -473,32 +497,6 @@
     
     
     
-    
-  </entry>
-  
-  <entry>
-    <title>My new shiny Markdown compatible blog</title>
-    <link href="http://kabtoffe.net/2017/04/25/How-this-blog-was-made/"/>
-    <id>http://kabtoffe.net/2017/04/25/How-this-blog-was-made/</id>
-    <published>2017-04-25T16:52:13.000Z</published>
-    <updated>2026-02-07T09:12:16.143Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="Markdown"><a href="#Markdown" class="headerlink" title="Markdown"></a>Markdown</h2><p>I remember hearing about Markdown previously but hadn’t paid it much attention. Then I heard it mentioned on a podcast I listen to  I also noticed that the Readme file on Visual Studio Team Services was done in markdown.</p><div class="video-container"><iframe src="https://www.youtube.com/embed/_gknWWa2OF0" frameborder="0" loading="lazy" allowfullscreen></iframe></div><p>Naturally I was intrigued. As a <em>wannabe</em> programmer and <em>configuration nazi</em> the idea of using a simple markup syntax to write formatted documents sounded great. I had a brief stint using LaTeX while at school (<em>no one else did though</em>) and while I did do my final year project documentation with it, I quickly lost interest.</p><h2 id="The-blog"><a href="#The-blog" class="headerlink" title="The blog"></a>The blog</h2><p>Anyway… I had thought about starting a blog for a while. I use <a href="https://feedly.com/">Feedly</a> every day and follow lots of blogs. Since I’ve benefited greatly from the community I thought it was time to give something back.</p><p>Getting back to the main topic of how this blog came about. I searched for blogging engines that supported Markdown and the first result on Google was <a href="https://hexo.io/">Hexo</a>. Hexo is a static site generator built using NodeJS. Seemed like a great fit for a backend guy like me.</p><p>I installed NodeJS using <a href="https://chocolatey.org/">Chocolatey</a> and followed <a href="https://hexo.io/docs/">the instructions</a> to get up and running. Simple enough. The original plan was to host it on an Azure Web App, so I followed <a href="http://the-coderok.azurewebsites.net/2015/09/16/Running-Hexo-blog-on-Azure/">another set of instructions</a> in order to do that.</p><p>Note that in the Azure portal you should use the deployment options instead of continuous integration. That’s where you find the Local Git repo option you need. I first tried the Free plan, but apparently custom domains are not supported on that, so I switched to the Shared plan. See more details <a href="https://azure.microsoft.com/en-us/pricing/details/app-service/">here</a>. I’ll probably move the blog to Github pages though since that’s free. Or I could host it on my router…</p><p>Once everything was setup all I need to do to update the blog, <em>besides writing the posts</em>, is <code>hexo deploy --generate</code>. I placed the blog source files in Dropbox so I can get to them wherever I am. This post was started on my phone and finished on an iPad. I can’t generate and deploy on the go though. I’m sure PowerShell can help, but that is another blog post I think. I’m thinking some kind of change monitoring and automated deployment.</p><p>Please note that I’m using this blog as another learning opportunity, so except changes, downtime etc. I’m also not sure how I active I’m actually going to be.</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;h2 id=&quot;Markdown&quot;&gt;&lt;a href=&quot;#Markdown&quot; class=&quot;headerlink&quot; title=&quot;Markdown&quot;&gt;&lt;/a&gt;Markdown&lt;/h2&gt;&lt;p&gt;I remember hearing about Markdown previously b</summary>
-      
-    
-    
-    
-    
-    <category term="Hexo" scheme="http://kabtoffe.net/tags/Hexo/"/>
-    
-    <category term="NodeJS" scheme="http://kabtoffe.net/tags/NodeJS/"/>
-    
-    <category term="Markdown" scheme="http://kabtoffe.net/tags/Markdown/"/>
     
   </entry>
   

@@ -476,4 +476,21 @@ You can connect an agent to… Dataverse knowledge in Copilot Studio. The agent 
         <tag>Copilot Studio</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Quoting Jonas Rapp - My advice for Still Growing Developers</title>
+    <url>/2026/02/15/jonas-rapp-my-advice-for-still-growing-developers/</url>
+    <content><![CDATA[Jonas Rapp in the article My advice for Still Growing Developers (published February 15, 2026):
+
+We who work on Power Platform usually come from one background: 1) I’m a true rookie, or 2) like me, with a lot of dev experience and knowing more than we actually need today.
+Today I always start to look at what is possible to solve the issue OOTB, and only if it is impossible or there are too many workarounds that make maintainability a nightmare.
+Never ignore maintainability.
+
+We had Microsoft CRM 3.0 at work for way too long. It got deployed in production 2007 and we finally replaced it with Dynamics 365 Customer Engagement Online in 2017. So we got a good 10 years from it. I didn’t really develop on the old platform but I did make a PowerShell-module that we used a bunch for automations and also the migration.
+Anyway, the platform is old, but that also means it’s a really solid base to build on.
+]]></content>
+      <tags>
+        <tag>Quote</tag>
+        <tag>Power Platform</tag>
+      </tags>
+  </entry>
 </search>
