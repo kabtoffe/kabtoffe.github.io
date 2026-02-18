@@ -6,7 +6,7 @@
   <link href="http://kabtoffe.net/atom.xml" rel="self"/>
   
   <link href="http://kabtoffe.net/"/>
-  <updated>2026-02-16T13:45:38.099Z</updated>
+  <updated>2026-02-18T19:37:04.638Z</updated>
   <id>http://kabtoffe.net/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Quoting Birgitta Böckeler - Harness Engineering</title>
+    <link href="http://kabtoffe.net/2026/02/17/birgitta-bckeler-harness-engineering/"/>
+    <id>http://kabtoffe.net/2026/02/17/birgitta-bckeler-harness-engineering/</id>
+    <published>2026-02-17T22:00:00.000Z</published>
+    <updated>2026-02-18T19:37:04.638Z</updated>
+    
+    <content type="html"><![CDATA[<p>Birgitta Böckeler in the article <a href="https://martinfowler.com/articles/exploring-gen-ai/harness-engineering.html">Harness Engineering</a> (published February 18, 2026):</p><blockquote><p>As coding becomes less about typing code and more about steering its generation, AI might push us toward fewer tech stacks. Usability of frameworks and SDKs still matters — we’re seeing repeatedly that what’s good for humans is good for AI. But developer tastes will matter less at that level of detail. Little inefficiencies and idiosyncracies in interfaces will be less annoying since we don’t deal with them directly. We might choose stacks with good harnesses available and prioritize “AI-friendliness”.</p></blockquote><p>I do wonder about this. There is also an incentive for platform developers to make their platforms more AI friendly.</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;Birgitta Böckeler in the article &lt;a href=&quot;https://martinfowler.com/articles/exploring-gen-ai/harness-engineering.html&quot;&gt;Harness Engineerin</summary>
+      
+    
+    
+    
+    
+    <category term="Quote" scheme="http://kabtoffe.net/tags/Quote/"/>
+    
+    <category term="AI Coding" scheme="http://kabtoffe.net/tags/AI-Coding/"/>
+    
+  </entry>
   
   <entry>
     <title>Quoting Jonas Rapp - My advice for Still Growing Developers</title>
@@ -489,25 +513,6 @@
     <category term="Quote" scheme="http://kabtoffe.net/tags/Quote/"/>
     
     <category term="AI Coding" scheme="http://kabtoffe.net/tags/AI-Coding/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ConvertTo-CustomObject function as a wrapper for Select-Object</title>
-    <link href="http://kabtoffe.net/2017/07/12/ConvertTo-CustomObject-function-as-a-wrapper-for-Select-Object/"/>
-    <id>http://kabtoffe.net/2017/07/12/ConvertTo-CustomObject-function-as-a-wrapper-for-Select-Object/</id>
-    <published>2017-07-12T12:54:31.000Z</published>
-    <updated>2026-02-07T09:09:05.341Z</updated>
-    
-    <content type="html"><![CDATA[<p>In <a href="http://kabtoffe.net/2017/07/11/Generate-CSV-from-Dynamics-365-with-Custom-Headers/">yesterday’s post</a> I introduced a custom advanced function for changing property names on objects. I also showed you how to use <code>Select-Object</code> to do the same. Because the <code>Select-Object</code> cmdlet is probably more robust than my little function I decided to try and rewrite the function to use <code>Select-Object</code> under the hood.</p><p><code>Select-Object</code> accepts an array of hashtable objects with two key&#x2F;value pairs:</p><ul><li>N is for the name of the property</li><li>E is the expression as a script block that need to be run to get the value</li></ul><p>In order to use this functionality we need to figure out a way to generate these objects dynamically using our mapping table. The approach I took was to generate the code as strings and then use <code>Invoke-Expression</code>. Since we only need to do this once and not for every object I added a <code>BEGIN</code> block to my function:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">BEGIN &#123;</span><br><span class="line">    $Expression = &quot;&quot;</span><br><span class="line">    $MappingTable.Keys | ForEach-Object &#123;</span><br><span class="line">        $Expression += (</span><br><span class="line">            @&quot;</span><br><span class="line">                @&#123;</span><br><span class="line">                    N=&quot;$($MappingTable[$_])&quot;</span><br><span class="line">                    E=&#123;`$_.$_&#125;</span><br><span class="line">                &#125;,</span><br><span class="line">        &quot;@</span><br><span class="line">        )</span><br><span class="line">    &#125;</span><br><span class="line">    $Expression = $Expression.Substring(0,$Expression.Length-1)</span><br><span class="line">    $SelectObjectParameter = Invoke-Expression $Expression</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>So for each key in the mapping table we generate a name and an expression to run. Eg. using a mapping table like <code>@{ &quot;name&quot; = &quot;AccountName&quot;; &quot;telephone1&quot; = &quot;Phone&quot;  }</code>generates the following string:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@&#123;</span><br><span class="line">    N=&quot;Phone&quot;</span><br><span class="line">    E=&#123;$_.telephone1&#125;</span><br><span class="line">&#125;,                    @&#123;</span><br><span class="line">    N=&quot;AccountName&quot;</span><br><span class="line">    E=&#123;$_.name&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>That string is exactly what we would feed <code>Select-Object</code>. To get it into actual PowerShell objects we need to feed it to <code>Invoke-Expression</code>. That gives us an array with two separate hashtables each with a N key with a string value and an E key with a script block value.</p><p>Once stored in a variable we can use this for each of the objects fed through the pipeline by using it in the <code>PROCESS</code> block of our advanced function:</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">PROCESS &#123;</span><br><span class="line">        $SourceObject | Select-Object -Property $SelectObjectParameter</span><br><span class="line">    &#125;  </span><br></pre></td></tr></table></figure><p>And that is all there is to it. The function works exactly the same as the ‘quick and dirty’ one in the last post. You can find the full function <a href="https://github.com/kabtoffe/blog-examples/blob/master/ConvertTo-CustomObject/ConvertTo-CustomObject.ps1">here</a>. Import it to your session and try this example:<br> <code>Get-Process | ConvertTo-CustomObject -MappingTable @{ &quot;ProcessName&quot; = &quot;Name&quot; }</code></p>]]></content>
-    
-    
-    <summary type="html">Change ConvertTo-CustomObject a wrapper for Select-Object instead</summary>
-    
-    
-    
-    
-    <category term="PowerShell" scheme="http://kabtoffe.net/tags/PowerShell/"/>
     
   </entry>
   

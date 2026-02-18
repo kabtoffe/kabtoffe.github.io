@@ -538,4 +538,18 @@ Still waiting for these to reach EU tenants. In the meantime vibe coding PCF-con
         <tag>Model Driven Apps</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Quoting Birgitta Böckeler - Harness Engineering</title>
+    <url>/2026/02/17/birgitta-bckeler-harness-engineering/</url>
+    <content><![CDATA[Birgitta Böckeler in the article Harness Engineering (published February 18, 2026):
+
+As coding becomes less about typing code and more about steering its generation, AI might push us toward fewer tech stacks. Usability of frameworks and SDKs still matters — we’re seeing repeatedly that what’s good for humans is good for AI. But developer tastes will matter less at that level of detail. Little inefficiencies and idiosyncracies in interfaces will be less annoying since we don’t deal with them directly. We might choose stacks with good harnesses available and prioritize “AI-friendliness”.
+
+I do wonder about this. There is also an incentive for platform developers to make their platforms more AI friendly.
+]]></content>
+      <tags>
+        <tag>Quote</tag>
+        <tag>AI Coding</tag>
+      </tags>
+  </entry>
 </search>
