@@ -6,7 +6,7 @@
   <link href="http://kabtoffe.net/atom.xml" rel="self"/>
   
   <link href="http://kabtoffe.net/"/>
-  <updated>2026-02-18T19:37:04.638Z</updated>
+  <updated>2026-02-19T19:32:14.561Z</updated>
   <id>http://kabtoffe.net/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Quoting Microsoft Defender Security Research Team - Running OpenClaw safely: identity, isolation, and runtime risk</title>
+    <link href="http://kabtoffe.net/2026/02/18/microsoft-defender-security-research-team-running-openclaw-safely-identity-isolation-and-runtime-risk/"/>
+    <id>http://kabtoffe.net/2026/02/18/microsoft-defender-security-research-team-running-openclaw-safely-identity-isolation-and-runtime-risk/</id>
+    <published>2026-02-18T22:00:00.000Z</published>
+    <updated>2026-02-19T19:32:14.561Z</updated>
+    
+    <content type="html"><![CDATA[<p>Microsoft Defender Security Research Team in the article <a href="https://www.microsoft.com/en-us/security/blog/2026/02/19/running-openclaw-safely-identity-isolation-runtime-risk/">Running OpenClaw safely: identity, isolation, and runtime risk</a> (published February 19, 2026):</p><blockquote><p>Self-hosted agent runtimes like… OpenClaw are showing up fast in enterprise pilots, and they introduce a blunt reality: OpenClaw includes limited built-in security controls. The runtime can ingest untrusted text, download and execute skills (i.e. code) from external sources, and perform actions using the credentials assigned to it.</p></blockquote><p>Making secure environments for agents is a must.</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;Microsoft Defender Security Research Team in the article &lt;a href=&quot;https://www.microsoft.com/en-us/security/blog/2026/02/19/running-opencl</summary>
+      
+    
+    
+    
+    
+    <category term="Quote" scheme="http://kabtoffe.net/tags/Quote/"/>
+    
+    <category term="AI" scheme="http://kabtoffe.net/tags/AI/"/>
+    
+  </entry>
   
   <entry>
     <title>Quoting Birgitta Böckeler - Harness Engineering</title>
@@ -489,30 +513,6 @@
     <category term="Quote" scheme="http://kabtoffe.net/tags/Quote/"/>
     
     <category term="AI" scheme="http://kabtoffe.net/tags/AI/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Quoting Steve Yegge - Stevey’s Birthday Blog</title>
-    <link href="http://kabtoffe.net/2026/02/06/steve-yegge-steveys-birthday-blog/"/>
-    <id>http://kabtoffe.net/2026/02/06/steve-yegge-steveys-birthday-blog/</id>
-    <published>2026-02-06T22:00:00.000Z</published>
-    <updated>2026-02-07T18:42:21.742Z</updated>
-    
-    <content type="html"><![CDATA[<p>Steve Yegge in the article <a href="https://steve-yegge.medium.com/steveys-birthday-blog-34f437139cb5?source=rss-c1ec701babb7------2">Stevey’s Birthday Blog</a> (published February 2, 2026):</p><blockquote><p>Agent orchestrators are programs that use agents to run other agents.</p><p>There are, as far as I can tell, four main players in this space: <a href="https://github.com/anthropics/claude-code/tree/main/plugins/ralph-wiggum">Ralph Wiggum</a>, <a href="https://github.com/ghuntley/loom">Loom</a>, <a href="https://github.com/ruvnet/claude-flow">Claude Flow</a>, and <a href="https://github.com/steveyegge/gastown">Gas Town</a>. More will come very soon, from all corners. But I thought I’d share my thoughts on how to tell the current group apart, as they are all very important.</p><p>[…]</p><p>I think Geoffrey Huntley and I have been exploring two of the key components of the Industrial Revolution happening in agentic software development: factories, and workers. In my view, Claude Code is a worker. Geoffrey has built a super-worker, and also a team of super workers with <a href="https://youtu.be/zX_Wq9wAyxI?si=aLGKmzKlGrTQxgDx">Loom</a>, whereas I’ve built a super-factory. These are all orthogonal, complementary, and necessary.</p><p>Claude Flow is a bit different; it also tries to be a factory, and it’s quite clever, but it’s not thinking about the problem the way I am. All three of the others have orchestration as their core primitive. Whereas for Gas Town, the work itself is the primitive. Gas Town federates work into an auditable ledger for tracking millions of work items in a blockchain. I’m solving a completely different problem.</p></blockquote><p>I’ve been reading Steve’s and Gene Kim’s Vibe Coding book and it’s a super interesting journey Steve is on. Where he leads others will follow.</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;Steve Yegge in the article &lt;a href=&quot;https://steve-yegge.medium.com/steveys-birthday-blog-34f437139cb5?source=rss-c1ec701babb7------2&quot;&gt;Ste</summary>
-      
-    
-    
-    
-    
-    <category term="Quote" scheme="http://kabtoffe.net/tags/Quote/"/>
-    
-    <category term="AI Coding" scheme="http://kabtoffe.net/tags/AI-Coding/"/>
     
   </entry>
   

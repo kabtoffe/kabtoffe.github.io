@@ -552,4 +552,18 @@ I do wonder about this. There is also an incentive for platform developers to ma
         <tag>AI Coding</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Quoting Microsoft Defender Security Research Team - Running OpenClaw safely: identity, isolation, and runtime risk</title>
+    <url>/2026/02/18/microsoft-defender-security-research-team-running-openclaw-safely-identity-isolation-and-runtime-risk/</url>
+    <content><![CDATA[Microsoft Defender Security Research Team in the article Running OpenClaw safely: identity, isolation, and runtime risk (published February 19, 2026):
+
+Self-hosted agent runtimes like… OpenClaw are showing up fast in enterprise pilots, and they introduce a blunt reality: OpenClaw includes limited built-in security controls. The runtime can ingest untrusted text, download and execute skills (i.e. code) from external sources, and perform actions using the credentials assigned to it.
+
+Making secure environments for agents is a must.
+]]></content>
+      <tags>
+        <tag>Quote</tag>
+        <tag>AI</tag>
+      </tags>
+  </entry>
 </search>
