@@ -566,4 +566,18 @@ Making secure environments for agents is a must.
         <tag>AI</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Quoting Martin Fowler - Fragments: February 19</title>
+    <url>/2026/02/18/martin-fowler-fragments-february-19/</url>
+    <content><![CDATA[Martin Fowler in the article Fragments: February 19 (published February 19, 2026):
+
+The point here is that LLM’s vulnerability is currently unfixable, they are gullible and easily manipulated into Initial Access. As one friend put it “this is the first technology we’ve built that’s subject to social engineering”. The kill chain gives us a framework to build a defensive strategy.
+
+There might not be a fix and that will limit the use of AI in many use cases once this becomes a wide spread problem. As more people employ AI agents attackers will follow.
+]]></content>
+      <tags>
+        <tag>Quote</tag>
+        <tag>AI</tag>
+      </tags>
+  </entry>
 </search>

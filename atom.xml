@@ -41,6 +41,30 @@
   </entry>
   
   <entry>
+    <title>Quoting Martin Fowler - Fragments: February 19</title>
+    <link href="http://kabtoffe.net/2026/02/18/martin-fowler-fragments-february-19/"/>
+    <id>http://kabtoffe.net/2026/02/18/martin-fowler-fragments-february-19/</id>
+    <published>2026-02-18T22:00:00.000Z</published>
+    <updated>2026-02-19T20:00:39.525Z</updated>
+    
+    <content type="html"><![CDATA[<p>Martin Fowler in the article <a href="https://martinfowler.com/fragments/2026-02-19.html">Fragments: February 19</a> (published February 19, 2026):</p><blockquote><p>The point here is that LLM’s vulnerability is currently unfixable, they are gullible and easily manipulated into Initial Access. As one friend put it “this is the first technology we’ve built that’s subject to social engineering”. The kill chain gives us a framework to build a defensive strategy.</p></blockquote><p>There might not be a fix and that will limit the use of AI in many use cases once this becomes a wide spread problem. As more people employ AI agents attackers will follow.</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;Martin Fowler in the article &lt;a href=&quot;https://martinfowler.com/fragments/2026-02-19.html&quot;&gt;Fragments: February 19&lt;/a&gt; (published February </summary>
+      
+    
+    
+    
+    
+    <category term="Quote" scheme="http://kabtoffe.net/tags/Quote/"/>
+    
+    <category term="AI" scheme="http://kabtoffe.net/tags/AI/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Quoting Birgitta Böckeler - Harness Engineering</title>
     <link href="http://kabtoffe.net/2026/02/17/birgitta-bckeler-harness-engineering/"/>
     <id>http://kabtoffe.net/2026/02/17/birgitta-bckeler-harness-engineering/</id>
@@ -489,30 +513,6 @@
     <category term="Feedly" scheme="http://kabtoffe.net/tags/Feedly/"/>
     
     <category term="Bookmarklet" scheme="http://kabtoffe.net/tags/Bookmarklet/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Quoting Ben Thompson - Microsoft and Software Survival</title>
-    <link href="http://kabtoffe.net/2026/02/06/ben-thompson-microsoft-and-software-survival/"/>
-    <id>http://kabtoffe.net/2026/02/06/ben-thompson-microsoft-and-software-survival/</id>
-    <published>2026-02-06T22:00:00.000Z</published>
-    <updated>2026-02-07T11:54:09.408Z</updated>
-    
-    <content type="html"><![CDATA[<p>Ben Thompson in the article <a href="https://stratechery.com/2026/microsoft-and-software-survival/">Microsoft and Software Survival</a> (published February 3, 2026):</p><blockquote><p>That, then, raises the most obvious bear case for any software company: why pay for software when you can just ask AI to write your own application, perfectly suited to your needs? Is software going to be a total commodity and a non-viable business model in the future?</p><p>I’m skeptical, for a number of reasons. First, companies — particularly American ones — are very good at focusing on their core competency, and for most companies in the world, that isn’t software. There is a reason most companies pay other companies for software, and the most fundamental reason to do so won’t change with AI.</p><p>Second, writing the original app is just the beginning: there is maintenance, there are security patches, there are new features, there are changing standards — writing an app is a commitment to a never-ending journey — a journey, to return to point one, that has nothing to do with the company’s core competency.</p><p>Third, selling software isn’t just about selling code. There is support, there is compliance, there are integrations with other software, the list of what is actually valuable goes far beyond code. This is why companies don’t run purely open source software: they don’t want code, they want a product, with everything that entails.</p></blockquote><p>As the cost of developing sofware, at least the coding bit, approaches zero other concerns are more pressing.</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;Ben Thompson in the article &lt;a href=&quot;https://stratechery.com/2026/microsoft-and-software-survival/&quot;&gt;Microsoft and Software Survival&lt;/a&gt; (</summary>
-      
-    
-    
-    
-    
-    <category term="Quote" scheme="http://kabtoffe.net/tags/Quote/"/>
-    
-    <category term="AI" scheme="http://kabtoffe.net/tags/AI/"/>
     
   </entry>
   
