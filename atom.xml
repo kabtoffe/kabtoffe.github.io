@@ -6,7 +6,7 @@
   <link href="http://kabtoffe.net/atom.xml" rel="self"/>
   
   <link href="http://kabtoffe.net/"/>
-  <updated>2026-02-19T19:32:14.561Z</updated>
+  <updated>2026-02-27T16:52:54.619Z</updated>
   <id>http://kabtoffe.net/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Quoting Nick Doelman - The end of Power Pages? (As we know it?)</title>
+    <link href="http://kabtoffe.net/2026/02/26/nick-doelman-the-end-of-power-pages-as-we-know-it/"/>
+    <id>http://kabtoffe.net/2026/02/26/nick-doelman-the-end-of-power-pages-as-we-know-it/</id>
+    <published>2026-02-26T22:00:00.000Z</published>
+    <updated>2026-02-27T16:52:54.619Z</updated>
+    
+    <content type="html"><![CDATA[<p>Nick Doelman in the article <a href="https://readyxrm.blog/2026/02/26/the-end-of-power-pages-as-we-know-it/">The end of Power Pages? (As we know it?)</a> (published February 27, 2026):</p><blockquote><p>Every week new features and techniques are dropping not only from Microsoft but other vendors. One of the latest movements is getting agents to utilize “skills” to execute and complete tasks.</p><p>Microsoft has just released to public preview a <a href="https://claude.ai/">Claude</a> code plug-in with skills to build, configure, and deploy <a href="https://readyxrm.blog/2026/01/02/power-pages-bring-your-own-code/">Power Pages single page applications</a>.</p><p>Announcement: <a href="https://www.microsoft.com/en-us/power-platform/blog/power-pages/build-power-pages-sites-with-ai-using-agentic-coding-tools-preview/">Build Power Pages sites with AI using agentic coding tools (preview)</a></p><p>Documentation: <a href="https://learn.microsoft.com/en-us/power-pages/configure/create-code-site-using-claude-code">Get started with the Power Pages plugin for GitHub Copilot CLI and Claude Code (preview)</a> <a href="https://learn.microsoft.com/en-us/power-pages/configure/create-code-site-using-claude-code"></a> <a href="https://learn.microsoft.com/en-us/power-pages/configure/create-code-site-using-claude-code"></a></p></blockquote><p>Great news!</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;Nick Doelman in the article &lt;a href=&quot;https://readyxrm.blog/2026/02/26/the-end-of-power-pages-as-we-know-it/&quot;&gt;The end of Power Pages? (As </summary>
+      
+    
+    
+    
+    
+    <category term="Quote" scheme="http://kabtoffe.net/tags/Quote/"/>
+    
+    <category term="AI Coding" scheme="http://kabtoffe.net/tags/AI-Coding/"/>
+    
+    <category term="Power Pages" scheme="http://kabtoffe.net/tags/Power-Pages/"/>
+    
+  </entry>
   
   <entry>
     <title>Quoting Microsoft Defender Security Research Team - Running OpenClaw safely: identity, isolation, and runtime risk</title>
@@ -483,36 +509,6 @@
     <category term="Quote" scheme="http://kabtoffe.net/tags/Quote/"/>
     
     <category term="AI Coding" scheme="http://kabtoffe.net/tags/AI-Coding/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Automating Quote Post Creation with Feedly and Hexo</title>
-    <link href="http://kabtoffe.net/2026/02/06/Automating-Quote-Posts-with-Feedly-and-Hexo/"/>
-    <id>http://kabtoffe.net/2026/02/06/Automating-Quote-Posts-with-Feedly-and-Hexo/</id>
-    <published>2026-02-06T22:00:00.000Z</published>
-    <updated>2026-02-13T20:09:06.443Z</updated>
-    
-    <content type="html"><![CDATA[<p>I spend a lot of my time reading blog articles using my feed reader and wanted a lightweight way to capture interesting quotes and commentary directly into my blog. Rather than manually creating markdown files, I built, with a lot of assistance from Claude, a two-part automation system: a Node.js script that generates posts from parameters, and a browser bookmarklet that extracts article data from Feedly.</p><p>The basic idea is that when I read through my feed and see something interesting I can use Feedly’s native highlighting functionality and notes to add my commentary and then use that as a source for post generation.</p><h2 id="How-Hexo-Works"><a href="#How-Hexo-Works" class="headerlink" title="How Hexo Works"></a>How Hexo Works</h2><p>I currently use Hexo for my blog. Hexo is a static site generator that converts markdown files into HTML. Here’s the basic workflow:</p><ol><li><strong>Source files</strong>: You write markdown files in <code>source/_posts/</code> with YAML frontmatter metadata (title, date, tags, etc.)</li><li><strong>Generation</strong>: Running <code>hexo generate</code> processes these files through templates and outputs static HTML to the <code>public/</code> directory</li><li><strong>Deployment</strong>: <code>hexo deploy</code> pushes the generated HTML to your hosting (in my case, GitHub Pages)</li></ol><p>The key advantage is that your entire blog is version-controlled markdown files—no database, no complex tooling. Each post is just a file with metadata and content. I also do not need to worry about anyone hacking my site as there is no administrator login.</p><h2 id="Creating-the-Quote-Post-Script"><a href="#Creating-the-Quote-Post-Script" class="headerlink" title="Creating the Quote Post Script"></a>Creating the Quote Post Script</h2><p>To automate post creation based on the article. I built a Node.js CLI script (<code>tools/create-quote-post.js</code>) that:</p><ul><li><strong>Accepts command-line parameters</strong>: author, URL, title, publication date, quote, and commentary</li><li><strong>Generates proper frontmatter</strong>: Creates YAML metadata with tags, source information, and post date (today, not the article date)</li><li><strong>Formats the markdown body</strong>: Renders the quote as a blockquote and includes your commentary</li><li><strong>Writes the file</strong>: Creates a markdown file in <code>source/_posts/</code> with a sanitized filename</li></ul><h3 id="Example"><a href="#Example" class="headerlink" title="Example"></a>Example</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">node tools/create-quote-post.js \</span><br><span class="line">  --author <span class="string">&quot;Ben Thompson&quot;</span> \</span><br><span class="line">  --url <span class="string">&quot;https://stratechery.com/...&quot;</span> \</span><br><span class="line">  --title <span class="string">&quot;Microsoft and Software Survival&quot;</span> \</span><br><span class="line">  --<span class="built_in">date</span> <span class="string">&quot;2026-02-07&quot;</span> \</span><br><span class="line">  --quote <span class="string">&quot;That, then, raises the most obvious bear case...&quot;</span> \</span><br><span class="line">  --commentary <span class="string">&quot;Really interesting perspective&quot;</span></span><br></pre></td></tr></table></figure><p>Generates a post with:</p><ul><li>Frontmatter including <code>source_author</code>, <code>source_url</code>, and <code>source_date</code> (preserving the original article’s date)</li><li>Post date set to today</li><li>Proper YAML list formatting for tags</li><li>Quote rendered as markdown blockquote</li></ul><p><strong>Directory Structure</strong>: The scripts live in <code>tools/</code> rather than Hexo’s <code>scripts/</code> directory, which prevents Hexo from trying to load them as plugins during the build process.</p><p>This script serves as the base for the automation hook.</p><h2 id="Extracting-Data-with-a-Feedly-Bookmarklet"><a href="#Extracting-Data-with-a-Feedly-Bookmarklet" class="headerlink" title="Extracting Data with a Feedly Bookmarklet"></a>Extracting Data with a Feedly Bookmarklet</h2><p>For extracting the data off of Feedly there are a few options. Feedly does have an API but that is only available for the Enterprise plan. One option to create a workflow would have been to use IFTTT to create an automation using the Feedly applets and then call a web api with that. I might still do that as that might more mobile friendly, but for a first try I decided to just use the browser. As a simpler alternative to a browser addon, I made a bookmarklet that:</p><ol><li><strong>Extracts article data</strong> from Feedly’s DOM:<ul><li>Title, URL, author&#x2F;publication name</li><li>Publication date (parsed from Feedly’s date format)</li><li>All highlighted text (grouped by paragraph to preserve structure)</li><li>Any notes&#x2F;comments I added in Feedly</li><li>Feedly board names as tags</li></ul></li></ol><p><img src="/../images/image.png" alt="feedly extraction demo"><br><img src="/../images/image-1.png" alt="highlighted text"></p><ol start="2"><li><strong>Presents an editable form</strong> in a modal dialog where I can:<ul><li>Review and edit all extracted data</li><li>Add or modify my comments further</li><li>Adjust tags before generating</li></ul></li></ol><p><img src="/../images/feedly-create-post-form.png" alt="screenshot of the create post form"></p><ol start="3"><li><strong>Generates the bash command</strong> for the post creation, ready to copy and paste into my terminal<br><img src="/../images/image-2.png" alt="command ready to paste"></li></ol><h2 id="Part-2-Web-Server-Automation-Coming-Soon"><a href="#Part-2-Web-Server-Automation-Coming-Soon" class="headerlink" title="Part 2: Web Server Automation (Coming Soon)"></a>Part 2: Web Server Automation (Coming Soon)</h2><p>While the bookmarklet works well for one-off posts, the next step is building a lightweight web server that can:</p><ul><li>Accept article data via HTTP (from a bookmarklet or API endpoint)</li><li>Generate and commit the post automatically</li><li>Trigger a blog rebuild and deployment</li><li>Return the published post URL</li></ul><p>This would eliminate the need to manually run the script, enabling a one-click publishing workflow directly from Feedly.</p><hr><p><strong>Want to try it?</strong> The bookmarklet and script are open for customization. You can find:</p><ul><li>The extraction logic and minified version in <a href="https://github.com/kabtoffe/kabtoffe.github.io/blob/master/resources/bookmarklets/feedly-bookmarklet.js">feedly-bookmarklet.js</a></li><li>The post creation script in <a href="https://github.com/kabtoffe/kabtoffe.github.io/blob/master/resources/create-quote-post.js">create-quote-post.js</a></li></ul><p><strong>Note:</strong> At the moment the form is not quite usable inside Feedly, but the buttons work.</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;I spend a lot of my time reading blog articles using my feed reader and wanted a lightweight way to capture interesting quotes and commen</summary>
-      
-    
-    
-    
-    
-    <category term="Hexo" scheme="http://kabtoffe.net/tags/Hexo/"/>
-    
-    <category term="NodeJS" scheme="http://kabtoffe.net/tags/NodeJS/"/>
-    
-    <category term="Automation" scheme="http://kabtoffe.net/tags/Automation/"/>
-    
-    <category term="Feedly" scheme="http://kabtoffe.net/tags/Feedly/"/>
-    
-    <category term="Bookmarklet" scheme="http://kabtoffe.net/tags/Bookmarklet/"/>
     
   </entry>
   

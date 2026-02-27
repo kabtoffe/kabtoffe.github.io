@@ -580,4 +580,22 @@ There might not be a fix and that will limit the use of AI in many use cases onc
         <tag>AI</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Quoting Nick Doelman - The end of Power Pages? (As we know it?)</title>
+    <url>/2026/02/26/nick-doelman-the-end-of-power-pages-as-we-know-it/</url>
+    <content><![CDATA[Nick Doelman in the article The end of Power Pages? (As we know it?) (published February 27, 2026):
+
+Every week new features and techniques are dropping not only from Microsoft but other vendors. One of the latest movements is getting agents to utilize “skills” to execute and complete tasks.
+Microsoft has just released to public preview a Claude code plug-in with skills to build, configure, and deploy Power Pages single page applications.
+Announcement: Build Power Pages sites with AI using agentic coding tools (preview)
+Documentation: Get started with the Power Pages plugin for GitHub Copilot CLI and Claude Code (preview)  
+
+Great news!
+]]></content>
+      <tags>
+        <tag>Quote</tag>
+        <tag>AI Coding</tag>
+        <tag>Power Pages</tag>
+      </tags>
+  </entry>
 </search>
