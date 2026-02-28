@@ -598,4 +598,19 @@ Great news!
         <tag>Power Pages</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Quoting Ivan Turkovic - The Eternal Promise: A History of Attempts to Eliminate Programmers</title>
+    <url>/2026/02/27/ivan-turkovic-the-eternal-promise-a-history-of-attempts-to-eliminate-programmers/</url>
+    <content><![CDATA[Ivan Turkovic in the article The Eternal Promise: A History of Attempts to Eliminate Programmers (published January 22, 2026):
+
+the fundamental challenge remains unchanged: translating human intent into correct, efficient, maintainable, secure software is hard. Not because the tools are inadequate, but because the problem is inherently complex.
+
+These new genAI coding tools seem to work really well for people like me. Similarly I’ve had a lot of success with low code tools as being a sometimes pro-code developer helps understand the limitations and backround of what gets generation. Modularity also matters even in low code as maintainability needs to be taken k to account.
+]]></content>
+      <tags>
+        <tag>Quote</tag>
+        <tag>AI</tag>
+        <tag>AI Coding</tag>
+      </tags>
+  </entry>
 </search>

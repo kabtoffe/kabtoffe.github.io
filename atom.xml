@@ -6,7 +6,7 @@
   <link href="http://kabtoffe.net/atom.xml" rel="self"/>
   
   <link href="http://kabtoffe.net/"/>
-  <updated>2026-02-27T16:52:54.619Z</updated>
+  <updated>2026-02-28T10:51:54.401Z</updated>
   <id>http://kabtoffe.net/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Quoting Ivan Turkovic - The Eternal Promise: A History of Attempts to Eliminate Programmers</title>
+    <link href="http://kabtoffe.net/2026/02/27/ivan-turkovic-the-eternal-promise-a-history-of-attempts-to-eliminate-programmers/"/>
+    <id>http://kabtoffe.net/2026/02/27/ivan-turkovic-the-eternal-promise-a-history-of-attempts-to-eliminate-programmers/</id>
+    <published>2026-02-27T22:00:00.000Z</published>
+    <updated>2026-02-28T10:51:54.401Z</updated>
+    
+    <content type="html"><![CDATA[<p>Ivan Turkovic in the article <a href="https://www.ivanturkovic.com/2026/01/22/history-software-simplification-cobol-ai-hype/">The Eternal Promise: A History of Attempts to Eliminate Programmers</a> (published January 22, 2026):</p><blockquote><p>the fundamental challenge remains unchanged: translating human intent into correct, efficient, maintainable, secure software is hard. Not because the tools are inadequate, but because the problem is inherently complex.</p></blockquote><p>These new genAI coding tools seem to work really well for people like me. Similarly I’ve had a lot of success with low code tools as being a sometimes pro-code developer helps understand the limitations and backround of what gets generation. Modularity also matters even in low code as maintainability needs to be taken k to account.</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;Ivan Turkovic in the article &lt;a href=&quot;https://www.ivanturkovic.com/2026/01/22/history-software-simplification-cobol-ai-hype/&quot;&gt;The Eternal</summary>
+      
+    
+    
+    
+    
+    <category term="Quote" scheme="http://kabtoffe.net/tags/Quote/"/>
+    
+    <category term="AI" scheme="http://kabtoffe.net/tags/AI/"/>
+    
+    <category term="AI Coding" scheme="http://kabtoffe.net/tags/AI-Coding/"/>
+    
+  </entry>
   
   <entry>
     <title>Quoting Nick Doelman - The end of Power Pages? (As we know it?)</title>
@@ -485,30 +511,6 @@
     <category term="Power Apps" scheme="http://kabtoffe.net/tags/Power-Apps/"/>
     
     <category term="Power Platform" scheme="http://kabtoffe.net/tags/Power-Platform/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Quoting Neeraj Nandwana - Announcing General Availability (GA) of building single-page applications for Power Pages</title>
-    <link href="http://kabtoffe.net/2026/02/10/neeraj-nandwana-announcing-general-availability-ga-of-building-single-page-applications-for-power-pages/"/>
-    <id>http://kabtoffe.net/2026/02/10/neeraj-nandwana-announcing-general-availability-ga-of-building-single-page-applications-for-power-pages/</id>
-    <published>2026-02-10T22:00:00.000Z</published>
-    <updated>2026-02-11T17:02:13.609Z</updated>
-    
-    <content type="html"><![CDATA[<p>Neeraj Nandwana in the article <a href="https://www.microsoft.com/en-us/power-platform/blog/power-pages/announcing-general-availability-ga-of-building-single-page-applications-on-power-pages/">Announcing General Availability (GA) of building single-page applications for Power Pages</a> (published February 9, 2026):</p><blockquote><p>You can run your SPA locally with full authentication and Web API access to accelerate your development cycle. This means JavaScript hot reload, local debugging, and immediate feedback without deploying changes to your portal every time. For step-by-step instructions, see <a href="https://learn.microsoft.com/en-us/power-pages/configure/create-code-sites#set-up-local-development-by-enabling-web-api-calls-from-localhost-using-microsoft-entra-id-authentication">Set up local development for SPA sites</a>.</p></blockquote><p>When you want to authenticate locally you need to login to the live portal once using the built in Entra ID identity provider. That makes sure you have a contact that is connected to your Entra user. When you login on localhost that is the identty you use with the development proxy.</p><p>As far as I can tell you cannot currently use another provider this, but I might be wrong. The documentation is currently not very broad.</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;Neeraj Nandwana in the article &lt;a href=&quot;https://www.microsoft.com/en-us/power-platform/blog/power-pages/announcing-general-availability-g</summary>
-      
-    
-    
-    
-    
-    <category term="Quote" scheme="http://kabtoffe.net/tags/Quote/"/>
-    
-    <category term="AI Coding" scheme="http://kabtoffe.net/tags/AI-Coding/"/>
     
   </entry>
   
