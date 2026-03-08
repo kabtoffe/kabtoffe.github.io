@@ -6,7 +6,7 @@
   <link href="http://kabtoffe.net/atom.xml" rel="self"/>
   
   <link href="http://kabtoffe.net/"/>
-  <updated>2026-02-28T10:51:54.401Z</updated>
+  <updated>2026-03-08T13:45:32.296Z</updated>
   <id>http://kabtoffe.net/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Quoting Ivan. Turkovic - AI Made Writing Code Easier. It Made Engineering Harder.</title>
+    <link href="http://kabtoffe.net/2026/03/07/ivan-turkovic-ai-made-writing-code-easier-it-made-engineering-harder/"/>
+    <id>http://kabtoffe.net/2026/03/07/ivan-turkovic-ai-made-writing-code-easier-it-made-engineering-harder/</id>
+    <published>2026-03-07T22:00:00.000Z</published>
+    <updated>2026-03-08T13:45:32.296Z</updated>
+    
+    <content type="html"><![CDATA[<p>Ivan. Turkovic in the article <a href="https://www.ivanturkovic.com/2026/02/25/ai-made-writing-code-easier-engineering-harder/">AI Made Writing Code Easier. It Made Engineering Harder.</a> (published February 25, 2026):</p><blockquote><p>The scope of what it means to be a “software engineer” expanded dramatically in the last two years, and it happened without a pause to catch up.</p><p>This is partly a direct consequence of AI acceleration. When code gets produced faster, the bottleneck shifts. It moves from implementation to everything surrounding implementation: requirements clarity, architecture decisions, integration testing, deployment strategy, monitoring, and maintenance. These were always part of the engineering lifecycle, but they were distributed across roles. Product managers handled requirements. QA handled testing. DevOps handled deployment. Senior architects handled system design.</p><p>Now, with AI collapsing the implementation phase, organizations are quietly redistributing those responsibilities to the engineers themselves. The Harvard Business Review study documented this exact pattern. Product managers began writing code. Engineers took on product work. Researchers started doing engineering tasks. Roles that once had clear boundaries blurred as workers used AI to handle jobs that previously sat outside their remit.</p><p>The industry is openly talking about this as a positive development. Engineers should be “T-shaped” or “full-stack” in a broader sense. Nearly 45 percent of engineering roles now expect proficiency across multiple domains. AI tools augment generalists more effectively, making it easier for one person to handle multiple components of a system.</p><p>On paper, this sounds empowering. In practice, it means that a mid-level backend engineer is now expected to understand product strategy, review AI-generated frontend code they did not write, think about deployment infrastructure, consider security implications of code they cannot fully trace, and maintain a big-picture architectural awareness that used to be someone else’s job.</p><p>That is not empowerment. That is scope creep without a corresponding increase in compensation, authority, or time.</p></blockquote><p>It really is a problem of unknown unknows. Having broad knowledge and experience gives you a boost in this new technology landscape. But it can also be really taxing.</p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;Ivan. Turkovic in the article &lt;a href=&quot;https://www.ivanturkovic.com/2026/02/25/ai-made-writing-code-easier-engineering-harder/&quot;&gt;AI Made W</summary>
+      
+    
+    
+    
+    
+    <category term="Quote" scheme="http://kabtoffe.net/tags/Quote/"/>
+    
+    <category term="AI Coding" scheme="http://kabtoffe.net/tags/AI-Coding/"/>
+    
+  </entry>
   
   <entry>
     <title>Quoting Ivan Turkovic - The Eternal Promise: A History of Attempts to Eliminate Programmers</title>
@@ -483,34 +507,6 @@
     <category term="Quote" scheme="http://kabtoffe.net/tags/Quote/"/>
     
     <category term="AI Coding" scheme="http://kabtoffe.net/tags/AI-Coding/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Quoting Neeraj Nandwana - Generally available: host and run code apps in Power Apps</title>
-    <link href="http://kabtoffe.net/2026/02/10/neeraj-nandwana-generally-available-host-and-run-code-apps-in-power-apps/"/>
-    <id>http://kabtoffe.net/2026/02/10/neeraj-nandwana-generally-available-host-and-run-code-apps-in-power-apps/</id>
-    <published>2026-02-10T22:00:00.000Z</published>
-    <updated>2026-02-11T17:02:50.036Z</updated>
-    
-    <content type="html"><![CDATA[<p>Neeraj Nandwana in the article <a href="https://www.microsoft.com/en-us/power-platform/blog/power-apps/generally-available-host-and-run-code-apps-in-power-apps/">Generally available: host and run code apps in Power Apps</a> (published February 9, 2026):</p><blockquote><p>Power Apps code apps bring the full strength of Power Platform to web developers. Build in any code‑first IDE, iterate locally, and run the same app seamlessly within Power Platform. Build with popular frameworks (React, Vue, and others) while keeping full control over your UI and logic.</p></blockquote><p>One aspect that is interesting with this technology is that it’s “normal web development” and the data sources are neatly wrapped as service providers. Since you make your own UI you can, by making smart decisions, keep the app loosely coupled to the backend.</p><p>If you later decide you want to transition away from Power Platform, you only need to implement the backend again making the transition easier for your users. There’s obviously a lot of benefits you get from Power Platform, but you might not need all of it.</p>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;Neeraj Nandwana in the article &lt;a href=&quot;https://www.microsoft.com/en-us/power-platform/blog/power-apps/generally-available-host-and-run-c</summary>
-      
-    
-    
-    
-    
-    <category term="Quote" scheme="http://kabtoffe.net/tags/Quote/"/>
-    
-    <category term="AI Coding" scheme="http://kabtoffe.net/tags/AI-Coding/"/>
-    
-    <category term="Power Apps" scheme="http://kabtoffe.net/tags/Power-Apps/"/>
-    
-    <category term="Power Platform" scheme="http://kabtoffe.net/tags/Power-Platform/"/>
     
   </entry>
   

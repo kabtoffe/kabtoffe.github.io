@@ -613,4 +613,23 @@ These new genAI coding tools seem to work really well for people like me. Simila
         <tag>AI Coding</tag>
       </tags>
   </entry>
+  <entry>
+    <title>Quoting Ivan. Turkovic - AI Made Writing Code Easier. It Made Engineering Harder.</title>
+    <url>/2026/03/07/ivan-turkovic-ai-made-writing-code-easier-it-made-engineering-harder/</url>
+    <content><![CDATA[Ivan. Turkovic in the article AI Made Writing Code Easier. It Made Engineering Harder. (published February 25, 2026):
+
+The scope of what it means to be a “software engineer” expanded dramatically in the last two years, and it happened without a pause to catch up.
+This is partly a direct consequence of AI acceleration. When code gets produced faster, the bottleneck shifts. It moves from implementation to everything surrounding implementation: requirements clarity, architecture decisions, integration testing, deployment strategy, monitoring, and maintenance. These were always part of the engineering lifecycle, but they were distributed across roles. Product managers handled requirements. QA handled testing. DevOps handled deployment. Senior architects handled system design.
+Now, with AI collapsing the implementation phase, organizations are quietly redistributing those responsibilities to the engineers themselves. The Harvard Business Review study documented this exact pattern. Product managers began writing code. Engineers took on product work. Researchers started doing engineering tasks. Roles that once had clear boundaries blurred as workers used AI to handle jobs that previously sat outside their remit.
+The industry is openly talking about this as a positive development. Engineers should be “T-shaped” or “full-stack” in a broader sense. Nearly 45 percent of engineering roles now expect proficiency across multiple domains. AI tools augment generalists more effectively, making it easier for one person to handle multiple components of a system.
+On paper, this sounds empowering. In practice, it means that a mid-level backend engineer is now expected to understand product strategy, review AI-generated frontend code they did not write, think about deployment infrastructure, consider security implications of code they cannot fully trace, and maintain a big-picture architectural awareness that used to be someone else’s job.
+That is not empowerment. That is scope creep without a corresponding increase in compensation, authority, or time.
+
+It really is a problem of unknown unknows. Having broad knowledge and experience gives you a boost in this new technology landscape. But it can also be really taxing.
+]]></content>
+      <tags>
+        <tag>Quote</tag>
+        <tag>AI Coding</tag>
+      </tags>
+  </entry>
 </search>
