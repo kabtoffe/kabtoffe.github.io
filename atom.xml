@@ -6,7 +6,7 @@
   <link href="http://kabtoffe.net/atom.xml" rel="self"/>
   
   <link href="http://kabtoffe.net/"/>
-  <updated>2026-03-08T13:45:32.296Z</updated>
+  <updated>2026-04-27T14:52:33.707Z</updated>
   <id>http://kabtoffe.net/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Quoting ivan.turkovic - The Middle Loop: Where Engineering Actually Lives Now</title>
+    <link href="http://kabtoffe.net/2026/04/26/ivanturkovic-the-middle-loop-where-engineering-actually-lives-now/"/>
+    <id>http://kabtoffe.net/2026/04/26/ivanturkovic-the-middle-loop-where-engineering-actually-lives-now/</id>
+    <published>2026-04-26T21:00:00.000Z</published>
+    <updated>2026-04-27T14:52:33.707Z</updated>
+    
+    <content type="html"><![CDATA[<p>ivan.turkovic in the article <a href="https://www.ivanturkovic.com/2026/04/27/the-middle-loop-where-engineering-actually-lives-now/">The Middle Loop: Where Engineering Actually Lives Now</a> (published April 27, 2026):</p><blockquote><p>The mental tax of operating in an environment where companies measure AI output as if coding was ever the bottleneck. It wasn’t. Meetings were. Coordination was. Unclear specs were.</p><p>The middle loop is the other side of that coin.</p><p>Agents took over one part of the job. The part that felt like engineering to a lot of developers. Now those developers either move up into supervision or get squeezed out. The constraint shifts from production capacity to decision-making capacity.</p></blockquote>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;p&gt;ivan.turkovic in the article &lt;a href=&quot;https://www.ivanturkovic.com/2026/04/27/the-middle-loop-where-engineering-actually-lives-now/&quot;&gt;The </summary>
+      
+    
+    
+    
+    
+    <category term="Quote" scheme="http://kabtoffe.net/tags/Quote/"/>
+    
+    <category term="AI Coding" scheme="http://kabtoffe.net/tags/AI-Coding/"/>
+    
+  </entry>
   
   <entry>
     <title>Quoting Ivan. Turkovic - AI Made Writing Code Easier. It Made Engineering Harder.</title>
@@ -483,30 +507,6 @@
     <category term="Quote" scheme="http://kabtoffe.net/tags/Quote/"/>
     
     <category term="Software Development" scheme="http://kabtoffe.net/tags/Software-Development/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Quoting Unknown - Introducing Showboat and Rodney, so agents can demo what they’ve built</title>
-    <link href="http://kabtoffe.net/2026/02/11/unknown-introducing-showboat-and-rodney-so-agents-can-demo-what-theyve-built/"/>
-    <id>http://kabtoffe.net/2026/02/11/unknown-introducing-showboat-and-rodney-so-agents-can-demo-what-theyve-built/</id>
-    <published>2026-02-11T22:00:00.000Z</published>
-    <updated>2026-02-12T17:45:43.360Z</updated>
-    
-    <content type="html"><![CDATA[<p>Simon Willison in the article <a href="https://simonwillison.net/2026/Feb/10/showboat-and-rodney/">Introducing Showboat and Rodney, so agents can demo what they’ve built</a> (published February 10, 2026):</p><blockquote><p>The frontier models all understand that “red&#x2F;green TDD” means they should write the test first, run it and watch it fail and then write the code to make it pass - it’s a convenient shortcut.</p><p>I find this greatly increases the quality of the code and the likelihood that the agent will produce the right thing with the smallest amount of prompts to guide it.</p></blockquote>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;p&gt;Simon Willison in the article &lt;a href=&quot;https://simonwillison.net/2026/Feb/10/showboat-and-rodney/&quot;&gt;Introducing Showboat and Rodney, so ag</summary>
-      
-    
-    
-    
-    
-    <category term="Quote" scheme="http://kabtoffe.net/tags/Quote/"/>
-    
-    <category term="AI Coding" scheme="http://kabtoffe.net/tags/AI-Coding/"/>
     
   </entry>
   
